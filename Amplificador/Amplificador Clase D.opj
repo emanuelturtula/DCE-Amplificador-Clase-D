@@ -1,0 +1,214 @@
+(ExpressProject "Amplificador Clase D"
+  (ProjectVersion "19981106")
+  (ProjectType "Analog or A/D Mixed Mode")
+  (Folder "Design Resources"
+    (Folder "Library"
+      (File "C:\Cadence\SPB_17.2\tools\capture\library\pspice\analog.olb"
+        (DisplayName
+           "C:\Cadence\SPB_17.2\tools\capture\library\pspice\analog.olb")
+        (Type "Schematic Library"))
+      (File "C:\Cadence\SPB_17.2\tools\capture\library\pspice\breakout.olb"
+        (DisplayName
+           "C:\Cadence\SPB_17.2\tools\capture\library\pspice\breakout.olb")
+        (Type "Schematic Library"))
+      (File "C:\Cadence\SPB_17.2\tools\capture\library\pspice\source.olb"
+        (DisplayName
+           "C:\Cadence\SPB_17.2\tools\capture\library\pspice\source.olb")
+        (Type "Schematic Library"))
+      (File "C:\Cadence\SPB_17.2\tools\capture\library\pspice\sourcstm.olb"
+        (DisplayName
+           "C:\Cadence\SPB_17.2\tools\capture\library\pspice\sourcstm.olb")
+        (Type "Schematic Library"))
+      (File "C:\Cadence\SPB_17.2\tools\capture\library\pspice\special.olb"
+        (DisplayName
+           "C:\Cadence\SPB_17.2\tools\capture\library\pspice\special.olb")
+        (Type "Schematic Library")))
+    (NoModify)
+    (File "amplificador clase d.dsn"
+      (Type "Schematic Design"))
+    (BuildFileAddedOrDeleted "x")
+    (CompileFileAddedOrDeleted "x")
+    (ANNOTATE_Scope "0")
+    (ANNOTATE_Mode "1")
+    (ANNOTATE_Action "1")
+    (ANNOTATE_Reset_References_to_1 "FALSE")
+    (ANNOTATE_No_Page_Number_Change "TRUE")
+    (ANNOTATE_Property_Combine "{Value}{Source Package}")
+    (PSPICE_Regenerate_Netlist_Flag "FALSE"))
+  (Folder "Outputs"
+    (File ".\amplificador clase d-pspicefiles\esquematicos\esquematicos.net"
+      (Type "Report"))
+    (File ".\amplificador clase d-pspicefiles\esquematico\esquematico.net"
+      (Type "Report")))
+  (Folder "PSpice Resources"
+    (Folder "Stimulus Files"
+      (Sort User))
+    (Folder "Include Files"
+      (Sort User))
+    (Folder "Simulation Profiles"
+      (File.PSpice.{09528990-3187-11D2-BC7B-00A0C90CBF91}
+         ".\amplificador clase d-pspicefiles\esquematico\bias.sim"
+        (DisplayName "Esquematico-bias")
+        (Type "PSpice Profile"))
+      (ActiveProfile
+         ".\amplificador clase d-pspicefiles\esquematico\transient.sim")
+      (File.PSpice.{09528990-3187-11D2-BC7B-00A0C90CBF91}
+         ".\amplificador clase d-pspicefiles\esquematico\transient.sim"
+        (DisplayName "Esquematico-Transient")
+        (Type "PSpice Profile")))
+    (Folder "Model Libraries"
+      (File ".\libraries\phb27nq10t\phb27nq10t.lib"
+        (DisplayName ".\libraries\phb27nq10t\phb27nq10t.lib")
+        (Type "PSpiceLibrary"))
+      (File ".\libraries\ucc20520_pspice_trans\ucc20520_trans.lib"
+        (DisplayName ".\libraries\ucc20520_pspice_trans\ucc20520_trans.lib")
+        (Type "PSpiceLibrary"))
+      (Sort User)))
+  (DefaultLibraryBrowseDirectory "library\PSpice")
+  (PartMRUSelector
+    (PHB27NQ10T
+      (FullPartName "PHB27NQ10T.Normal")
+      (LibraryName
+         "C:\USERS\EMANUEL\DESKTOP\AMPLIFICADOR\LIBRARIES\PHB27NQ10T\PHB27NQ10T.OLB")
+      (DeviceIndex "0"))
+    (MbreakN3
+      (FullPartName "MbreakN3.Normal")
+      (LibraryName
+         "C:\CADENCE\SPB_17.2\TOOLS\CAPTURE\LIBRARY\PSPICE\BREAKOUT.OLB")
+      (DeviceIndex "0"))
+    (C
+      (FullPartName "C.Normal")
+      (LibraryName
+         "C:\CADENCE\SPB_17.2\TOOLS\CAPTURE\LIBRARY\PSPICE\ANALOG.OLB")
+      (DeviceIndex "0"))
+    (L
+      (FullPartName "L.Normal")
+      (LibraryName
+         "C:\CADENCE\SPB_17.2\TOOLS\CAPTURE\LIBRARY\PSPICE\ANALOG.OLB")
+      (DeviceIndex "0"))
+    (power_Mbreakn
+      (FullPartName "power_Mbreakn.Normal")
+      (LibraryName
+         "C:\CADENCE\SPB_17.2\TOOLS\CAPTURE\LIBRARY\PSPICE\BREAKOUT.OLB")
+      (DeviceIndex "0"))
+    (PARAM
+      (FullPartName "PARAM.Normal")
+      (LibraryName
+         "C:\CADENCE\SPB_17.2\TOOLS\CAPTURE\LIBRARY\PSPICE\SPECIAL.OLB")
+      (DeviceIndex "0"))
+    (R
+      (FullPartName "R.Normal")
+      (LibraryName
+         "C:\CADENCE\SPB_17.2\TOOLS\CAPTURE\LIBRARY\PSPICE\ANALOG.OLB")
+      (DeviceIndex "0"))
+    (MURS320T3G
+      (FullPartName "MURS320T3G.Normal")
+      (LibraryName "C:\CADENCE\SPB_17.2\TOOLS\CAPTURE\LIBRARY\PSPICE\DIODE.OLB")
+      (DeviceIndex "0"))
+    (C_t
+      (FullPartName "C_t.Normal")
+      (LibraryName
+         "C:\CADENCE\SPB_17.2\TOOLS\CAPTURE\LIBRARY\PSPICE\ANALOG.OLB")
+      (DeviceIndex "0"))
+    (NODESET1
+      (FullPartName "NODESET1.Normal")
+      (LibraryName
+         "C:\CADENCE\SPB_17.2\TOOLS\CAPTURE\LIBRARY\PSPICE\SPECIAL.OLB")
+      (DeviceIndex "0"))
+    (0
+      (LibraryName "C:\CADENCE\SPB_17.2\TOOLS\CAPTURE\LIBRARY\CAPSYM.OLB")
+      (DeviceIndex "0"))
+    (VPULSE
+      (FullPartName "VPULSE.Normal")
+      (LibraryName
+         "C:\CADENCE\SPB_17.2\TOOLS\CAPTURE\LIBRARY\PSPICE\SOURCE.OLB")
+      (DeviceIndex "0"))
+    (S
+      (FullPartName "S.Normal")
+      (LibraryName
+         "C:\CADENCE\SPB_17.2\TOOLS\CAPTURE\LIBRARY\PSPICE\ANALOG.OLB")
+      (DeviceIndex "0"))
+    (PHB27NQ10T/PLP
+      (FullPartName "PHB27NQ10T/PLP.Normal")
+      (LibraryName
+         "C:\CADENCE\SPB_17.2\TOOLS\CAPTURE\LIBRARY\PSPICE\PHIL_FET.OLB")
+      (DeviceIndex "0"))
+    (DMBRB20100CT/ON
+      (FullPartName "DMBRB20100CT/ON.Normal")
+      (LibraryName
+         "C:\CADENCE\SPB_17.2\TOOLS\CAPTURE\LIBRARY\PSPICE\ON_DIODE.OLB")
+      (DeviceIndex "0"))
+    (IRFP27N60K
+      (FullPartName "IRFP27N60K.Normal")
+      (LibraryName "C:\CADENCE\SPB_17.2\TOOLS\CAPTURE\LIBRARY\PSPICE\IRF.OLB")
+      (DeviceIndex "0"))
+    (DMURS360T3/ON
+      (FullPartName "DMURS360T3/ON.Normal")
+      (LibraryName
+         "C:\CADENCE\SPB_17.2\TOOLS\CAPTURE\LIBRARY\PSPICE\ON_DIODE.OLB")
+      (DeviceIndex "0"))
+    (VCC_BAR
+      (LibraryName "C:\CADENCE\SPB_17.2\TOOLS\CAPTURE\LIBRARY\CAPSYM.OLB")
+      (DeviceIndex "0"))
+    (murs220t3/ON
+      (FullPartName "murs220t3/ON.Normal")
+      (LibraryName
+         "C:\CADENCE\SPB_17.2\TOOLS\CAPTURE\LIBRARY\PSPICE\ON_DIODE.OLB")
+      (DeviceIndex "0"))
+    (VDC
+      (FullPartName "VDC.Normal")
+      (LibraryName
+         "C:\CADENCE\SPB_17.2\TOOLS\CAPTURE\LIBRARY\PSPICE\SOURCE.OLB")
+      (DeviceIndex "0"))
+    (UCC20520DW_TRANS
+      (FullPartName "UCC20520DWR.Normal")
+      (LibraryName
+         "C:\USERS\EMANUEL\DESKTOP\AMPLIFICADOR\LIBRARIES\UCC20520_PSPICE_TRANS\UCC20520DW_TRANS.OLB")
+      (DeviceIndex "0"))
+    (AD817A/AD
+      (FullPartName "AD817A/AD.Normal")
+      (LibraryName
+         "C:\CADENCE\SPB_17.2\TOOLS\CAPTURE\LIBRARY\PSPICE\ANLG_DEV.OLB")
+      (DeviceIndex "0"))
+    (AD817A
+      (FullPartName "AD817A.Normal")
+      (LibraryName
+         "C:\USERS\EMANUEL\DESKTOP\AMPLIFICADOR\LIBRARIES\AD817\AD817A.OLB")
+      (DeviceIndex "0"))
+    (VSIN
+      (FullPartName "VSIN.Normal")
+      (LibraryName
+         "C:\CADENCE\SPB_17.2\TOOLS\CAPTURE\LIBRARY\PSPICE\SOURCE.OLB")
+      (DeviceIndex "0"))
+    (LM311
+      (FullPartName "LM311.Normal")
+      (LibraryName "C:\CADENCE\SPB_17.2\TOOLS\CAPTURE\LIBRARY\PSPICE\OPAMP.OLB")
+      (DeviceIndex "0")))
+  (LastUsedLibraryBrowseDirectory
+     "C:\Users\Emanuel\Desktop\Amplificador\Libraries\PHB27NQ10T")
+  (MPSSessionName "Emanuel")
+  (GlobalState
+    (FileView
+      (Path "Design Resources")
+      (Path "Design Resources"
+         "C:\Users\Emanuel\Desktop\Amplificador\amplificador clase d.dsn")
+      (Path "Design Resources"
+         "C:\Users\Emanuel\Desktop\Amplificador\amplificador clase d.dsn"
+         "Esquematico")
+      (Path "Outputs"))
+    (HierarchyView)
+    (Doc
+      (Type "COrCapturePMDoc")
+      (Frame
+        (Placement "44 0 1 -1 -1 -8 -31 0 200 0 420"))
+      (Tab 0))
+    (Doc
+      (Type "COrSchematicDoc")
+      (Frame
+        (Placement "44 2 3 -1 -1 -8 -31 52 1688 52 511")
+        (Scroll "3625 1808")
+        (Zoom "152")
+        (Occurrence "/"))
+      (Path "C:\USERS\EMANUEL\DESKTOP\AMPLIFICADOR\AMPLIFICADOR CLASE D.DSN")
+      (Schematic "Esquematico")
+      (Page "Amplificador"))))
