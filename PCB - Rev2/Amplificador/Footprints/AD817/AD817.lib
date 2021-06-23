@@ -1,0 +1,44 @@
+EESchema-LIBRARY Version 2.3
+#encoding utf-8
+#(c) SnapEDA 2016 (snapeda.com)
+#This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License (CC BY-SA) with Design Exception 1.0
+#
+# AD817
+#
+DEF AD817 IC 0 40 Y N 1 L N
+F0 "IC" 300 100 50 H V L BNN
+F1 "AD817" 300 -150 50 H V L BNN
+F3 "" 0 0 50 H I L BNN
+F4 "ALTERA CORPORATION" 0 0 50 H I L BNN "MF"
+F5 "88H0179" 0 0 50 H I L BNN "OC_NEWARK"
+F6 "1660992" 0 0 50 H I L BNN "OC_FARNELL"
+F7 "AD817ARZ" 0 0 50 H I L BNN "MPN"
+$FPLIST
+ DIL08
+ SO8
+$ENDFPLIST
+DRAW
+P 2 0 0 10 -100 300 -100 -300 N
+P 2 0 0 10 -100 -300 300 0 N
+P 2 0 0 10 300 0 -100 300 N
+P 2 0 0 6 200 200 200 80 N
+P 2 0 0 6 200 -200 200 -80 N
+P 2 0 0 6 0 230 0 300 N
+P 2 0 0 6 0 -300 0 -230 N
+T 0 -70 70 50 0 0 0 + Normal 0 L B
+T 0 -60 -110 50 0 0 0 - Normal 0 L B
+T 0 30 155 40 0 0 0 +VS Normal 0 L B
+T 0 30 -155 40 0 0 0 -VS Normal 0 R T
+T 900 220 -85 40 0 0 0 OFF Normal 0 R T
+T 900 215 80 40 0 0 0 OFF Normal 0 L B
+X ~ 3 -200 100 100 R 40 40 0 0 I 
+X ~ 2 -200 -100 100 R 40 40 0 0 I 
+X ~ 6 400 0 100 L 40 40 0 0 O 
+X ~ 4 0 -400 100 U 40 40 0 0 I 
+X ~ 7 0 400 100 D 40 40 0 0 I 
+X ~ 1 200 300 100 D 40 40 0 0 P 
+X ~ 8 200 -300 100 U 40 40 0 0 P 
+ENDDRAW
+ENDDEF
+#
+# End Library
