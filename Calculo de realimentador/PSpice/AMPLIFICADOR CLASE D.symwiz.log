@@ -1,0 +1,10 @@
+STATUS: PSpice Model Import Wizard for "Capture" (17.2.0.d001)
+STATUS:  
+   INFO: OLB driven flow
+   INFO: Input File: C:\USERS\EMANUEL\DESKTOP\AMPLIFICADOR\AMPLIFICADOR CLASE D.DSN
+   INFO: Symbol Name: @AMPLIFICADOR CLASE D.Esquematico(sch_1):INS77671@PHB27NQ10T.PHB27NQ10T.Normal(chips)
+   INFO: Implementation type already exists on symbol "@AMPLIFICADOR CLASE D.Esquematico(sch_1):INS77671@PHB27NQ10T.PHB27NQ10T.Normal(chips)".
+   INFO: Implementation already exists on symbol "@AMPLIFICADOR CLASE D.Esquematico(sch_1):INS77671@PHB27NQ10T.PHB27NQ10T.Normal(chips)".
+   INFO: Implementation type already exists on symbol "@AMPLIFICADOR CLASE D.Esquematico(sch_1):INS77671@PHB27NQ10T.PHB27NQ10T.Normal(chips)".
+   INFO: Implementation already exists on symbol "@AMPLIFICADOR CLASE D.Esquematico(sch_1):INS77671@PHB27NQ10T.PHB27NQ10T.Normal(chips)".
+STATUS: 0 Error messages, 0 Warning messages

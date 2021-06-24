@@ -1,0 +1,8 @@
+STATUS: PSpice Schematics to Capture translator (17.2.0.d001)
+STATUS:  
+STATUS: Translator started at Wednesday, November 11, 2020 13:55:23
+STATUS: c:\cadence\spb_17.2\tools\bin\sch2cap -f "C:\Users\Emanuel\Desktop\Amplificador\Libraries\PHB27NQ10T\PHB27NQ10T.lib" -o "C:\Users\Emanuel\Desktop\Amplificador\Libraries\PHB27NQ10T\PHB27NQ10T.olb" -i C:\Users\Emanuel\AppData\Roaming\SPB_Data\cdssetup\OrCAD_PSpice/17.2.0/PSpice.ini
+INFO(ORSCH-1029): Using existing library 'c:\cadence\spb_17.2\tools\Capture\Library\PSpice\modeled.etc'.
+INFO(ORSCH-1031): Created new library 'C:\Users\Emanuel\Desktop\Amplificador\Libraries\PHB27NQ10T\PHB27NQ10T.olb'.
+STATUS: Translator stopped at Wednesday, November 11, 2020 13:55:23
+STATUS: 0 Error messages, 0 Warning messages
