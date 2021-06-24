@@ -1,0 +1,89 @@
+* source AMPLIFICADOR CLASE D
+X_U1         ERROR VTRIANG 15V -15V PWM 0 LM311
+R_R1         PWM 5V  1k TC=0,0 
+V_V1         VTRIANG 0  
++PULSE -1.5 1.5 1p 1.25u 1.25u 1p 2.5u
+V_V2         SIGNAL_IN 0 DC 0 AC 0
++SIN 0 1.1 20k 1p 0 0
+R_R3         0 N16927  1k TC=0,0 
+R_R2         N16927 N16939  19k TC=0,0 
+X_U2         N16927 N16945 15V -15V N16945 AD817A/AD
+R_R18         N66927 N47439  1k TC=0,0 
+C_C17         0 N47439  4.7n  TC=0,0 
+R_R19         0 N47439  100k TC=0,0 
+X_U3         N47439 N48033 15V -15V N47882 AD817A/AD
+R_R20         N48033 N16945  1k TC=0,0 
+R_R21         N48033 N47882  100k TC=0,0 
+C_C18         N47882 N48033  4.7n  TC=0,0 
+X_U4         N48657 N48472 0 N53048 N53052 N53118 N53142 HO LO PWM 5V 5V N49709
++  N48936 VS VEE UCC20520_TRANS
+R_R22         0 N48472  2.2k TC=0,0 
+C_C19         0 N48472  2.2n  TC=0,0 
+R_R23         0 N48657  20 TC=0,0 
+C_C20         N48657 5V  1u  TC=0,0 
+V_V8         N48936 VEE 12
+V_V6         VCC 0 30
+V_V5         5V 0 5
+V_V3         15V 0 15
+V_V4         0 -15V 15
+V_V7         0 VEE 30
+R_R24         N48936 N49537  10 TC=0,0 
+C_C21         VS N49709  100n  TC=0,0 
+R_R25         N49892 LO  3.3 TC=0,0 
+R_R26         N49892 N49937  1.2 TC=0,0 
+R_R27         N50090 N50062  1.2 TC=0,0 
+R_R28         N50090 HO  3.3 TC=0,0 
+C_C22         VEE N49892  1n  TC=0,0 
+C_C23         VS N50090  1n  TC=0,0 
+C_C24         0 OUT  120n  TC=0,0 
+R_R29         0 OUT  8 TC=0,0 
+L_L1         VS OUT  18u  
+R_R30         N53048 0  2.2k TC=0,0 
+R_R31         N53052 0  2.2k TC=0,0 
+R_R33         N53142 0  2.2k TC=0,0 
+R_R32         N53118 0  2.2k TC=0,0 
+C_C25         VS N49709  330n  TC=0,0 
+C_C26         VEE N48936  100n  TC=0,0 
+C_C27         VEE N48936  10u  TC=0,0 
+C_C28         0 VCC  3300u  TC=0,0 
+C_C29         VEE 0  3300u  TC=0,0 
+X_S1    FEED_ON_SIGNAL 0 N16939 OUT Esquematico_S1 
+X_S2    FEED_ON_SIGNAL 0 N47882 ERROR Esquematico_S2 
+X_S3    FEED_ON_SIGNAL 0 SIGNAL_IN ERROR Esquematico_S3 
+X_S4    FEED_ON_SIGNAL 0 SIGNAL_IN N66927 Esquematico_S4 
+V_V9         FEED_ON_SIGNAL 0  
++PULSE 0 1 1m 1p 1p 20m 20m
+D_D7         N50062 HO MURS320T3G 
+D_D8         N49937 LO MURS320T3G 
+D_D9         N49537 N49709 MURS320T3G 
+D_D10         VEE VS MURS320T3G 
+D_D11         VS VCC MURS320T3G 
+X_U5         VCC N50090 VS PHB27NQ10T
+X_U6         VS N49892 VEE PHB27NQ10T
+.NODESET         V([VS ])=0
+.NODESET         V([OUT ])=0
+.PARAM  r_paralela_diodo=500meg r_paralela_mosfet=500meg
+
+.subckt Esquematico_S1 1 2 3 4  
+S_S1         3 4 1 2 _S1
+RS_S1         1 2 1G
+.MODEL         _S1 VSWITCH Roff=1e6 Ron=1.0 Voff=0.0V Von=1
+.ends Esquematico_S1
+
+.subckt Esquematico_S2 1 2 3 4  
+S_S2         3 4 1 2 _S2
+RS_S2         1 2 1G
+.MODEL         _S2 VSWITCH Roff=1e6 Ron=1.0 Voff=0.0V Von=1.0V
+.ends Esquematico_S2
+
+.subckt Esquematico_S3 1 2 3 4  
+S_S3         3 4 1 2 _S3
+RS_S3         1 2 1G
+.MODEL         _S3 VSWITCH Roff=1e6 Ron=1.0 Voff=1 Von=0
+.ends Esquematico_S3
+
+.subckt Esquematico_S4 1 2 3 4  
+S_S4         3 4 1 2 _S4
+RS_S4         1 2 1G
+.MODEL         _S4 VSWITCH Roff=1e6 Ron=1.0 Voff=0.0V Von=1.0V
+.ends Esquematico_S4
