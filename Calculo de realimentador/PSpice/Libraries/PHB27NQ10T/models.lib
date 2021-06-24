@@ -1,0 +1,4 @@
+.MODEL MOST1 NMOS (LEVEL=3 W=0.1 L=0.3e-6 Vto=3.73 Kp=4.08e-5 
++                          RS=0 RD=0 UO=650 VMAX=0 XJ=0.5E-6 KAPPA=10E-2
++                          ETA=1e-4 TPG=1 IS=0 LD=0 WD=0 CGSO=0 CGDO=0
++                          CGBO=0 NFS=1.1e12 DELTA=0.1)
