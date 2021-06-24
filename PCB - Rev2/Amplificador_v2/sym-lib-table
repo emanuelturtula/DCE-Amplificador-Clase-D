@@ -1,0 +1,4 @@
+(sym_lib_table
+  (lib (name AD817)(type Legacy)(uri ${KIPRJMOD}/Footprints/AD817/AD817.lib)(options "")(descr ""))
+  (lib (name SN74LVC2G02DCUR)(type Legacy)(uri ${KIPRJMOD}/Footprints/SN74LVC2G02DCUR/SN74LVC2G02DCUR.lib)(options "")(descr ""))
+)

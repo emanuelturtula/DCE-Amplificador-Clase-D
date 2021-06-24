@@ -1,0 +1,3 @@
+(fp_lib_table
+  (lib (name SN74LVC2G02DCUR)(type KiCad)(uri ${KIPRJMOD}/Footprints/SN74LVC2G02DCUR.pretty)(options "")(descr ""))
+)

@@ -15,7 +15,7 @@ Comment3 ""
 Comment4 ""
 $EndDescr
 $Comp
-L AD817:AD817 IC1
+L Amplificador-rescue:AD817-AD817 IC1
 U 1 1 60543779
 P 4400 4850
 F 0 "IC1" H 4844 4896 50  0000 L CNN
@@ -30,7 +30,7 @@ F 7 "AD817ARZ" H 4400 4850 50  0001 L BNN "MPN"
 	1    0    0    1   
 $EndComp
 $Comp
-L AD817:AD817 IC2
+L Amplificador-rescue:AD817-AD817 IC2
 U 1 1 60543F5D
 P 4750 1850
 F 0 "IC2" H 5194 1896 50  0000 L CNN
