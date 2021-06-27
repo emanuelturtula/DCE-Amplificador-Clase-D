@@ -9,8 +9,8 @@ w = logspace(1, 8, 100000);
 
 %% Filtro
 
-L = 18E-6;
-C = 120E-9;
+L = 33E-6;
+C = 330E-9;
 R = 8;
 
 w0 = 1/sqrt(L*C);

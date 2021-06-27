@@ -22,7 +22,7 @@ filtro = 1/((s/w0)^2 + s/(q*w0) + 1);
 
 V_salida = 30;
 V_triangular = 1.5;
-delay = 100E-9;
+delay = 200E-9;
 
 ganancia_pwm = V_salida/V_triangular;
 a = ganancia_pwm*exp(-delay*s);
@@ -36,8 +36,8 @@ f = R2/(R1+R2);
 %(seguidor)
 
 R = 1E3;
-Rz = 82E3;
-Cz = 220E-12;
+Rz = 47E3;
+Cz = 680E-12;
 amplificador_error = Rz/R * 1/(1+s*Cz*Rz);
 %Nuevamente falta agregar la transferencia del AD817 realimentado.
 
