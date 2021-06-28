@@ -1,0 +1,9 @@
+* C:\Users\Emanuel\Desktop\DCE-Amplificador-Clase-D\Calculo de realimentador\Simulacion\Draft1.asc
+V1 N001 0 V
+R1 N001 0 51k
+C1 N001 0 C
+R2 N001 N002 1.2k
+R3 N002 0 2.2k
+.dc V1 0 5 1
+.backanno
+.end

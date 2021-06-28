@@ -1,0 +1,7 @@
+Circuit: * C:\Users\Emanuel\Desktop\DCE-Amplificador-Clase-D\Calculo de realimentador\Simulacion\Draft1.asc
+
+Error on line 2 : v1 n001 0 v
+	 Unknown parameter "v"
+Error on line 4 : c1 n001 0 c
+	 Unable to find definition of model "c"
+Fatal Error: Missing capacitance value for "C1"
