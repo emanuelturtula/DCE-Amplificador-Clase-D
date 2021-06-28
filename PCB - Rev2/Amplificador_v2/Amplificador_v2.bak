@@ -3835,7 +3835,7 @@ Wire Wire Line
 Wire Wire Line
 	41500 22950 41500 23900
 Wire Wire Line
-	41500 23900 42150 23900
+	41500 23900 41750 23900
 $Comp
 L Jumper:SolderJumper_2_Open JP4
 U 1 1 62CE3B9A
@@ -3853,7 +3853,7 @@ Connection ~ 41500 23900
 Wire Wire Line
 	41500 24350 41500 24550
 Wire Wire Line
-	41500 24550 42150 24550
+	41500 24550 41750 24550
 Wire Wire Line
 	22200 23650 22200 23750
 $Comp
@@ -4763,7 +4763,7 @@ U 1 1 5FB4D6F5
 P 11350 8850
 F 0 "RV3" H 11281 8896 50  0000 R CNN
 F 1 "R_POT" H 11281 8805 50  0000 R CNN
-F 2 "Potentiometer_THT:Potentiometer_Alps_RK163_Single_Horizontal" H 11350 8850 50  0001 C CNN
+F 2 "footprints:Potentiometer_Alps_RK163_Single_Horizontal" H 11350 8850 50  0001 C CNN
 F 3 "~" H 11350 8850 50  0001 C CNN
 	1    11350 8850
 	1    0    0    -1  
@@ -4831,7 +4831,7 @@ U 1 1 5FB6F834
 P 13550 8850
 F 0 "RV5" H 13481 8896 50  0000 R CNN
 F 1 "R_POT" H 13481 8805 50  0000 R CNN
-F 2 "Potentiometer_THT:Potentiometer_Alps_RK163_Single_Horizontal" H 13550 8850 50  0001 C CNN
+F 2 "footprints:Potentiometer_Alps_RK163_Single_Horizontal" H 13550 8850 50  0001 C CNN
 F 3 "~" H 13550 8850 50  0001 C CNN
 	1    13550 8850
 	-1   0    0    1   
@@ -4893,7 +4893,7 @@ U 1 1 5FB8F349
 P 12500 9500
 F 0 "RV4" H 12431 9546 50  0000 R CNN
 F 1 "R_POT" H 12431 9455 50  0000 R CNN
-F 2 "Potentiometer_THT:Potentiometer_Alps_RK163_Single_Horizontal" H 12500 9500 50  0001 C CNN
+F 2 "footprints:Potentiometer_Alps_RK163_Single_Horizontal" H 12500 9500 50  0001 C CNN
 F 3 "~" H 12500 9500 50  0001 C CNN
 	1    12500 9500
 	1    0    0    -1  
@@ -5224,4 +5224,25 @@ Wire Wire Line
 Connection ~ 10850 3950
 Wire Wire Line
 	10850 3950 10850 4250
+$Comp
+L Jumper:SolderJumper_2_Open JP7
+U 1 1 656946C7
+P 41750 24200
+F 0 "JP7" H 41750 24405 50  0000 C CNN
+F 1 "Jumper" H 41750 24314 50  0000 C CNN
+F 2 "Jumper:SolderJumper-2_P1.3mm_Open_RoundedPad1.0x1.5mm" H 41750 24200 50  0001 C CNN
+F 3 "~" H 41750 24200 50  0001 C CNN
+	1    41750 24200
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	41750 24050 41750 23900
+Connection ~ 41750 23900
+Wire Wire Line
+	41750 23900 42150 23900
+Wire Wire Line
+	41750 24350 41750 24550
+Connection ~ 41750 24550
+Wire Wire Line
+	41750 24550 42150 24550
 $EndSCHEMATC
