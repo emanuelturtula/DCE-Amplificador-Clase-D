@@ -10,7 +10,7 @@ w = logspace(1, 8, 100000);
 %% Filtro
 
 L = 33E-6;
-C = 330E-9;
+C = 630E-9;
 R = 8;
 
 w0 = 1/sqrt(L*C);
@@ -27,6 +27,9 @@ delay = 100E-9;
 ganancia_pwm = V_salida/V_triangular;
 a = ganancia_pwm*exp(-delay*s)*filtro;
 
+[Gm, Pm] = print_bode(a, w);
+
+return
 %% Realimentador y amplificador de error
 
 %Esto es estimado del datasheet

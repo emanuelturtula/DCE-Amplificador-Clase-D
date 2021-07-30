@@ -46,10 +46,6 @@
     (Folder "Include Files"
       (Sort User))
     (Folder "Simulation Profiles"
-      (File.PSpice.{09528990-3187-11D2-BC7B-00A0C90CBF91}
-         ".\amplificador clase d-pspicefiles\esquematico\bias.sim"
-        (DisplayName "Esquematico-bias")
-        (Type "PSpice Profile"))
       (ActiveProfile
          ".\amplificador clase d-pspicefiles\esquematico\transient.sim")
       (File.PSpice.{09528990-3187-11D2-BC7B-00A0C90CBF91}
@@ -66,6 +62,11 @@
       (Sort User)))
   (DefaultLibraryBrowseDirectory "library\PSpice")
   (PartMRUSelector
+    (VSIN
+      (FullPartName "VSIN.Normal")
+      (LibraryName
+         "C:\CADENCE\SPB_17.2\TOOLS\CAPTURE\LIBRARY\PSPICE\SOURCE.OLB")
+      (DeviceIndex "0"))
     (PHB27NQ10T
       (FullPartName "PHB27NQ10T.Normal")
       (LibraryName
@@ -175,11 +176,6 @@
       (LibraryName
          "C:\USERS\EMANUEL\DESKTOP\AMPLIFICADOR\LIBRARIES\AD817\AD817A.OLB")
       (DeviceIndex "0"))
-    (VSIN
-      (FullPartName "VSIN.Normal")
-      (LibraryName
-         "C:\CADENCE\SPB_17.2\TOOLS\CAPTURE\LIBRARY\PSPICE\SOURCE.OLB")
-      (DeviceIndex "0"))
     (LM311
       (FullPartName "LM311.Normal")
       (LibraryName "C:\CADENCE\SPB_17.2\TOOLS\CAPTURE\LIBRARY\PSPICE\OPAMP.OLB")
@@ -190,18 +186,25 @@
   (GlobalState
     (FileView
       (Path "Design Resources")
-      (Path "Design Resources"
-         "c:\users\emanuel\desktop\dce-amplificador-clase-d\amplificador\amplificador clase d.dsn")
-      (Path "Design Resources"
-         "c:\users\emanuel\desktop\dce-amplificador-clase-d\amplificador\amplificador clase d.dsn"
-         "Esquematico")
       (Path "Outputs")
+      (Path "PSpice Resources")
+      (Path "PSpice Resources" "Simulation Profiles")
       (Select "Design Resources"
-         "c:\users\emanuel\desktop\dce-amplificador-clase-d\amplificador\amplificador clase d.dsn"
-         "Esquematico" "Amplificador"))
+         "c:\users\emanuel\desktop\dce-amplificador-clase-d\amplificador\amplificador clase d.dsn"))
     (HierarchyView)
     (Doc
       (Type "COrCapturePMDoc")
       (Frame
         (Placement "44 2 3 -1 -1 -8 -31 0 200 0 420"))
-      (Tab 0))))
+      (Tab 0))
+    (Doc
+      (Type "COrSchematicDoc")
+      (Frame
+        (Placement "44 0 1 -1 -1 -8 -31 104 2380 104 563")
+        (Scroll "398 980")
+        (Zoom "100")
+        (Occurrence "/"))
+      (Path
+         "C:\USERS\EMANUEL\DESKTOP\DCE-AMPLIFICADOR-CLASE-D\AMPLIFICADOR\AMPLIFICADOR CLASE D.DSN")
+      (Schematic "Esquematico")
+      (Page "Amplificador"))))

@@ -1,0 +1,20 @@
+* C:\Users\Emanuel\Desktop\DCE-Amplificador-Clase-D\Calculo de realimentador\Simulacion\DelayDeMosfet.asc
+XM1 VD Vg 0 irf540ns
+R1 VDD VD 8
+V1 VDD 0 30
+R2 Vg N001 3.3
+D1 N002 N001 1N4148
+R3 Vg N002 1.2
+V3 N003 0 SINE(7.5 1.1 20k)
+V4 N004 0 PULSE(6 9 0 1.65u 1.65u 0 3.3u)
+XU1 N003 N004 N005 0 PWM level.2 Avol=10000Meg GBW=100000Meg Slew=1000Meg en=0 enk=0 in=0 ink=0 Rin=100000Meg
+V5 N005 0 12
+B1 N006 0 V=V(PWM)
+R4 N001 N006 0.5
+.model D D
+.lib C:\Users\Emanuel\Documents\LTspiceXVII\lib\cmp\standard.dio
+.include "irf540ns.spi"
+.tran 0 36.8u 36u 1n
+.lib UniversalOpamps2.sub
+.backanno
+.end

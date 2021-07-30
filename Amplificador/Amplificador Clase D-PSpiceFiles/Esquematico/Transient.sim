@@ -13,14 +13,14 @@ Notes=
 @#$ENDNOTES
 @End General
 @Analysis: 0 1
-+0 1 0 0 
-+0 "21m" 
++0 0 0 0 
++0 "10ms" 
 +1 "" 
-+2 "1m" 
++2 "0" 
 +3 "" 
-+4 "1k" 
-+5 "V(Out)" 
-+6 "6" 
++4 "" 
++5 "" 
++6 "" 
 @End Analysis
 @Analysis: 1 0
 +2 0 0
@@ -43,7 +43,7 @@ Notes=
 +7 "" 
 @End Analysis
 @Analysis: 3 0
-+1 0 0
++0 0 0
 +0 "" 
 +1 "" 
 +2 "" 
@@ -109,10 +109,7 @@ SaveFile 0 ""
 +7 "" 
 @End Analysis
 @Analysis: 11 1
-+ 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 
-+ NUMDGT "15"
-+ METHOD "Default"
-+ GMINSTEPS "0"
++ 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 
 + SPEED_LEVEL "0"
 + 1 1 1 1 1 1 1 1 1
 @End Analysis
@@ -120,7 +117,7 @@ SaveFile 0 ""
 +2236960 0 1
 @End Analysis
 @Analysis: 13 1
-+1 1 0 1
++1 1 0 0
 @End Analysis
 @Analysis: 14 1
 +1 1 1 "*" 

@@ -35,9 +35,9 @@ f = R2/(R1+R2);
 %Aca falta agregar la transferencia del AD817 realimentado unitariamente
 %(seguidor)
 
-R = 1E3;
-Rz = 47E3;
-Cz = 680E-12;
+R = 1.1E3;
+Rz = 82E3;
+Cz = 330E-12;
 amplificador_error = Rz/R * 1/(1+s*Cz*Rz);
 %Nuevamente falta agregar la transferencia del AD817 realimentado.
 

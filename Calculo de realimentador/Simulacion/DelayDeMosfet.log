@@ -1,0 +1,53 @@
+Circuit: * C:\Users\Emanuel\Desktop\DCE-Amplificador-Clase-D\Calculo de realimentador\Simulacion\DelayDeMosfet.asc
+
+Direct Newton iteration failed to find .op point.  (Use ".option noopiter" to skip.)
+Starting Gmin stepping
+Increasing initial diagonal Gmin to 100
+Increasing initial diagonal Gmin to 1000
+Gmin = 1000
+Gmin = 107.374
+Gmin = 11.5292
+Gmin = 1.23794
+Gmin = 0.132923
+Gmin = 0.0142725
+vernier = 0.5
+Gmin = 0.00239452
+vernier = 0.666667
+Gmin = 0.000614784
+vernier = 0.888888
+vernier = 1
+Gmin = 8.09366e-005
+Gmin = 8.6905e-006
+Gmin = 9.33136e-007
+Gmin = 1.00195e-007
+Gmin = 1.07583e-008
+Gmin = 1.15517e-009
+Gmin = 1.24035e-010
+Gmin = 1.33182e-011
+Gmin = 1.43003e-012
+Gmin = 1.53548e-013
+Gmin = 0
+Gmin stepping succeeded in finding the operating point.
+
+Changing Tseed to 1e-013
+Changing Tseed to 1e-015
+Changing Tseed to 1e-012
+Heightened Def Con from 1e-012 to 1.001e-009
+
+Date: Wed Jul 28 23:05:52 2021
+Total elapsed time: 0.231 seconds.
+
+tnom = 27
+temp = 27
+method = modified trap
+totiter = 82432
+traniter = 81585
+tranpoints = 39065
+accept = 38285
+rejected = 778
+matrix size = 30
+fillins = 15
+solver = Normal
+Matrix Compiler1: 1.94 KB object code size  0.3/0.2/[0.1]
+Matrix Compiler2: 2.43 KB object code size  0.2/0.3/[0.2]
+
