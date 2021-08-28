@@ -1,0 +1,13 @@
+STATUS: PSpice Model Import Wizard for "Capture" (17.2.0.d001)
+STATUS:  
+   INFO: LIB driven flow
+   INFO: Input File: C:\Users\Emanuel\Desktop\DCE-Amplificador-Clase-D\Amplificador\Libraries\S1M\S1M.lib
+   INFO: Output File: C:\Users\Emanuel\Desktop\DCE-Amplificador-Clase-D\Amplificador\Libraries\S1M\S1M.olb
+STATUS:  
+STATUS: Identifying matching symbols automatically...started at Thursday, August 12, 2021 01:08:43
+STATUS:  
+  ERROR: Invalid configuration. Verify that valid model and symbol libraries are configured.
+STATUS:  
+STATUS: Completed identifying matching symbols automatically...at Thursday, August 12, 2021 01:08:43
+STATUS:  
+STATUS: 1 Error messages, 0 Warning messages

@@ -1,0 +1,8 @@
+STATUS: PSpice Schematics to Capture translator (17.2.0.d001)
+STATUS:  
+STATUS: Translator started at Wednesday, August 11, 2021 13:19:42
+INFO(ORSCH-1029): Using existing library 'c:\cadence\spb_17.2\tools\Capture\Library\PSpice\modeled.etc'.
+INFO(ORSCH-1031): Created new library 'C:\Users\Emanuel\Desktop\DCE-Amplificador-Clase-D\Amplificador\Libraries\IPB530N15N3\IPB530N15N3.olb'.
+INFO(ORSCH-1029): Using existing library 'C:\Cadence\SPB_17.2\tools\capture\library\pspice\breakout.olb'.
+STATUS: Translator stopped at Wednesday, August 11, 2021 13:22:32
+STATUS: 0 Error messages, 0 Warning messages

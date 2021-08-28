@@ -1,0 +1,15 @@
+STATUS: PSpice Model Import Wizard for "Capture" (17.2.0.d001)
+STATUS:  
+   INFO: LIB driven flow
+   INFO: Input File: C:\Users\Emanuel\Desktop\DCE-Amplificador-Clase-D\Amplificador\Libraries\IPB530N15N3\IPB530N15N3.lib
+   INFO: Output File: C:\Users\Emanuel\Desktop\DCE-Amplificador-Clase-D\Amplificador\Libraries\IPB530N15N3\IPB530N15N3.olb
+STATUS:  
+STATUS: Identifying matching symbols automatically...started at Wednesday, August 11, 2021 13:19:42
+STATUS:  
+STATUS:  
+STATUS: Completed identifying matching symbols automatically...at Wednesday, August 11, 2021 13:19:42
+STATUS:  
+  ERROR: Active base symbol library not configured.
+Select a library to pick base symbols from.
+   INFO: Symbol "IPB530N15N3_L0" created for model "IPB530N15N3_L0".
+STATUS: 1 Error messages, 0 Warning messages

@@ -13,14 +13,14 @@ Notes=
 @#$ENDNOTES
 @End General
 @Analysis: 0 1
-+0 0 0 0 
-+0 "10ms" 
++0 1 0 0 
++0 "3m" 
 +1 "" 
-+2 "0" 
++2 "" 
 +3 "" 
-+4 "" 
-+5 "" 
-+6 "" 
++4 "10k" 
++5 "V(out)" 
++6 "4" 
 @End Analysis
 @Analysis: 1 0
 +2 0 0

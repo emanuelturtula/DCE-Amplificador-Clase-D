@@ -2,8 +2,8 @@ Circuit: * C:\Users\Emanuel\Desktop\DCE-Amplificador-Clase-D\Calculo de realimen
 
 Direct Newton iteration for .op point succeeded.
 
-Date: Thu Jul 29 01:35:27 2021
-Total elapsed time: 0.095 seconds.
+Date: Tue Aug 17 00:46:31 2021
+Total elapsed time: 0.135 seconds.
 
 tnom = 27
 temp = 27
@@ -15,6 +15,6 @@ accept = 0
 rejected = 0
 matrix size = 86
 fillins = 68
-solver = Normal
+solver = Alternate
 Matrix Compiler1:     458 opcodes
-Matrix Compiler2: 8.37 KB object code size
+Matrix Compiler2: 9.56 KB object code size

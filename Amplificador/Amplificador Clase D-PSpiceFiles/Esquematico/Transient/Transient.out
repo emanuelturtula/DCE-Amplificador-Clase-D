@@ -1,7 +1,7 @@
 
-**** 07/29/21 01:27:39 ****** PSpice 17.2.0 (March 2016) ****** ID# 0 ********
+**** 08/12/21 19:35:04 ****** PSpice 17.2.0 (March 2016) ****** ID# 0 ********
 
- ** Profile: "Esquematico-Transient"  [ C:\Users\Emanuel\Desktop\DCE-Amplificador-Clase-D\Amplificador\amplificador clase d-pspicefil
+ ** Profile: "Esquematico-Transient"  [ c:\users\emanuel\desktop\dce-amplificador-clase-d\amplificador\amplificador clase d-pspicefil
 
 
  ****     CIRCUIT DESCRIPTION
@@ -18,13 +18,17 @@
 *Libraries: 
 * Profile Libraries :
 * Local Libraries :
+.LIB "../../../libraries/s1m/s1m.lib" 
+.LIB "../../../libraries/bav102/bav102.lib" 
+.LIB "../../../libraries/ipb530n15n3/ipb530n15n3.lib" 
 .LIB "../../../libraries/phb27nq10t/phb27nq10t.lib" 
 .LIB "../../../libraries/ucc20520_pspice_trans/ucc20520_trans.lib" 
 * From [PSPICE NETLIST] section of C:\Users\Emanuel\AppData\Roaming\SPB_Data\cdssetup\OrCAD_PSpice\17.2.0\PSpice.ini file:
 .lib "nom.lib" 
 
 *Analysis directives: 
-.TRAN  0 10ms 0 
+.TRAN  0 3m  0 
+.FOUR 10k 4 V([OUT]) 
 .OPTIONS ADVCONV
 .OPTIONS SPEED_LEVEL= 0
 .AUTOCONVERGE ITL1=1000 ITL2=1000 ITL4=1000 RELTOL=0.05 ABSTOL=1.0E-6 VNTOL=.001 PIVTOL=1.0E-10 
@@ -37,38 +41,28 @@
 * source AMPLIFICADOR CLASE D
 X_U1         ERROR VTRIANG 15V -15V PWM 0 LM311
 R_R1         PWM 5V  1k TC=0,0 
-V_V1         VTRIANG 0  
-+PULSE -1.5 1.5 1p 1.65u 1.65u 1p 3.3u
+V_V1         N14559 N116340  
++PULSE -1.5 1.5 1p 2u 2u 1p 4u
 R_R3         0 N16927  1k TC=0,0 
-R_R2         N16927 VS  19k TC=0,0 
+R_R2         N16927 N16939  19k TC=0,0 
 X_U2         N16927 N16945 15V -15V N16945 AD817A/AD
-R_R18         SIGNAL_IN N47439  1k TC=0,0 
-C_C17         0 N47439  1n  TC=0,0 
-R_R19         0 N47439  100k TC=0,0 
-X_U3         N47439 N48033 15V -15V ERROR AD817A/AD
-R_R20         N48033 N16945  1k TC=0,0 
-R_R21         N48033 ERROR  100k TC=0,0 
-C_C18         ERROR N48033  1n  TC=0,0 
-X_U4         N48657 N48472 0 N53048 N53052 N53118 N53142 HO LO PWM 5V 5V N49709
+X_U3         N112660 N48033 15V -15V ERROR AD817A/AD
+R_R20         N48033 N16945  {R_1} TC=0,0 
+R_R21         N48033 ERROR  {R_2} TC=0,0 
+C_C18         ERROR N48033  {C_1}  TC=0,0 
+X_U4         0 N48472 0 N53048 N53052 N53118 N53142 HO LO PWM 5V 5V N49709
 +  N48936 VS VEE UCC20520_TRANS
-R_R22         0 N48472  2.2k TC=0,0 
+R_R22         0 N48472  5.6k TC=0,0 
 C_C19         0 N48472  2.2n  TC=0,0 
-R_R23         0 N48657  20 TC=0,0 
-C_C20         N48657 5V  1u  TC=0,0 
 V_V8         N48936 VEE 12
 V_V6         VCC 0 30
 V_V5         5V 0 5
 V_V3         15V 0 15
 V_V4         0 -15V 15
 V_V7         0 VEE 30
-R_R24         N48936 N49537  10 TC=0,0 
 C_C21         VS N49709  100n  TC=0,0 
-R_R25         N49892 LO  3.3 TC=0,0 
-R_R26         N49892 N49937  1.2 TC=0,0 
-R_R27         N50090 N50062  1.2 TC=0,0 
-R_R28         N50090 HO  3.3 TC=0,0 
-C_C22         VEE N49892  1n  TC=0,0 
-C_C23         VS N50090  1n  TC=0,0 
+R_R25         N49892 LO  1.2 TC=0,0 
+R_R28         N50062 HO  1.2 TC=0,0 
 C_C24         0 OUT  330n  TC=0,0 
 R_R29         0 OUT  8 TC=0,0 
 L_L1         VS OUT  33u  
@@ -76,32 +70,44 @@ R_R30         N53048 0  2.2k TC=0,0
 R_R31         N53052 0  2.2k TC=0,0 
 R_R33         N53142 0  2.2k TC=0,0 
 R_R32         N53118 0  2.2k TC=0,0 
-C_C25         VS N49709  330n  TC=0,0 
+C_C25         VS N49709  1u  TC=0,0 
 C_C26         VEE N48936  100n  TC=0,0 
 C_C27         VEE N48936  10u  TC=0,0 
 C_C28         0 VCC  3300u  TC=0,0 
 C_C29         VEE 0  3300u  TC=0,0 
-V_V9         FEED_ON_SIGNAL 0  
-+PULSE 0 1 20m 1p 1p 20m 20m
-D_D7         N50062 HO MURS320T3G 
-D_D8         N49937 LO MURS320T3G 
-D_D9         N49537 N49709 MURS320T3G 
 D_D10         VEE VS MURS320T3G 
 D_D11         VS VCC MURS320T3G 
-X_U5         VCC N50090 VS PHB27NQ10T
-X_U6         VS N49892 VEE PHB27NQ10T
-V_V10         SIGNAL_IN 0  AC 0
-+SIN 0 1.1 1k 0 0 0
-.NODESET         V([VS ])=0
+D_D12         N49537 N49709 MURS120T3G 
+D_D13         N50062 HO MURS120T3G 
+D_D14         N49892 LO MURS120T3G 
+C_C30         N16927 0  {C_2}  TC=0,0 
+X_U5         VS N49892 VEE PHB27NQ10T 
+X_U6         VCC N50062 VS PHB27NQ10T 
+R_R34         N49537 N48936  1 TC=0,0 
+C_C34         VEE N112163  1n  TC=0,0 
+C_C35         VS N112121  1n  TC=0,0 
+R_R35         N112163 VS  8 TC=0,0 
+R_R36         N112121 VCC  8 TC=0,0 
+R_R38         0 N112660  {R_2} TC=0,0 
+C_C36         N112660 0  {C_1}  TC=0,0 
+R_R37         N112660 N112667  {R_1} TC=0,0 
+V_V10         N116340 0 7.5
+R_R39         0 VTRIANG  100 TC=0,0 
+C_C37         N14559 VTRIANG  10u  TC=0,0 
+X_U7         VS N16939 Sw_tClose PARAMS: tClose=0 ttran=200u
++  Rclosed=0.0000000001 Ropen=0.999999E10
+V_V11         N112667 0  
++SIN 0 1 1k 0 0 0
 .NODESET         V([OUT ])=0
-.PARAM  r_paralela_diodo=500meg r_paralela_mosfet=500meg
+.PARAM  c_1=2.2n r_paralela_diodo=500meg c_2=2.2n r_paralela_mosfet=500meg
++  r_1=1k r_2=100k
 
 **** RESUMING Transient.cir ****
 .END
 
-**** 07/29/21 01:27:39 ****** PSpice 17.2.0 (March 2016) ****** ID# 0 ********
+**** 08/12/21 19:35:04 ****** PSpice 17.2.0 (March 2016) ****** ID# 0 ********
 
- ** Profile: "Esquematico-Transient"  [ C:\Users\Emanuel\Desktop\DCE-Amplificador-Clase-D\Amplificador\amplificador clase d-pspicefil
+ ** Profile: "Esquematico-Transient"  [ c:\users\emanuel\desktop\dce-amplificador-clase-d\amplificador\amplificador clase d-pspicefil
 
 
  ****     Diode MODEL PARAMETERS
@@ -112,52 +118,52 @@ V_V10         SIGNAL_IN 0  AC 0
 
 
 
-               MURS320T3G      X_U1.dx         X_U2.DX         X_U3.DX         
-          IS   23.789000E-09  800.000000E-18   10.000000E-15   10.000000E-15 
-           N    1.6119                                                       
-         ISR   19.406000E-09                                                 
-          NR    3.5766                                                       
-         IKF   61.67                                                         
-          BV  200                                                            
-         IBV  800.000000E-09                                                 
-          RS    8.451400E-03                                                 
-          TT   35.000000E-09                                                 
-         CJO  137.580000E-12                                                 
-          VJ    1.4981                                                       
-           M     .49862                                                      
-          EG    1.0274                                                       
-         XTI    5.000000E-09                                                 
+               MURS320T3G      MURS120T3G      X_U1.dx         X_U2.DX         
+          IS   23.789000E-09    7.945600E-12  800.000000E-18   10.000000E-15 
+           N    1.6119          1.0395                                       
+         ISR   19.406000E-09    5.067500E-09                                 
+          NR    3.5766          4.985                                        
+         IKF   61.67             .027067                                     
+          BV  200             200                                            
+         IBV  800.000000E-09    2.000000E-06                                 
+          RS    8.451400E-03     .019342                                     
+          TT   35.000000E-09   35.000000E-06                                 
+         CJO  137.580000E-12   46.732000E-12                                 
+          VJ    1.4981          3.3357                                       
+           M     .49862          .86683                                      
+          EG    1.0274          1.0434                                       
+         XTI    5.000000E-09     .5                                          
 
 
-               X_U5.Dbody      X_U6.Dbody      X_U4.X_U48.dd   X_U4.X_U40.dd   
+               X_U3.DX         X_U5.Dbody      X_U6.Dbody      X_U4.X_U48.dd   
           IS   10.000000E-15   10.000000E-15   10.000000E-15   10.000000E-15 
-           N     .85             .85            1.000000E-03    1.000000E-03 
-         IKF    1.000000E+03    1.000000E+03                                 
-          BV  100             100                                            
-         IBV  250.000000E-06  250.000000E-06                                 
-          RS    8.300000E-03    8.300000E-03                                 
-          TT   60.000000E-09   60.000000E-09                                 
-          VJ     .4              .4                                          
+           N                     .85             .85            1.000000E-03 
+         IKF                    1.000000E+03    1.000000E+03                 
+          BV                  100             100                            
+         IBV                  250.000000E-06  250.000000E-06                 
+          RS                    8.300000E-03    8.300000E-03                 
+          TT                   60.000000E-09   60.000000E-09                 
+          VJ                     .4              .4                          
 
 
-               X_U4.X_U47.dd   X_U4.X_U57.dd   X_U4.X_U55.dd   X_U4.X_U33.dd   
-          IS   10.000000E-15   10.000000E-15   10.000000E-15   10.000000E-15 
-           N    1.000000E-03    1.000000E-03    1.000000E-03    1.000000E-03 
-
-
-               X_U4.X_U37.dd   X_U4.X_U38.dd   X_U4.X_U35.dd   X_U4.X_U56.dd   
+               X_U4.X_U40.dd   X_U4.X_U47.dd   X_U4.X_U57.dd   X_U4.X_U55.dd   
           IS   10.000000E-15   10.000000E-15   10.000000E-15   10.000000E-15 
            N    1.000000E-03    1.000000E-03    1.000000E-03    1.000000E-03 
 
 
-               X_U4.X_U59.dd   X_U4.X_U60.dd   X_U4.X_U39.dd   
-          IS   10.000000E-15   10.000000E-15   10.000000E-15 
-           N    1.000000E-03    1.000000E-03    1.000000E-03 
+               X_U4.X_U33.dd   X_U4.X_U37.dd   X_U4.X_U38.dd   X_U4.X_U35.dd   
+          IS   10.000000E-15   10.000000E-15   10.000000E-15   10.000000E-15 
+           N    1.000000E-03    1.000000E-03    1.000000E-03    1.000000E-03 
+
+
+               X_U4.X_U56.dd   X_U4.X_U59.dd   X_U4.X_U60.dd   X_U4.X_U39.dd   
+          IS   10.000000E-15   10.000000E-15   10.000000E-15   10.000000E-15 
+           N    1.000000E-03    1.000000E-03    1.000000E-03    1.000000E-03 
 
 
-**** 07/29/21 01:27:39 ****** PSpice 17.2.0 (March 2016) ****** ID# 0 ********
+**** 08/12/21 19:35:04 ****** PSpice 17.2.0 (March 2016) ****** ID# 0 ********
 
- ** Profile: "Esquematico-Transient"  [ C:\Users\Emanuel\Desktop\DCE-Amplificador-Clase-D\Amplificador\amplificador clase d-pspicefil
+ ** Profile: "Esquematico-Transient"  [ c:\users\emanuel\desktop\dce-amplificador-clase-d\amplificador\amplificador clase d-pspicefil
 
 
  ****     BJT MODEL PARAMETERS
@@ -220,9 +226,9 @@ V_V10         SIGNAL_IN 0  AC 0
            D     .87             .87         
 
 
-**** 07/29/21 01:27:39 ****** PSpice 17.2.0 (March 2016) ****** ID# 0 ********
+**** 08/12/21 19:35:04 ****** PSpice 17.2.0 (March 2016) ****** ID# 0 ********
 
- ** Profile: "Esquematico-Transient"  [ C:\Users\Emanuel\Desktop\DCE-Amplificador-Clase-D\Amplificador\amplificador clase d-pspicefil
+ ** Profile: "Esquematico-Transient"  [ c:\users\emanuel\desktop\dce-amplificador-clase-d\amplificador\amplificador clase d-pspicefil
 
 
  ****     MOSFET MODEL PARAMETERS
@@ -305,9 +311,9 @@ V_V10         SIGNAL_IN 0  AC 0
        XPART    0               0               0               0            
 
 
-**** 07/29/21 01:27:39 ****** PSpice 17.2.0 (March 2016) ****** ID# 0 ********
+**** 08/12/21 19:35:04 ****** PSpice 17.2.0 (March 2016) ****** ID# 0 ********
 
- ** Profile: "Esquematico-Transient"  [ C:\Users\Emanuel\Desktop\DCE-Amplificador-Clase-D\Amplificador\amplificador clase d-pspicefil
+ ** Profile: "Esquematico-Transient"  [ c:\users\emanuel\desktop\dce-amplificador-clase-d\amplificador\amplificador clase d-pspicefil
 
 
  ****     Resistor MODEL PARAMETERS
@@ -324,9 +330,9 @@ V_V10         SIGNAL_IN 0  AC 0
          TC2   28.600000E-06   28.600000E-06 
 
 
-**** 07/29/21 01:27:39 ****** PSpice 17.2.0 (March 2016) ****** ID# 0 ********
+**** 08/12/21 19:35:04 ****** PSpice 17.2.0 (March 2016) ****** ID# 0 ********
 
- ** Profile: "Esquematico-Transient"  [ C:\Users\Emanuel\Desktop\DCE-Amplificador-Clase-D\Amplificador\amplificador clase d-pspicefil
+ ** Profile: "Esquematico-Transient"  [ c:\users\emanuel\desktop\dce-amplificador-clase-d\amplificador\amplificador clase d-pspicefil
 
 
  ****     Voltage Controlled Switch MODEL PARAMETERS
@@ -337,23 +343,23 @@ V_V10         SIGNAL_IN 0  AC 0
 
 
 
-               X_U4.X_S1._S1   X_U4.X_S6._S6   X_U4.X_S3._S3   X_U4.X_S4._S4   
-         RON     .01            5.000000E-03   25               5.000000E-03 
-        ROFF    1.000000E+09    1.000000E+06    1.000000E+06    1.000000E+06 
-         VON    4               4.5             4.5             4.5          
-        VOFF    1                .5              .5              .5          
+               X_U7.Smod       X_U4.X_S1._S1   X_U4.X_S6._S6   X_U4.X_S3._S3   
+         RON  100.000000E-12     .01            5.000000E-03   25            
+        ROFF    9.999990E+09    1.000000E+09    1.000000E+06    1.000000E+06 
+         VON    1               4               4.5             4.5          
+        VOFF    0               1                .5              .5          
 
 
-               X_U4.X_S5._S5   X_U4.X_S2._S2   
-         RON   25                .01         
-        ROFF    1.000000E+06    1.000000E+09 
-         VON    4.5             4            
-        VOFF     .5             1            
+               X_U4.X_S4._S4   X_U4.X_S5._S5   X_U4.X_S2._S2   
+         RON    5.000000E-03   25                .01         
+        ROFF    1.000000E+06    1.000000E+06    1.000000E+09 
+         VON    4.5             4.5             4            
+        VOFF     .5              .5             1            
 
 
-**** 07/29/21 01:27:39 ****** PSpice 17.2.0 (March 2016) ****** ID# 0 ********
+**** 08/12/21 19:35:04 ****** PSpice 17.2.0 (March 2016) ****** ID# 0 ********
 
- ** Profile: "Esquematico-Transient"  [ C:\Users\Emanuel\Desktop\DCE-Amplificador-Clase-D\Amplificador\amplificador clase d-pspicefil
+ ** Profile: "Esquematico-Transient"  [ c:\users\emanuel\desktop\dce-amplificador-clase-d\amplificador\amplificador clase d-pspicefil
 
 
  ****     INITIAL TRANSIENT SOLUTION       TEMPERATURE =   27.000 DEG C
@@ -366,71 +372,75 @@ V_V10         SIGNAL_IN 0  AC 0
  NODE   VOLTAGE     NODE   VOLTAGE     NODE   VOLTAGE     NODE   VOLTAGE
 
 
-(   5V)    5.0000  (   HO)-665.3E-06  (   LO)  -30.0000  (   VS)-3.313E-06      
+(   5V)    5.0000  (   HO)-662.2E-06  (   LO)  -30.0000  (   VS)-202.6E-09      
 
-(  15V)   15.0000  (  OUT)-3.313E-06  (  PWM)    4.9751  (  VCC)   30.0000      
+(  15V)   15.0000  (  OUT)-202.6E-09  (  PWM)    4.9751  (  VCC)   30.0000      
 
-(  VEE)  -30.0000  ( -15V)  -15.0000  (ERROR)     .6153  (N16927)    -.0061     
+(  VEE)  -30.0000  ( -15V)  -15.0000  (ERROR)     .6466  (N14559)    6.0000     
 
-(N16945)    -.0041 (N47439)    -.0064 (N48033)    -.0045 (N48472)    4.9977     
+(N16927)    -.0064 (N16939)    -.0064 (N16945)    -.0044 (N48033)    -.0045     
 
-(N48657)    0.0000 (N48936)  -18.0000 (N49537)  -18.0000 (N49709)    -.0013     
+(N48472)    4.9991 (N48936)  -18.0000 (N49537)  -18.0000 (N49709)    -.0013     
 
-(N49892)  -30.0000 (N49937)  -30.0000 (N50062)-665.3E-06 (N50090)-665.3E-06     
+(N49892)  -30.0000 (N50062)-662.2E-06 (N53048)    0.0000 (N53052)    0.0000     
 
-(N53048)    0.0000 (N53052)    0.0000 (N53118)    0.0000 (N53142)    0.0000     
+(N53118)    0.0000 (N53142)    0.0000 (X_U1.7)    1.1108 (X_U1.8)  -14.3500     
 
-(X_U1.7)    -.3892 (X_U1.8)  -14.3500 (X_U1.9)  -14.9820 (X_U2.3)    -.0041     
+(X_U1.9)  -14.9820 (X_U2.3)    -.0044 (X_U2.4)   14.4650 (X_U2.5)   14.4650     
 
-(X_U2.4)   14.4650 (X_U2.5)   14.4650 (X_U2.6)    -.7600 (X_U2.7)    -.7600     
+(X_U2.6)    -.7604 (X_U2.7)    -.7604 (X_U2.8)   -1.2769 (X_U2.9)    -.0044     
 
-(X_U2.8)   -1.2765 (X_U2.9)    -.0040 (X_U3.3)    -.0044 (X_U3.4)   14.4650     
+(X_U3.3)    -.0044 (X_U3.4)   14.4650 (X_U3.5)   14.4640 (X_U3.6)    -.7605     
 
-(X_U3.5)   14.4640 (X_U3.6)    -.7604 (X_U3.7)    -.7603 (X_U3.8)   -1.2769     
+(X_U3.7)    -.7603 (X_U3.8)   -1.2769 (X_U3.9)     .6466 (X_U7.3)    0.0000     
 
-(X_U3.9)     .6154 (VTRIANG)   -1.5000                   (X_U1.10)     .0179    
+(N112121)   30.0000                   (N112163)-202.6E-09                       
 
-(X_U1.11)     .0179                   (X_U1.21)    1.0653                       
+(N112660)    -.0064                   (N112667)    0.0000                       
 
-(X_U1.22)   -1.0500                   (X_U2.10)   12.5700                       
+(N116340)    7.5000                   (VTRIANG) 19.96E-06                       
 
-(X_U2.11)  -12.5700                   (X_U2.14)    -.0051                       
+(X_U1.10)     .0179                   (X_U1.11)     .0179                       
 
-(X_U2.15)-5.093E-09                   (X_U2.31)    -.0040                       
+(X_U1.21)    1.0966                   (X_U1.22)     .4500                       
 
-(X_U2.32)-4036.4000                   (X_U2.33)    -.0040                       
+(X_U2.10)   12.5700                   (X_U2.11)  -12.5700                       
 
-(X_U2.34)-4036.4000                   (X_U2.35)    -.0040                       
+(X_U2.14)    -.0054                   (X_U2.15)-5.414E-09                       
 
-(X_U2.36)    -.0040                   (X_U2.40)    -.0040                       
+(X_U2.31)    -.0044                   (X_U2.32)-4359.4000                       
 
-(X_U2.41)    -.0440                   (X_U2.42)     .0360                       
+(X_U2.33)    -.0044                   (X_U2.34)-4359.4000                       
 
-(X_U2.45)    -.0041                   (X_U2.60)    -.5089                       
+(X_U2.35)    -.0044                   (X_U2.36)    -.0044                       
 
-(X_U2.61)    0.0000                   (X_U2.62)    0.0000                       
+(X_U2.40)    -.0044                   (X_U2.41)    -.0444                       
 
-(X_U2.98)    0.0000                   (X_U3.10)   12.5700                       
+(X_U2.42)     .0356                   (X_U2.45)    -.0044                       
 
-(X_U3.11)  -12.5700                   (X_U3.14)    -.0054                       
+(X_U2.60)    -.5078                   (X_U2.61)    0.0000                       
 
-(X_U3.15)-5.429E-09                   (X_U3.31)     .6154                       
+(X_U2.62)    0.0000                   (X_U2.98)    0.0000                       
 
-(X_U3.32) 615.4E+03                   (X_U3.33)     .6154                       
+(X_U3.10)   12.5700                   (X_U3.11)  -12.5700                       
 
-(X_U3.34) 615.4E+03                   (X_U3.35)     .6154                       
+(X_U3.14)    -.0054                   (X_U3.15)-5.433E-09                       
 
-(X_U3.36)     .6154                   (X_U3.40)     .6154                       
+(X_U3.31)     .6466                   (X_U3.32) 646.6E+03                       
 
-(X_U3.41)     .5754                   (X_U3.42)     .6554                       
+(X_U3.33)     .6466                   (X_U3.34) 646.6E+03                       
 
-(X_U3.45)     .6153                   (X_U3.60)    -.5057                       
+(X_U3.35)     .6466                   (X_U3.36)     .6466                       
 
-(X_U3.61)    0.0000                   (X_U3.62)    0.0000                       
+(X_U3.40)     .6466                   (X_U3.41)     .6066                       
 
-(X_U3.98)    0.0000                   (X_U4.DIS)    0.0000                      
+(X_U3.42)     .6866                   (X_U3.45)     .6466                       
 
-(SIGNAL_IN)    0.0000                 (X_U4.DRVA)    0.0000                     
+(X_U3.60)    -.5070                   (X_U3.61)    0.0000                       
+
+(X_U3.62)    0.0000                   (X_U3.98)    0.0000                       
+
+(X_U4.DIS)    0.0000                  (X_U4.DRVA)    0.0000                     
 
 (X_U4.DRVB)    0.0000                 (X_U4.NO_DT)    0.0000                    
 
@@ -446,85 +456,83 @@ V_V10         SIGNAL_IN 0  AC 0
 
 (X_U4.INB_OKD)    0.0000              (X_U4.INB_PRE)    0.0000                  
 
-(X_U4.VCCI_INT)    5.0000             (FEED_ON_SIGNAL)    0.0000                
+(X_U4.VCCI_INT)    5.0000             (X_U4.DRVA_PASS)    0.0000                
 
-(X_U4.DRVA_PASS)    0.0000            (X_U4.DRVB_PASS)    0.0000                
+(X_U4.DRVB_PASS)    0.0000            (X_U4.FAULT_INP)    5.0000                
 
-(X_U4.FAULT_INP)    5.0000            (X_U4.N16668890)    8.5000                
+(X_U4.N16668890)    8.5000            (X_U4.N16668898)    8.5000                
 
-(X_U4.N16668898)    8.5000            (X_U4.N16669068)    0.0000                
+(X_U4.N16669068)    0.0000            (X_U4.N16669308)-662.2E-06                
 
-(X_U4.N16669308)-665.3E-06            (X_U4.N16669580)    5.0000                
+(X_U4.N16669580)    5.0000            (X_U4.N16669674)    0.0000                
 
-(X_U4.N16669674)    0.0000            (X_U4.N16669834)    2.7000                
+(X_U4.N16669834)    2.7000            (X_U4.N16669842)    2.5000                
 
-(X_U4.N16669842)    2.5000            (X_U4.N16669858)    5.0000                
+(X_U4.N16669858)    5.0000            (X_U4.N16670120) 35.71E-06                
 
-(X_U4.N16670120) 90.87E-06            (X_U4.N16670154)    2.0000                
+(X_U4.N16670154)    2.0000            (X_U4.N16670162)-22.27E-18                
 
-(X_U4.N16670162)-22.27E-18            (X_U4.N16670228)    0.0000                
+(X_U4.N16670228)    0.0000            (X_U4.N16670408)    0.0000                
 
-(X_U4.N16670408)    0.0000            (X_U4.N16670672)    1.0000                
+(X_U4.N16670672)    1.0000            (X_U4.N16670780)    -.0013                
 
-(X_U4.N16670780)    -.0013            (X_U4.N16670790)    0.0000                
+(X_U4.N16670790)    0.0000            (X_U4.N16670816)    4.9991                
 
-(X_U4.N16670816)    4.9977            (X_U4.N16670888)    8.5000                
+(X_U4.N16670888)    8.5000            (X_U4.N16670896)    8.0000                
 
-(X_U4.N16670896)    8.0000            (X_U4.N16671044)   12.0000                
+(X_U4.N16671044)   12.0000            (X_U4.N16671166)    0.0000                
 
-(X_U4.N16671166)    0.0000            (X_U4.N16671236)    0.0000                
+(X_U4.N16671236)    0.0000            (X_U4.N16671468)    0.0000                
 
-(X_U4.N16671468)    0.0000            (X_U4.N16671552) 8.020E-15                
+(X_U4.N16671552) 8.020E-15            (X_U4.N16671580)    2.0000                
 
-(X_U4.N16671580)    2.0000            (X_U4.N16671640)    0.0000                
+(X_U4.N16671640)    0.0000            (X_U4.N16671702)    0.0000                
 
-(X_U4.N16671702)    0.0000            (X_U4.N16671830)    5.0000                
+(X_U4.N16671830)    5.0000            (X_U4.N16671850)    0.0000                
 
-(X_U4.N16671850)    0.0000            (X_U4.N16672106)    1.0000                
+(X_U4.N16672106)    1.0000            (X_U4.N16672276)    1.8000                
 
-(X_U4.N16672276)    1.8000            (X_U4.N16672306)    1.0000                
+(X_U4.N16672306)    1.0000            (X_U4.N16672528)    1.0000                
 
-(X_U4.N16672528)    1.0000            (X_U4.N16672594)    0.0000                
+(X_U4.N16672594)    0.0000            (X_U4.N16672776)  -18.0000                
 
-(X_U4.N16672776)  -18.0000            (X_U4.N16672784)  -30.0000                
+(X_U4.N16672784)  -30.0000            (X_U4.N16672968)  -30.0000                
 
-(X_U4.N16672968)  -30.0000            (X_U4.N16673112)    0.0000                
+(X_U4.N16673112)    0.0000            (X_U4.N16673358)    0.0000                
 
-(X_U4.N16673358)    0.0000            (X_U4.N16673432)    1.8000                
+(X_U4.N16673432)    1.8000            (X_U4.N16673492)    1.8000                
 
-(X_U4.N16673492)    1.8000            (X_U4.N16673790)    0.0000                
+(X_U4.N16673790)    0.0000            (X_U4.N16698404)    5.0000                
 
-(X_U4.N16698404)    5.0000            (X_U4.N16970878)    -.0013                
+(X_U4.N16970878)    -.0013            (X_U4.N17051744)    5.0000                
 
-(X_U4.N17051744)    5.0000            (X_U4.N17051757)    5.0000                
+(X_U4.N17051757)    5.0000            (X_U4.N17051771)  -25.0000                
 
-(X_U4.N17051771)  -25.0000            (X_U4.N17088411)-503.3E-06                
+(X_U4.N17088411)-500.2E-06            (X_U4.N17110019)    5.0000                
 
-(X_U4.N17110019)    5.0000            (X_U4.N17110021)    5.0000                
+(X_U4.N17110021)    5.0000            (X_U4.N17110038)    5.0000                
 
-(X_U4.N17110038)    5.0000            (X_U4.N17127259)-3.313E-06                
+(X_U4.N17127259)-202.6E-09            (X_U4.N17153666)    5.0000                
 
-(X_U4.N17153666)    5.0000            (X_U4.N17167704)  -30.0000                
+(X_U4.N17167704)  -30.0000            (X_U4.N17167706)    5.0000                
 
-(X_U4.N17167706)    5.0000            (X_U4.N17196585)    0.0000                
+(X_U4.N17196585)    0.0000            (X_U4.N17198437)    5.0000                
 
-(X_U4.N17198437)    5.0000            (X_U4.N17201974)    5.0000                
+(X_U4.N17201974)    5.0000            (X_U4.N17396123)-15.66E-21                
 
-(X_U4.N17396123)-15.66E-21            (X_U4.N17407797)    5.0000                
+(X_U4.N17407797)    5.0000            (X_U4.N167201110)-73.22E-21               
 
-(X_U4.N167201110)-73.22E-21           (X_U4.N167208610)    5.0000               
+(X_U4.N167208610)    5.0000           (X_U4.N167216030)    5.0000               
 
-(X_U4.N167216030)    5.0000           (X_U4.X_U42.YINT)    0.0000               
+(X_U4.X_U42.YINT)    0.0000           (X_U4.X_U43.YINT)    5.0000               
 
-(X_U4.X_U43.YINT)    5.0000           (X_U4.X_U44.YINT)    5.0000               
+(X_U4.X_U44.YINT)    5.0000           (X_U4.X_U54.YINT)    5.0000               
 
-(X_U4.X_U54.YINT)    5.0000           (X_U4.X_U61.YINT)    5.0000               
+(X_U4.X_U61.YINT)    5.0000           (X_U4.X_U62.YINT)    5.0000               
 
-(X_U4.X_U62.YINT)    5.0000           (X_U4.DEAD_THRESH)     .0023              
+(X_U4.DEAD_THRESH) 892.7E-06          (X_U4.UVLO1_DELAYED)    5.0000            
 
-(X_U4.UVLO1_DELAYED)    5.0000        (X_U4.UVLO2_DELAYED) 10.77E-18            
-
-(X_U4.UVLO2B_DELAYED)    5.0000       
+(X_U4.UVLO2_DELAYED) 10.77E-18        (X_U4.UVLO2B_DELAYED)    5.0000       
 
 
 
@@ -532,30 +540,30 @@ V_V10         SIGNAL_IN 0  AC 0
     VOLTAGE SOURCE CURRENTS
     NAME         CURRENT
 
-    V_V1         1.996E-07
+    V_V1         0.000E+00
     V_V8        -1.212E-03
     V_V6        -1.124E-07
-    V_V5        -4.797E-03
+    V_V5        -3.418E-03
     V_V3        -1.932E-02
     V_V4        -1.933E-02
-    V_V7        -2.060E-07
-    V_V9         0.000E+00
-    V_V10       -6.351E-06
-    X_U1.vi1    -1.605E-11
+    V_V7        -1.378E-07
+    V_V10        0.000E+00
+    V_V11       -6.351E-06
+    X_U1.vi1    -1.608E-11
     X_U1.vi2     1.996E-07
     X_U1.v1     -4.958E-12
     X_U2.V1      1.258E-11
     X_U2.V2      1.258E-11
-    X_U2.V7     -5.189E-13
-    X_U2.V8      3.514E-06
-    X_U2.V5     -4.780E-14
+    X_U2.V7     -5.178E-13
+    X_U2.V8      3.358E-06
+    X_U2.V5     -4.781E-14
     X_U2.V6     -4.793E-14
-    X_U3.V1      1.196E-11
-    X_U3.V2      1.320E-11
-    X_U3.V7     -5.157E-13
-    X_U3.V8      3.099E-06
-    X_U3.V5     -4.782E-14
-    X_U3.V6     -4.792E-14
+    X_U3.V1      1.193E-11
+    X_U3.V2      1.323E-11
+    X_U3.V7     -5.170E-13
+    X_U3.V8      3.255E-06
+    X_U3.V5     -4.781E-14
+    X_U3.V6     -4.793E-14
     X_U4.V_V8   -4.010E-12
     X_U4.V_V1    0.000E+00
     X_U4.V_V10   0.000E+00
@@ -568,18 +576,234 @@ V_V10         SIGNAL_IN 0  AC 0
     X_U4.V_V9    0.000E+00
     X_U4.V_V7    0.000E+00
     X_U4.V_V3    0.000E+00
-    X_U4.V_V5   -4.543E-02
-    X_U4.X_H1.VH_H1   2.272E-03
+    X_U4.V_V5   -1.785E-02
+    X_U7.V1      0.000E+00
+    X_U4.X_H1.VH_H1   8.927E-04
 
-    TOTAL POWER DISSIPATION   7.09E-01  WATTS
+    TOTAL POWER DISSIPATION   6.47E-01  WATTS
 
-Convergence problem in transient analysis at Time =  22.50E-15
-         Time step =  2.500E-15, minimum allowable step size =  10.00E-15
+Convergence problem in transient analysis at Time =  1.250E-15
+         Time step =  1.250E-15, minimum allowable step size =  3.000E-15
+
+  These voltages failed to converge:
+
+    V(PWM)                    =     5.042V  \         0V
+    V(5V)                     =     5.000V  \         0V
+    V(N14559)                 =     6.000V  \         0V
+    V(N116340)                =     7.500V  \         0V
+    V(N16927)                 =   -6.414mV  \         0V
+    V(N16939)                 =   -6.414mV  \         0V
+    V(N48033)                 =   -4.515mV  \         0V
+    V(N16945)                 =   -4.413mV  \         0V
+    V(ERROR)                  =   646.56mV  \         0V
+    V(N48472)                 =     4.999V  \         0V
+    V(N48936)                 =    -18.00V  \         0V
+    V(VEE)                    =    -30.00V  \         0V
+    V(VCC)                    =     30.00V  \         0V
+    V(15V)                    =     15.00V  \         0V
+    V(-15V)                   =    -15.00V  \         0V
+    V(VS)                     =  -595.82uV  \         0V
+    V(N49709)                 =   -1.918mV  \         0V
+    V(N49892)                 =    -30.00V  \         0V
+    V(LO)                     =    -30.00V  \         0V
+    V(N50062)                 =   -1.203mV  \         0V
+    V(HO)                     =   -1.193mV  \         0V
+    V(N49537)                 =    -7.053V  \         0V
+    V(N112121)                =     30.00V  \         0V
+    V(N112660)                =   -6.351mV  \         0V
+    V(VTRIANG)                =    19.96uV  \         0V
+    V(X_U1.9)                 =    -13.20V  \         0V
+    V(X_U1.7)                 =    32.62MV  \         0V
+    V(X_U1.21)                =     1.097V  \         0V
+    V(X_U1.22)                =   450.02mV  \         0V
+    V(X_U1.8)                 =    4.113KV  \         0V
+    V(X_U1.10)                =     1.802V  \         0V
+    V(X_U1.11)                =     1.802V  \         0V
+    V(X_U2.8)                 =  -329.57MV  \         0V
+    V(X_U2.4)                 =     14.64V  \         0V
+    V(X_U2.6)                 =  -329.57MV  \         0V
+    V(X_U2.5)                 =     14.64V  \         0V
+    V(X_U2.3)                 =   -4.414mV  \         0V
+    V(X_U2.7)                 =  -329.57MV  \         0V
+    V(X_U2.9)                 =   -4.359mV  \         0V
+    V(X_U2.10)                =     12.57V  \         0V
+    V(X_U2.11)                =    -12.57V  \         0V
+    V(X_U2.14)                =   -5.414mV  \         0V
+    V(X_U2.31)                =   -4.359mV  \         0V
+    V(X_U2.32)                =   -4.359KV  \         0V
+    V(X_U2.33)                =   -4.359mV  \         0V
+    V(X_U2.34)                =   -4.359KV  \         0V
+    V(X_U2.35)                =   -4.359mV  \         0V
+    V(X_U2.36)                =   -4.359mV  \         0V
+    V(X_U2.40)                =   -4.359mV  \         0V
+    V(X_U2.45)                =   -4.413mV  \         0V
+    V(X_U2.60)                =  -889.97KV  \         0V
+    V(X_U2.41)                =   -44.36mV  \         0V
+    V(X_U2.42)                =    35.64mV  \         0V
+    V(X_U3.8)                 =  -329.57MV  \         0V
+    V(X_U3.4)                 =     14.64V  \         0V
+    V(X_U3.6)                 =  -329.57MV  \         0V
+    V(X_U3.5)                 =     14.64V  \         0V
+    V(X_U3.3)                 =   -4.351mV  \         0V
+    V(X_U3.7)                 =  -329.57MV  \         0V
+    V(X_U3.9)                 =   646.62mV  \         0V
+    V(X_U3.10)                =     12.57V  \         0V
+    V(X_U3.11)                =    -12.57V  \         0V
+    V(X_U3.14)                =   -5.433mV  \         0V
+    V(X_U3.31)                =   646.61mV  \         0V
+    V(X_U3.32)                =   646.61KV  \         0V
+    V(X_U3.33)                =   646.61mV  \         0V
+    V(X_U3.34)                =   646.61KV  \         0V
+    V(X_U3.35)                =   646.62mV  \         0V
+    V(X_U3.36)                =   646.61mV  \         0V
+    V(X_U3.40)                =   646.61mV  \         0V
+    V(X_U3.45)                =   646.56mV  \         0V
+    V(X_U3.60)                =  -862.75KV  \         0V
+    V(X_U3.41)                =   606.61mV  \         0V
+    V(X_U3.42)                =   686.61mV  \         0V
+    V(X_U4.N16672784)         =    -30.00V  \         0V
+    V(X_U4.PWMIN)             =     2.250V  \         0V
+    V(X_U4.INA_INT)           =     5.042V  \         0V
+    V(X_U4.N16672306)         =   -2.250uV  \         0V
+    V(X_U4.N17110038)         =     4.999V  \         0V
+    V(X_U4.N17110019)         =     5.000V  \         0V
+    V(X_U4.N16671640)         =   -5.000MV  \         0V
+    V(X_U4.N16671552)         =    3.500uV  \         0V
+    V(X_U4.N16672106)         =     1.000V  \         0V
+    V(X_U4.UVLO1)             =    12.50MV  \         0V
+    V(X_U4.VCCI_INT)          =     5.000V  \         0V
+    V(X_U4.N16669842)         =    -2.500V  \         0V
+    V(X_U4.UVLO2)             =    10.63MV  \         0V
+    V(X_U4.N167201110)        =    10.63MV  \         0V
+    V(X_U4.N17127259)         =  -595.82uV  \         0V
+    V(X_U4.UVLO2_DELAYED)     =    1.473mV  \         0V
+    V(X_U4.UVLO1_DELAYED)     =     5.002V  \         0V
+    V(X_U4.N16672776)         =    -18.00V  \         0V
+    V(X_U4.N16670780)         =   -1.322mV  \         0V
+    V(X_U4.N16668898)         =    -2.125V  \         0V
+    V(X_U4.N16672528)         =     1.000V  \         0V
+    V(X_U4.UVLO2B)            =    10.00MV  \         0V
+    V(X_U4.UVLO2B_DELAYED)    =     5.001V  \         0V
+    V(X_U4.N16671580)         =     2.000V  \         0V
+    V(X_U4.INA_OKD)           =     5.000V  \         0V
+    V(X_U4.DEAD_THRESH)       =   892.70uV  \         0V
+    V(X_U4.N167208610)        =    12.50MV  \         0V
+    V(X_U4.N16671236)         =    77.96uV  \         0V
+    V(X_U4.NO_DT)             =     5.000V  \         0V
+    V(X_U4.N16669858)         =     5.000V  \         0V
+    V(X_U4.N16671702)         =    -50.00V  \         0V
+    V(X_U4.N16670228)         =   -5.000MV  \         0V
+    V(X_U4.N16670120)         =    39.21uV  \         0V
+    V(X_U4.N16670672)         =     1.000V  \         0V
+    V(X_U4.N16670896)         =    -2.000V  \         0V
+    V(X_U4.N16670888)         =     8.500V  \         0V
+    V(X_U4.N17198437)         =    105.00V  \         0V
+    V(X_U4.N17110021)         =     5.000V  \         0V
+    V(X_U4.N16671468)         =    -50.00V  \         0V
+    V(X_U4.N17167704)         =    -30.00V  \         0V
+    V(X_U4.N16671830)         =     5.000V  \         0V
+    V(X_U4.N16673790)         =    1.386uV  \         0V
+    V(X_U4.N17201974)         =    130.00V  \         0V
+    V(X_U4.INA_OK)            =     5.000V  \         0V
+    V(X_U4.N16671044)         =     12.00V  \         0V
+    V(X_U4.N16669834)         =     2.700V  \         0V
+    V(X_U4.N17051744)         =     5.000V  \         0V
+    V(X_U4.N16671166)         =     11.25V  \         0V
+    V(X_U4.PWMINB)            =     1.000V  \         0V
+    V(X_U4.N16669308)         =   -1.193mV  \         0V
+    V(X_U4.N17407797)         =     5.000V  \         0V
+    V(X_U4.N16970878)         =   -1.918mV  \         0V
+    V(X_U4.N16669580)         =     5.000V  \         0V
+    V(X_U4.N16673492)         =   -2.250uV  \         0V
+    V(X_U4.N16673432)         =     1.800V  \         0V
+    V(X_U4.N17051757)         =     5.000V  \         0V
+    V(X_U4.N16672968)         =    -30.00V  \         0V
+    V(X_U4.N16670816)         =     4.999V  \         0V
+    V(X_U4.N16672276)         =     1.800V  \         0V
+    V(X_U4.N17051771)         =    -25.00V  \         0V
+    V(X_U4.N16670154)         =     2.000V  \         0V
+    V(X_U4.N17196585)         =    106.25V  \         0V
+    V(X_U4.N167216030)        =    10.00MV  \         0V
+    V(X_U4.N16668890)         =     8.500V  \         0V
+    V(X_U4.N17088411)         =   -1.124mV  \         0V
+    V(X_U4.X_U54.YINT)        =     5.000V  \         0V
+    V(X_U4.N16698404)         =     5.000V  \         0V
+    V(X_U4.FAULT_INP)         =     5.000V  \         0V
+    V(X_U4.N17167706)         =     5.000V  \         0V
+    V(X_U4.X_U61.YINT)        =     5.000V  \         0V
+    V(X_U4.N17153666)         =     5.000V  \         0V
+    V(X_U4.X_U62.YINT)        =     5.000V  \         0V
 
   These supply currents failed to converge:
 
-    I(X_U1.e1)                =    1.163pA  \    2.326pA
-    I(X_U1.v1)                =   -1.163pA  \   -2.326pA
+    I(X_U1.e1)                =   -67.24uA  \         0A
+    I(X_U2.EOS)               =   -4.367uA  \         0A
+    I(X_U2.ECM)               =   -1.755nA  \         0A
+    I(X_U2.EZ1)               =    4.359mA  \         0A
+    I(X_U2.EZ2)               =    4.359mA  \         0A
+    I(X_U3.EOS)               =   -4.367uA  \         0A
+    I(X_U3.EREF)              =   -9.428pA  \         0A
+    I(X_U3.ECM)               =   -1.956nA  \         0A
+    I(X_U3.EZ1)               =  -646.61mA  \         0A
+    I(X_U3.EZ2)               =  -646.62mA  \         0A
+    I(X_U4.E_ABM2)            =  -250.00mA  \         0A
+    I(X_U4.E_E15)             =   -57.57pA  \         0A
+    I(X_U4.E_ABM23)           =    5.000MA  \         0A
+    I(X_U4.E_ABM1)            =   -12.50MA  \         0A
+    I(X_U4.E_ABM4)            =   -10.63MA  \         0A
+    I(X_U4.e.T_T3.eA1)        =    77.96nA  \         0A
+    I(X_U4.E_ABM24)           =    5.000MA  \         0A
+    I(X_U4.E_ABM20)           =   -5.000pA  \         0A
+    I(X_U4.E_E28)             =   -1.964pA  \         0A
+    I(X_U4.E_ABM22)           =  -200.00mA  \         0A
+    I(X_U4.E_ABM7)            =   -10.00MA  \         0A
+    I(X_U4.e.T_T1.eA1)        =    5.000pA  \         0A
+    I(X_U4.e.T_T1.eB1)        =   -5.000mA  \         0A
+    I(X_U4.E_ABM8)            =    -11.25A  \         0A
+    I(X_U4.X_U44.E_ABMGATE)   =     5.000A  \         0A
+    I(X_U4.X_U61.E_ABMGATE)   =   -5.005nA  \         0A
+    I(X_U4.X_U43.E_ABMGATE)   =     5.000A  \         0A
+    I(X_U4.X_U62.E_ABMGATE)   =   -5.005nA  \         0A
+    I(L_L1)                   =   -25.32nA  \         0A
+    I(X_U2.LO)                =    6.716uA  \         0A
+    I(X_U3.LO)                =    6.511uA  \         0A
+    IA(X_U4.T_T3)             =    77.96nA  \         0A
+    IA(X_U4.T_T1)             =    5.000pA  \         0A
+    IB(X_U4.T_T1)             =   -5.000mA  \         0A
+    I(V_V1)                   =   534.61nA  \         0A
+    I(V_V8)                   =     10.95A  \         0A
+    I(V_V6)                   =   -2.262KA  \         0A
+    I(V_V5)                   =   -3.351mA  \         0A
+    I(V_V3)                   =   -18.57mA  \         0A
+    I(V_V4)                   =   -18.57mA  \         0A
+    I(V_V7)                   =   -2.262KA  \         0A
+    I(V_V10)                  =   534.61nA  \         0A
+    I(V_V11)                  =   -6.351uA  \         0A
+    I(X_U1.vi1)               =    67.25nA  \         0A
+    I(X_U1.vi2)               =   734.19nA  \         0A
+    I(X_U1.v1)                =    67.24uA  \         0A
+    I(X_U2.V1)                =    17.44pA  \         0A
+    I(X_U2.V2)                =    17.42pA  \         0A
+    I(X_U2.V7)                =   -1.234uA  \         0A
+    I(X_U2.V8)                =    1.234uA  \         0A
+    I(X_U3.V1)                =    16.53pA  \         0A
+    I(X_U3.V2)                =    18.33pA  \         0A
+    I(X_U3.V7)                =   -1.196uA  \         0A
+    I(X_U3.V8)                =    1.196uA  \         0A
+    I(X_U4.V_V8)              =  -350.00mA  \         0A
+    I(X_U4.V_V5)              =  -350.00mA  \         0A
+    I(X_U4.X_H1.VH_H1)        =   892.70uA  \         0A
+
+  These devices failed to converge:
+    D_D10     D_D11     D_D12     X_U2.D1   X_U2.D2   X_U2.D7   X_U2.D8   
+    X_U3.D1   X_U3.D2   X_U3.D7   X_U3.D8   X_U4.X_U40.d1 X_U4.X_U57.d1 
+    X_U4.X_U55.d1 X_U4.X_U33.d1 X_U4.X_U37.d1 X_U4.X_U35.d1 X_U4.X_U56.d1 
+    X_U4.E_ABM2 X_U4.E_ABM23 X_U4.E_ABM1 X_U4.E_ABM4 X_U4.E_ABM32 X_U4.E_ABM24 
+    X_U4.E_ABM25 X_U4.E_ABM20 X_U4.E_ABM22 X_U4.E_ABM7 X_U4.E_ABM8 
+    X_U4.X_U44.E_ABMGATE X_U4.X_U43.E_ABMGATE X_U4.G_ABM2I2 X_U4.G_ABM2I1 
+    X_U5.M1   X_U6.M1   X_U4.X_M13.m1 X_U4.X_M15.m1 X_U4.X_M14.m1 X_U4.X_M12.m1 
+    X_U1.q1   X_U1.q2   X_U1.q3   X_U1.q4   X_U1.q5   X_U2.Q1   X_U2.Q2   
+    X_U3.Q1   X_U3.Q2   
 
 
 
@@ -588,71 +812,1948 @@ Convergence problem in transient analysis at Time =  22.50E-15
  NODE   VOLTAGE     NODE   VOLTAGE     NODE   VOLTAGE     NODE   VOLTAGE
 
 
-(   5V)    5.0000  (   HO)-665.3E-06  (   LO)  -30.0000  (   VS)-3.313E-06      
+(   5V)    5.0000  (   HO)    -.0012  (   LO)  -30.0000  (   VS)-595.8E-06      
 
-(  15V)   15.0000  (  OUT)-3.313E-06  (  PWM)    4.9751  (  VCC)   30.0000      
+(  15V)   15.0000  (  OUT)-202.6E-09  (  PWM)    5.0420  (  VCC)   30.0000      
 
-(  VEE)  -30.0000  ( -15V)  -15.0000  (ERROR)     .6153  (N16927)    -.0061     
+(  VEE)  -30.0000  ( -15V)  -15.0000  (ERROR)     .6466  (N14559)    6.0000     
 
-(N16945)    -.0041 (N47439)    -.0064 (N48033)    -.0045 (N48472)    4.9977     
+(N16927)    -.0064 (N16939)    -.0064 (N16945)    -.0044 (N48033)    -.0045     
 
-(N48657) 888.2E-18 (N48936)  -18.0000 (N49537)  -18.0000 (N49709)    -.0013     
+(N48472)    4.9991 (N48936)  -18.0000 (N49537)   -7.0534 (N49709)    -.0019     
 
-(N49892)  -30.0000 (N49937)  -30.0000 (N50062)-665.3E-06 (N50090)-665.3E-06     
+(N49892)  -30.0000 (N50062)    -.0012 (N53048)    0.0000 (N53052)    0.0000     
 
-(N53048)    0.0000 (N53052)    0.0000 (N53118)    0.0000 (N53142)    0.0000     
+(N53118)    0.0000 (N53142)    0.0000 (X_U1.7) 32.62E+06 (X_U1.8) 4113.3000     
 
-(X_U1.7)    -.3892 (X_U1.8)  -14.3500 (X_U1.9)  -14.9820 (X_U2.3)    -.0041     
+(X_U1.9)  -13.1980 (X_U2.3)    -.0044 (X_U2.4)   14.6410 (X_U2.5)   14.6410     
 
-(X_U2.4)   14.4650 (X_U2.5)   14.4650 (X_U2.6)    -.7600 (X_U2.7)    -.7600     
+(X_U2.6)-329.6E+06 (X_U2.7)-329.6E+06 (X_U2.8)-329.6E+06 (X_U2.9)    -.0044     
 
-(X_U2.8)   -1.2765 (X_U2.9)    -.0040 (X_U3.3)    -.0044 (X_U3.4)   14.4650     
+(X_U3.3)    -.0044 (X_U3.4)   14.6410 (X_U3.5)   14.6410 (X_U3.6)-329.6E+06     
 
-(X_U3.5)   14.4640 (X_U3.6)    -.7604 (X_U3.7)    -.7603 (X_U3.8)   -1.2769     
+(X_U3.7)-329.6E+06 (X_U3.8)-329.6E+06 (X_U3.9)     .6466 (X_U7.3) 50.00E-12     
 
-(X_U3.9)     .6154 (VTRIANG)   -1.5000                   (X_U1.10)     .0179    
+(N112121)   29.9990                   (N112163)-203.3E-09                       
 
-(X_U1.11)     .0179                   (X_U1.21)    1.0653                       
+(N112660)    -.0064                   (N112667) 62.83E-12                       
 
-(X_U1.22)   -1.0500                   (X_U2.10)   12.5700                       
+(N116340)    7.5000                   (VTRIANG) 19.96E-06                       
 
-(X_U2.11)  -12.5700                   (X_U2.14)    -.0051                       
+(X_U1.10)    1.8018                   (X_U1.11)    1.8018                       
 
-(X_U2.15)-5.092E-09                   (X_U2.31)    -.0040                       
+(X_U1.21)    1.0966                   (X_U1.22)     .4500                       
 
-(X_U2.32)-4036.4000                   (X_U2.33)    -.0040                       
+(X_U2.10)   12.5700                   (X_U2.11)  -12.5700                       
 
-(X_U2.34)-4036.4000                   (X_U2.35)    -.0040                       
+(X_U2.14)    -.0054                   (X_U2.15) 1.755E-09                       
 
-(X_U2.36)    -.0040                   (X_U2.40)    -.0040                       
+(X_U2.31)    -.0044                   (X_U2.32)-4359.4000                       
 
-(X_U2.41)    -.0440                   (X_U2.42)     .0360                       
+(X_U2.33)    -.0044                   (X_U2.34)-4359.4000                       
 
-(X_U2.45)    -.0041                   (X_U2.60)    -.5089                       
+(X_U2.35)    -.0044                   (X_U2.36)    -.0044                       
 
-(X_U2.61)    0.0000                   (X_U2.62)    0.0000                       
+(X_U2.40)    -.0044                   (X_U2.41)    -.0444                       
 
-(X_U2.98)    0.0000                   (X_U3.10)   12.5700                       
+(X_U2.42)     .0356                   (X_U2.45)    -.0044                       
 
-(X_U3.11)  -12.5700                   (X_U3.14)    -.0054                       
+(X_U2.60)-890.0E+03                   (X_U2.61)    0.0000                       
 
-(X_U3.15)-5.429E-09                   (X_U3.31)     .6154                       
+(X_U2.62)    0.0000                   (X_U2.98)    0.0000                       
 
-(X_U3.32) 615.4E+03                   (X_U3.33)     .6154                       
+(X_U3.10)   12.5700                   (X_U3.11)  -12.5700                       
 
-(X_U3.34) 615.4E+03                   (X_U3.35)     .6154                       
+(X_U3.14)    -.0054                   (X_U3.15) 1.956E-09                       
 
-(X_U3.36)     .6154                   (X_U3.40)     .6154                       
+(X_U3.31)     .6466                   (X_U3.32) 646.6E+03                       
 
-(X_U3.41)     .5754                   (X_U3.42)     .6554                       
+(X_U3.33)     .6466                   (X_U3.34) 646.6E+03                       
 
-(X_U3.45)     .6153                   (X_U3.60)    -.5057                       
+(X_U3.35)     .6466                   (X_U3.36)     .6466                       
 
-(X_U3.61)    0.0000                   (X_U3.62)    0.0000                       
+(X_U3.40)     .6466                   (X_U3.41)     .6066                       
 
-(X_U3.98)    0.0000                   (X_U4.DIS)    0.0000                      
+(X_U3.42)     .6866                   (X_U3.45)     .6466                       
 
-(SIGNAL_IN) 276.5E-12                 (X_U4.DRVA)    0.0000                     
+(X_U3.60)-862.7E+03                   (X_U3.61)    0.0000                       
+
+(X_U3.62)    0.0000                   (X_U3.98)    0.0000                       
+
+(X_U4.DIS)    0.0000                  (X_U4.DRVA)    0.0000                     
+
+(X_U4.DRVB)    0.0000                 (X_U4.NO_DT)    5.0000                    
+
+(X_U4.PWMIN)    2.2500                (X_U4.UVLO1) 12.50E+06                    
+
+(X_U4.UVLO2) 10.63E+06                (X_U4.INA_OK)    5.0000                   
+
+(X_U4.INB_OK)    0.0000               (X_U4.PWMINB)    1.0000                   
+
+(X_U4.UVLO2B) 10.00E+06               (X_U4.INA_INT)    5.0420                  
+
+(X_U4.INA_OKD)    5.0000              (X_U4.INA_PRE)    0.0000                  
+
+(X_U4.INB_OKD)    0.0000              (X_U4.INB_PRE)    0.0000                  
+
+(X_U4.VCCI_INT)    5.0000             (X_U4.DRVA_PASS)    0.0000                
+
+(X_U4.DRVB_PASS)    0.0000            (X_U4.FAULT_INP)    5.0000                
+
+(X_U4.N16668890)    8.5000            (X_U4.N16668898)   -2.1250                
+
+(X_U4.N16669068)    0.0000            (X_U4.N16669308)    -.0012                
+
+(X_U4.N16669580)    5.0000            (X_U4.N16669674)    0.0000                
+
+(X_U4.N16669834)    2.7000            (X_U4.N16669842)   -2.5001                
+
+(X_U4.N16669858)    5.0000            (X_U4.N16670120) 39.21E-06                
+
+(X_U4.N16670154)    2.0000            (X_U4.N16670162)-22.27E-18                
+
+(X_U4.N16670228)-5.000E+06            (X_U4.N16670408)    0.0000                
+
+(X_U4.N16670672)    1.0000            (X_U4.N16670780)    -.0013                
+
+(X_U4.N16670790)    0.0000            (X_U4.N16670816)    4.9991                
+
+(X_U4.N16670888)    8.5000            (X_U4.N16670896)   -2.0000                
+
+(X_U4.N16671044)   12.0000            (X_U4.N16671166)   11.2500                
+
+(X_U4.N16671236) 77.96E-06            (X_U4.N16671468)  -50.0000                
+
+(X_U4.N16671552) 3.500E-06            (X_U4.N16671580)    2.0000                
+
+(X_U4.N16671640)-5.000E+06            (X_U4.N16671702)  -50.0000                
+
+(X_U4.N16671830)    5.0000            (X_U4.N16671850)    0.0000                
+
+(X_U4.N16672106)    1.0000            (X_U4.N16672276)    1.8000                
+
+(X_U4.N16672306)-2.250E-06            (X_U4.N16672528)    1.0000                
+
+(X_U4.N16672594)    0.0000            (X_U4.N16672776)  -18.0000                
+
+(X_U4.N16672784)  -30.0000            (X_U4.N16672968)  -30.0000                
+
+(X_U4.N16673112)    0.0000            (X_U4.N16673358)    0.0000                
+
+(X_U4.N16673432)    1.8000            (X_U4.N16673492)-2.250E-06                
+
+(X_U4.N16673790) 1.386E-06            (X_U4.N16698404)    5.0000                
+
+(X_U4.N16970878)    -.0019            (X_U4.N17051744)    5.0000                
+
+(X_U4.N17051757)    5.0000            (X_U4.N17051771)  -25.0000                
+
+(X_U4.N17088411)    -.0011            (X_U4.N17110019)    5.0000                
+
+(X_U4.N17110021)    5.0000            (X_U4.N17110038)    4.9994                
+
+(X_U4.N17127259)-595.8E-06            (X_U4.N17153666)    5.0000                
+
+(X_U4.N17167704)  -30.0000            (X_U4.N17167706)    5.0000                
+
+(X_U4.N17196585)  106.2500            (X_U4.N17198437)  105.0000                
+
+(X_U4.N17201974)  130.0000            (X_U4.N17396123)-15.66E-21                
+
+(X_U4.N17407797)    5.0000            (X_U4.N167201110) 10.63E+06               
+
+(X_U4.N167208610) 12.50E+06           (X_U4.N167216030) 10.00E+06               
+
+(X_U4.X_U42.YINT)    0.0000           (X_U4.X_U43.YINT)    0.0000               
+
+(X_U4.X_U44.YINT)    0.0000           (X_U4.X_U54.YINT)    5.0000               
+
+(X_U4.X_U61.YINT)    5.0000           (X_U4.X_U62.YINT)    5.0000               
+
+(X_U4.DEAD_THRESH) 892.7E-06          (X_U4.UVLO1_DELAYED)    5.0024            
+
+(X_U4.UVLO2_DELAYED)     .0015        (X_U4.UVLO2B_DELAYED)    5.0014       
+
+Resuming Simulation with the following settings
+ITL4 = 125
+ABSTOL = 1.26e-010
+VNTOL = 4.47e-005
+
+Convergence problem in transient analysis at Time =  1.250E-15
+         Time step =  1.250E-15, minimum allowable step size =  3.000E-15
+
+  These voltages failed to converge:
+
+    V(PWM)                    =     5.042V  \         0V
+    V(5V)                     =     5.000V  \         0V
+    V(N14559)                 =     6.000V  \         0V
+    V(N116340)                =     7.500V  \         0V
+    V(N48936)                 =    -18.00V  \         0V
+    V(VEE)                    =    -30.00V  \         0V
+    V(VCC)                    =     30.00V  \         0V
+    V(15V)                    =     15.00V  \         0V
+    V(-15V)                   =    -15.00V  \         0V
+    V(VS)                     =  -592.23uV  \         0V
+    V(N49709)                 =  -592.33uV  \         0V
+    V(N49892)                 =    -27.22V  \         0V
+    V(LO)                     =    -27.22V  \         0V
+    V(N50062)                 =     2.784V  \         0V
+    V(HO)                     =     2.784V  \         0V
+    V(N49537)                 =    -7.052V  \         0V
+    V(N112163)                =    -30.00V  \         0V
+    V(N112121)                =  -554.73uV  \         0V
+    V(VTRIANG)                =     6.000V  \         0V
+    V(X_U1.9)                 =    -13.20V  \         0V
+    V(X_U1.7)                 =    32.62MV  \         0V
+    V(X_U1.21)                =   450.00mV  \         0V
+    V(X_U1.22)                =     6.450V  \         0V
+    V(X_U1.8)                 =    4.113KV  \         0V
+    V(X_U1.10)                =     1.802V  \         0V
+    V(X_U1.11)                =     1.802V  \         0V
+    V(X_U2.8)                 =  -329.57MV  \         0V
+    V(X_U2.4)                 =     14.64V  \         0V
+    V(X_U2.6)                 =  -329.57MV  \         0V
+    V(X_U2.5)                 =     14.64V  \         0V
+    V(X_U2.3)                 =    1.999mV  \         0V
+    V(X_U2.7)                 =  -329.57MV  \         0V
+    V(X_U2.10)                =     12.57V  \         0V
+    V(X_U2.11)                =    -12.57V  \         0V
+    V(X_U2.60)                =  -657.74mV  \         0V
+    V(X_U2.41)                =   -40.00mV  \         0V
+    V(X_U2.42)                =    40.00mV  \         0V
+    V(X_U3.8)                 =  -329.57MV  \         0V
+    V(X_U3.4)                 =     14.64V  \         0V
+    V(X_U3.6)                 =  -329.57MV  \         0V
+    V(X_U3.5)                 =     14.64V  \         0V
+    V(X_U3.3)                 =    1.999mV  \         0V
+    V(X_U3.7)                 =  -329.57MV  \         0V
+    V(X_U3.10)                =     12.57V  \         0V
+    V(X_U3.11)                =    -12.57V  \         0V
+    V(X_U3.60)                =  -647.85mV  \         0V
+    V(X_U3.41)                =   -40.00mV  \         0V
+    V(X_U3.42)                =    40.00mV  \         0V
+    V(X_U4.N16672784)         =    -27.22V  \         0V
+    V(X_U4.PWMIN)             =     2.250V  \         0V
+    V(X_U4.INA_INT)           =     5.042V  \         0V
+    V(X_U4.N17110038)         =  -584.65uV  \         0V
+    V(X_U4.N16671640)         =   -5.000MV  \         0V
+    V(X_U4.N16672106)         =     1.000V  \         0V
+    V(X_U4.UVLO1)             =    13.50MV  \         0V
+    V(X_U4.VCCI_INT)          =     5.000V  \         0V
+    V(X_U4.N16669842)         =    -2.700V  \         0V
+    V(X_U4.UVLO2)             =    10.63MV  \         0V
+    V(X_U4.N167201110)        =    10.63MV  \         0V
+    V(X_U4.N17127259)         =  -592.23uV  \         0V
+    V(X_U4.UVLO2_DELAYED)     =    1.473mV  \         0V
+    V(X_U4.UVLO1_DELAYED)     =    2.599mV  \         0V
+    V(X_U4.N16672776)         =    -18.00V  \         0V
+    V(X_U4.N16668898)         =    -2.125V  \         0V
+    V(X_U4.UVLO2B)            =    10.63MV  \         0V
+    V(X_U4.UVLO2B_DELAYED)    =    1.473mV  \         0V
+    V(X_U4.N16671580)         =     2.000V  \         0V
+    V(X_U4.DEAD_THRESH)       =     5.000V  \         0V
+    V(X_U4.N167208610)        =    13.50MV  \         0V
+    V(X_U4.N16671236)         =    77.96uV  \         0V
+    V(X_U4.NO_DT)             =     5.000V  \         0V
+    V(X_U4.N16671702)         =    -50.00V  \         0V
+    V(X_U4.N16670228)         =   -5.000MV  \         0V
+    V(X_U4.N16670672)         =     1.000V  \         0V
+    V(X_U4.N16670896)         =    -2.125V  \         0V
+    V(X_U4.N16670888)         =     8.500V  \         0V
+    V(X_U4.N17198437)         =    106.25V  \         0V
+    V(X_U4.N17110021)         =     5.000V  \         0V
+    V(X_U4.N16671468)         =    -50.00V  \         0V
+    V(X_U4.N17167704)         =    -30.00V  \         0V
+    V(X_U4.N17201974)         =    135.00V  \         0V
+    V(X_U4.N16671044)         =     12.00V  \         0V
+    V(X_U4.N16669834)         =     2.700V  \         0V
+    V(X_U4.N16671166)         =     11.25V  \         0V
+    V(X_U4.PWMINB)            =     1.000V  \         0V
+    V(X_U4.N16669308)         =     2.784V  \         0V
+    V(X_U4.N16970878)         =  -592.33uV  \         0V
+    V(X_U4.N16673432)         =     1.800V  \         0V
+    V(X_U4.N17051757)         =     5.000V  \         0V
+    V(X_U4.N16672968)         =    -27.22V  \         0V
+    V(X_U4.N16672276)         =     1.800V  \         0V
+    V(X_U4.N17051771)         =    -30.00V  \         0V
+    V(X_U4.N16670154)         =     2.000V  \         0V
+    V(X_U4.N17196585)         =    106.25V  \         0V
+    V(X_U4.N167216030)        =    10.63MV  \         0V
+    V(X_U4.N16668890)         =     8.500V  \         0V
+    V(X_U4.N17088411)         =     2.784V  \         0V
+    V(X_U4.X_U54.YINT)        =     5.000V  \         0V
+    V(X_U4.N16698404)         =    50.00uV  \         0V
+    V(X_U4.N17167706)         =    50.00uV  \         0V
+    V(X_U4.X_U61.YINT)        =     5.000V  \         0V
+    V(X_U4.N17153666)         =    50.00uV  \         0V
+    V(X_U4.X_U62.YINT)        =     5.000V  \         0V
+
+  These supply currents failed to converge:
+
+    I(X_U1.e1)                =   -67.24uA  \         0A
+    I(X_U2.EOS)               =   -4.367uA  \         0A
+    I(X_U2.ECM)               =    14.92nA  \         0A
+    I(X_U3.EOS)               =   -4.367uA  \         0A
+    I(X_U3.ECM)               =    14.69nA  \         0A
+    I(X_U4.E_ABM2)            =  -450.00mA  \         0A
+    I(X_U4.E_ABM23)           =    5.000MA  \         0A
+    I(X_U4.E_ABM1)            =   -13.50MA  \         0A
+    I(X_U4.E_ABM4)            =   -10.63MA  \         0A
+    I(X_U4.e.T_T3.eA1)        =    77.96nA  \         0A
+    I(X_U4.E_ABM24)           =    5.000MA  \         0A
+    I(X_U4.E_ABM22)           =  -200.00mA  \         0A
+    I(X_U4.E_E9)              =    -1.515A  \         0A
+    I(X_U4.E_ABM7)            =   -10.63MA  \         0A
+    I(X_U4.E_E4)              =    -1.515A  \         0A
+    I(X_U4.E_ABM8)            =    -11.25A  \         0A
+    I(X_U4.X_U54.E_ABMGATE)   =    -5.000A  \         0A
+    I(X_U4.X_U61.E_ABMGATE)   =    -5.000A  \         0A
+    I(X_U4.X_U62.E_ABMGATE)   =    -5.000A  \         0A
+    IA(X_U4.T_T3)             =    77.96nA  \         0A
+    I(V_V1)                   =   -60.00mA  \         0A
+    I(V_V8)                   =   -10.00GA  \         0A
+    I(V_V6)                   =   -10.00GA  \         0A
+    I(V_V5)                   =    -5.002A  \         0A
+    I(V_V3)                   =   -18.56mA  \         0A
+    I(V_V4)                   =   -18.58mA  \         0A
+    I(V_V7)                   =   -10.00GA  \         0A
+    I(V_V10)                  =   -60.00mA  \         0A
+    I(X_U1.vi1)               =    67.24nA  \         0A
+    I(X_U1.v1)                =    67.24uA  \         0A
+    I(X_U4.V_V8)              =  -350.00mA  \         0A
+    I(X_U4.V_V5)              =  -350.00mA  \         0A
+    I(X_U4.X_H1.VH_H1)        =     5.000A  \         0A
+
+  These devices failed to converge:
+    D_D10     D_D11     D_D12     X_U2.D8   X_U3.D8   X_U4.X_U40.d1 
+    X_U4.X_U57.d1 X_U4.X_U55.d1 X_U4.X_U33.d1 X_U4.X_U37.d1 X_U4.X_U35.d1 
+    X_U4.X_U56.d1 X_U4.X_U59.d1 X_U4.X_U60.d1 X_U4.E_ABM2 X_U4.E_ABM23 
+    X_U4.E_ABM1 X_U4.E_ABM4 X_U4.E_ABM24 X_U4.E_ABM25 X_U4.E_ABM22 X_U4.E_ABM7 
+    X_U4.E_ABM8 X_U5.M1   X_U6.M1   X_U4.X_M12.m1 X_U1.q1   X_U1.q2   X_U1.q3   
+    X_U1.q4   X_U1.q5   X_U2.Q1   X_U2.Q2   X_U3.Q1   X_U3.Q2   
+
+
+
+  Last node voltages tried were:
+
+ NODE   VOLTAGE     NODE   VOLTAGE     NODE   VOLTAGE     NODE   VOLTAGE
+
+
+(   5V)    5.0000  (   HO)    2.7840  (   LO)  -27.2150  (   VS)-592.2E-06      
+
+(  15V)   15.0000  (  OUT)-5.438E-21  (  PWM)    5.0420  (  VCC)   30.0000      
+
+(  VEE)  -30.0000  ( -15V)  -15.0000  (ERROR)-29.37E-09  (N14559)    6.0000     
+
+(N16927)-39.70E-12 (N16939)-1.165E-09 (N16945)-29.82E-09 (N48033)-29.37E-09     
+
+(N48472) 22.73E-06 (N48936)  -18.0000 (N49537)   -7.0521 (N49709)-592.3E-06     
+
+(N49892)  -27.2150 (N50062)    2.7840 (N53048)    0.0000 (N53052)    0.0000     
+
+(N53118)    0.0000 (N53142)    0.0000 (X_U1.7) 32.62E+06 (X_U1.8) 4113.3000     
+
+(X_U1.9)  -13.1980 (X_U2.3)     .0020 (X_U2.4)   14.6410 (X_U2.5)   14.6410     
+
+(X_U2.6)-329.6E+06 (X_U2.7)-329.6E+06 (X_U2.8)-329.6E+06 (X_U2.9)    0.0000     
+
+(X_U3.3)     .0020 (X_U3.4)   14.6410 (X_U3.5)   14.6410 (X_U3.6)-329.6E+06     
+
+(X_U3.7)-329.6E+06 (X_U3.8)-329.6E+06 (X_U3.9)    0.0000 (X_U7.3) 50.00E-12     
+
+(N112121)-554.7E-06                   (N112163)  -30.0000                       
+
+(N112660)-39.40E-12                   (N112667) 62.83E-12                       
+
+(N116340)    7.5000                   (VTRIANG)    6.0000                       
+
+(X_U1.10)    1.8018                   (X_U1.11)    1.8018                       
+
+(X_U1.21)     .4500                   (X_U1.22)    6.4500                       
+
+(X_U2.10)   12.5700                   (X_U2.11)  -12.5700                       
+
+(X_U2.14)-14.93E-09                   (X_U2.15)-14.92E-09                       
+
+(X_U2.31)    0.0000                   (X_U2.32)    0.0000                       
+
+(X_U2.33)    0.0000                   (X_U2.34)    0.0000                       
+
+(X_U2.35)    0.0000                   (X_U2.36)    0.0000                       
+
+(X_U2.40) 853.5E-18                   (X_U2.41)    -.0400                       
+
+(X_U2.42)     .0400                   (X_U2.45)-39.71E-12                       
+
+(X_U2.60)    -.6577                   (X_U2.61)    0.0000                       
+
+(X_U2.62)    0.0000                   (X_U2.98)    0.0000                       
+
+(X_U3.10)   12.5700                   (X_U3.11)  -12.5700                       
+
+(X_U3.14)-14.71E-09                   (X_U3.15)-14.69E-09                       
+
+(X_U3.31)    0.0000                   (X_U3.32)    0.0000                       
+
+(X_U3.33)    0.0000                   (X_U3.34)    0.0000                       
+
+(X_U3.35)    0.0000                   (X_U3.36)    0.0000                       
+
+(X_U3.40) 520.4E-18                   (X_U3.41)    -.0400                       
+
+(X_U3.42)     .0400                   (X_U3.45)-39.11E-12                       
+
+(X_U3.60)    -.6478                   (X_U3.61)    0.0000                       
+
+(X_U3.62)    0.0000                   (X_U3.98)    0.0000                       
+
+(X_U4.DIS)    0.0000                  (X_U4.DRVA)    0.0000                     
+
+(X_U4.DRVB)    0.0000                 (X_U4.NO_DT)    5.0000                    
+
+(X_U4.PWMIN)    2.2500                (X_U4.UVLO1) 13.50E+06                    
+
+(X_U4.UVLO2) 10.63E+06                (X_U4.INA_OK)    0.0000                   
+
+(X_U4.INB_OK)    0.0000               (X_U4.PWMINB)    1.0000                   
+
+(X_U4.UVLO2B) 10.63E+06               (X_U4.INA_INT)    5.0420                  
+
+(X_U4.INA_OKD)    0.0000              (X_U4.INA_PRE)    0.0000                  
+
+(X_U4.INB_OKD)    0.0000              (X_U4.INB_PRE)    0.0000                  
+
+(X_U4.VCCI_INT)    5.0000             (X_U4.DRVA_PASS)    0.0000                
+
+(X_U4.DRVB_PASS)    0.0000            (X_U4.FAULT_INP)    0.0000                
+
+(X_U4.N16668890)    8.5000            (X_U4.N16668898)   -2.1250                
+
+(X_U4.N16669068)    0.0000            (X_U4.N16669308)    2.7840                
+
+(X_U4.N16669580)    0.0000            (X_U4.N16669674)    0.0000                
+
+(X_U4.N16669834)    2.7000            (X_U4.N16669842)   -2.7001                
+
+(X_U4.N16669858)    0.0000            (X_U4.N16670120) 3.500E-06                
+
+(X_U4.N16670154)    2.0000            (X_U4.N16670162)    0.0000                
+
+(X_U4.N16670228)-5.000E+06            (X_U4.N16670408)    0.0000                
+
+(X_U4.N16670672)    1.0000            (X_U4.N16670780)-99.54E-09                
+
+(X_U4.N16670790)    0.0000            (X_U4.N16670816) 22.73E-06                
+
+(X_U4.N16670888)    8.5000            (X_U4.N16670896)   -2.1250                
+
+(X_U4.N16671044)   12.0000            (X_U4.N16671166)   11.2500                
+
+(X_U4.N16671236) 77.96E-06            (X_U4.N16671468)  -50.0000                
+
+(X_U4.N16671552) 3.500E-06            (X_U4.N16671580)    2.0000                
+
+(X_U4.N16671640)-5.000E+06            (X_U4.N16671702)  -50.0000                
+
+(X_U4.N16671830)    0.0000            (X_U4.N16671850)    0.0000                
+
+(X_U4.N16672106)    1.0000            (X_U4.N16672276)    1.8000                
+
+(X_U4.N16672306)-2.250E-06            (X_U4.N16672528) 3.119E-06                
+
+(X_U4.N16672594)    0.0000            (X_U4.N16672776)  -18.0000                
+
+(X_U4.N16672784)  -27.2150            (X_U4.N16672968)  -27.2150                
+
+(X_U4.N16673112)    0.0000            (X_U4.N16673358)    0.0000                
+
+(X_U4.N16673432)    1.8000            (X_U4.N16673492)-2.250E-06                
+
+(X_U4.N16673790) 1.386E-06            (X_U4.N16698404) 50.00E-06                
+
+(X_U4.N16970878)-592.3E-06            (X_U4.N17051744) 7.576E-06                
+
+(X_U4.N17051757)    5.0000            (X_U4.N17051771)  -30.0000                
+
+(X_U4.N17088411)    2.7840            (X_U4.N17110019) 7.576E-06                
+
+(X_U4.N17110021)    5.0000            (X_U4.N17110038)-584.7E-06                
+
+(X_U4.N17127259)-592.2E-06            (X_U4.N17153666) 50.00E-06                
+
+(X_U4.N17167704)  -30.0000            (X_U4.N17167706) 50.00E-06                
+
+(X_U4.N17196585)  106.2500            (X_U4.N17198437)  106.2500                
+
+(X_U4.N17201974)  135.0000            (X_U4.N17396123)    0.0000                
+
+(X_U4.N17407797)    0.0000            (X_U4.N167201110) 10.63E+06               
+
+(X_U4.N167208610) 13.50E+06           (X_U4.N167216030) 10.63E+06               
+
+(X_U4.X_U42.YINT)    0.0000           (X_U4.X_U43.YINT)    0.0000               
+
+(X_U4.X_U44.YINT)    0.0000           (X_U4.X_U54.YINT)    5.0000               
+
+(X_U4.X_U61.YINT)    5.0000           (X_U4.X_U62.YINT)    5.0000               
+
+(X_U4.DEAD_THRESH)    5.0000          (X_U4.UVLO1_DELAYED)     .0026            
+
+(X_U4.UVLO2_DELAYED)     .0015        (X_U4.UVLO2B_DELAYED)     .0015       
+
+Resuming Simulation with the following settings
+ITL4 = 1000
+ABSTOL = 1.58e-008
+VNTOL = 0.001
+
+Convergence problem in transient analysis at Time =  1.250E-15
+         Time step =  1.250E-15, minimum allowable step size =  3.000E-15
+
+  These voltages failed to converge:
+
+    V(PWM)                    =     5.042V  \         0V
+    V(5V)                     =     5.000V  \         0V
+    V(N14559)                 =     6.000V  \         0V
+    V(N116340)                =     7.500V  \         0V
+    V(N48936)                 =    -18.00V  \         0V
+    V(VEE)                    =    -30.00V  \         0V
+    V(VCC)                    =     30.00V  \         0V
+    V(15V)                    =     15.00V  \         0V
+    V(-15V)                   =    -15.00V  \         0V
+    V(N49892)                 =    -27.22V  \         0V
+    V(LO)                     =    -27.22V  \         0V
+    V(N50062)                 =     2.784V  \         0V
+    V(HO)                     =     2.784V  \         0V
+    V(N49537)                 =    -7.052V  \         0V
+    V(N112163)                =    -30.00V  \         0V
+    V(VTRIANG)                =     6.000V  \         0V
+    V(X_U1.9)                 =    -13.20V  \         0V
+    V(X_U1.7)                 =    32.62MV  \         0V
+    V(X_U1.21)                =   450.00mV  \         0V
+    V(X_U1.22)                =     6.450V  \         0V
+    V(X_U1.8)                 =    4.113KV  \         0V
+    V(X_U1.10)                =     1.802V  \         0V
+    V(X_U1.11)                =     1.802V  \         0V
+    V(X_U2.8)                 =  -329.57MV  \         0V
+    V(X_U2.4)                 =     14.64V  \         0V
+    V(X_U2.6)                 =  -329.57MV  \         0V
+    V(X_U2.5)                 =     14.64V  \         0V
+    V(X_U2.3)                 =    1.999mV  \         0V
+    V(X_U2.7)                 =  -329.57MV  \         0V
+    V(X_U2.10)                =     12.57V  \         0V
+    V(X_U2.11)                =    -12.57V  \         0V
+    V(X_U2.60)                =  -657.74mV  \         0V
+    V(X_U2.41)                =   -40.00mV  \         0V
+    V(X_U2.42)                =    40.00mV  \         0V
+    V(X_U3.8)                 =  -329.57MV  \         0V
+    V(X_U3.4)                 =     14.64V  \         0V
+    V(X_U3.6)                 =  -329.57MV  \         0V
+    V(X_U3.5)                 =     14.64V  \         0V
+    V(X_U3.3)                 =    1.999mV  \         0V
+    V(X_U3.7)                 =  -329.57MV  \         0V
+    V(X_U3.10)                =     12.57V  \         0V
+    V(X_U3.11)                =    -12.57V  \         0V
+    V(X_U3.60)                =  -647.85mV  \         0V
+    V(X_U3.41)                =   -40.00mV  \         0V
+    V(X_U3.42)                =    40.00mV  \         0V
+    V(X_U4.N16672784)         =    -27.22V  \         0V
+    V(X_U4.PWMIN)             =     2.250V  \         0V
+    V(X_U4.INA_INT)           =     5.042V  \         0V
+    V(X_U4.N16671640)         =   -5.000MV  \         0V
+    V(X_U4.N16672106)         =     1.000V  \         0V
+    V(X_U4.UVLO1)             =    13.50MV  \         0V
+    V(X_U4.VCCI_INT)          =     5.000V  \         0V
+    V(X_U4.N16669842)         =    -2.700V  \         0V
+    V(X_U4.UVLO2)             =    10.63MV  \         0V
+    V(X_U4.N167201110)        =    10.63MV  \         0V
+    V(X_U4.UVLO2_DELAYED)     =    1.473mV  \         0V
+    V(X_U4.UVLO1_DELAYED)     =    2.599mV  \         0V
+    V(X_U4.N16672776)         =    -18.00V  \         0V
+    V(X_U4.N16668898)         =    -2.125V  \         0V
+    V(X_U4.UVLO2B)            =    10.63MV  \         0V
+    V(X_U4.UVLO2B_DELAYED)    =    1.473mV  \         0V
+    V(X_U4.N16671580)         =     2.000V  \         0V
+    V(X_U4.DEAD_THRESH)       =     5.000V  \         0V
+    V(X_U4.N167208610)        =    13.50MV  \         0V
+    V(X_U4.NO_DT)             =     5.000V  \         0V
+    V(X_U4.N16671702)         =    -50.00V  \         0V
+    V(X_U4.N16670228)         =   -5.000MV  \         0V
+    V(X_U4.N16670672)         =     1.000V  \         0V
+    V(X_U4.N16670896)         =    -2.125V  \         0V
+    V(X_U4.N16670888)         =     8.500V  \         0V
+    V(X_U4.N17198437)         =    106.25V  \         0V
+    V(X_U4.N17110021)         =     5.000V  \         0V
+    V(X_U4.N16671468)         =    -50.00V  \         0V
+    V(X_U4.N17167704)         =    -30.00V  \         0V
+    V(X_U4.N17201974)         =    135.00V  \         0V
+    V(X_U4.N16671044)         =     12.00V  \         0V
+    V(X_U4.N16669834)         =     2.700V  \         0V
+    V(X_U4.N16671166)         =     11.25V  \         0V
+    V(X_U4.PWMINB)            =     1.000V  \         0V
+    V(X_U4.N16669308)         =     2.784V  \         0V
+    V(X_U4.N16673432)         =     1.800V  \         0V
+    V(X_U4.N17051757)         =     5.000V  \         0V
+    V(X_U4.N16672968)         =    -27.22V  \         0V
+    V(X_U4.N16672276)         =     1.800V  \         0V
+    V(X_U4.N17051771)         =    -30.00V  \         0V
+    V(X_U4.N16670154)         =     2.000V  \         0V
+    V(X_U4.N17196585)         =    106.25V  \         0V
+    V(X_U4.N167216030)        =    10.63MV  \         0V
+    V(X_U4.N16668890)         =     8.500V  \         0V
+    V(X_U4.N17088411)         =     2.784V  \         0V
+    V(X_U4.X_U54.YINT)        =     5.000V  \         0V
+    V(X_U4.X_U61.YINT)        =     5.000V  \         0V
+    V(X_U4.X_U62.YINT)        =     5.000V  \         0V
+
+  These supply currents failed to converge:
+
+    I(X_U1.e1)                =   -67.24uA  \         0A
+    I(X_U2.EOS)               =   -4.367uA  \         0A
+    I(X_U3.EOS)               =   -4.367uA  \         0A
+    I(X_U4.E_ABM2)            =  -450.00mA  \         0A
+    I(X_U4.E_ABM23)           =    5.000MA  \         0A
+    I(X_U4.E_ABM1)            =   -13.50MA  \         0A
+    I(X_U4.E_ABM4)            =   -10.63MA  \         0A
+    I(X_U4.e.T_T3.eA1)        =    77.96nA  \         0A
+    I(X_U4.E_ABM24)           =    5.000MA  \         0A
+    I(X_U4.E_ABM22)           =  -200.00mA  \         0A
+    I(X_U4.E_E9)              =    -1.515A  \         0A
+    I(X_U4.E_ABM7)            =   -10.63MA  \         0A
+    I(X_U4.E_E4)              =    -1.515A  \         0A
+    I(X_U4.E_ABM8)            =    -11.25A  \         0A
+    I(X_U4.X_U54.E_ABMGATE)   =    -5.000A  \         0A
+    I(X_U4.X_U61.E_ABMGATE)   =    -5.000A  \         0A
+    I(X_U4.X_U62.E_ABMGATE)   =    -5.000A  \         0A
+    IA(X_U4.T_T3)             =    77.96nA  \         0A
+    I(V_V1)                   =   -60.00mA  \         0A
+    I(V_V8)                   =   -10.00GA  \         0A
+    I(V_V6)                   =   -10.00GA  \         0A
+    I(V_V5)                   =    -5.002A  \         0A
+    I(V_V3)                   =   -18.56mA  \         0A
+    I(V_V4)                   =   -18.58mA  \         0A
+    I(V_V7)                   =   -10.00GA  \         0A
+    I(V_V10)                  =   -60.00mA  \         0A
+    I(X_U1.vi1)               =    67.24nA  \         0A
+    I(X_U1.v1)                =    67.24uA  \         0A
+    I(X_U4.V_V8)              =  -350.00mA  \         0A
+    I(X_U4.V_V5)              =  -350.00mA  \         0A
+    I(X_U4.X_H1.VH_H1)        =     5.000A  \         0A
+
+  These devices failed to converge:
+    D_D10     D_D11     D_D12     X_U2.D8   X_U3.D8   X_U4.X_U57.d1 
+    X_U4.X_U55.d1 X_U4.X_U33.d1 X_U4.X_U56.d1 X_U4.E_ABM2 X_U4.E_ABM23 
+    X_U4.E_ABM1 X_U4.E_ABM4 X_U4.E_ABM24 X_U4.E_ABM25 X_U4.E_ABM22 X_U4.E_ABM7 
+    X_U4.E_ABM8 X_U5.M1   X_U6.M1   X_U4.X_M12.m1 X_U1.q1   X_U1.q2   X_U1.q3   
+    X_U1.q4   X_U1.q5   X_U2.Q1   X_U2.Q2   X_U3.Q1   X_U3.Q2   
+
+
+
+  Last node voltages tried were:
+
+ NODE   VOLTAGE     NODE   VOLTAGE     NODE   VOLTAGE     NODE   VOLTAGE
+
+
+(   5V)    5.0000  (   HO)    2.7840  (   LO)  -27.2150  (   VS)-592.2E-06      
+
+(  15V)   15.0000  (  OUT)-5.438E-21  (  PWM)    5.0420  (  VCC)   30.0000      
+
+(  VEE)  -30.0000  ( -15V)  -15.0000  (ERROR)-29.37E-09  (N14559)    6.0000     
+
+(N16927)-39.70E-12 (N16939)-1.165E-09 (N16945)-29.82E-09 (N48033)-29.37E-09     
+
+(N48472) 22.73E-06 (N48936)  -18.0000 (N49537)   -7.0521 (N49709)-592.3E-06     
+
+(N49892)  -27.2150 (N50062)    2.7840 (N53048)    0.0000 (N53052)    0.0000     
+
+(N53118)    0.0000 (N53142)    0.0000 (X_U1.7) 32.62E+06 (X_U1.8) 4113.3000     
+
+(X_U1.9)  -13.1980 (X_U2.3)     .0020 (X_U2.4)   14.6410 (X_U2.5)   14.6410     
+
+(X_U2.6)-329.6E+06 (X_U2.7)-329.6E+06 (X_U2.8)-329.6E+06 (X_U2.9)    0.0000     
+
+(X_U3.3)     .0020 (X_U3.4)   14.6410 (X_U3.5)   14.6410 (X_U3.6)-329.6E+06     
+
+(X_U3.7)-329.6E+06 (X_U3.8)-329.6E+06 (X_U3.9)    0.0000 (X_U7.3) 50.00E-12     
+
+(N112121)-554.7E-06                   (N112163)  -30.0000                       
+
+(N112660)-39.40E-12                   (N112667) 62.83E-12                       
+
+(N116340)    7.5000                   (VTRIANG)    6.0000                       
+
+(X_U1.10)    1.8018                   (X_U1.11)    1.8018                       
+
+(X_U1.21)     .4500                   (X_U1.22)    6.4500                       
+
+(X_U2.10)   12.5700                   (X_U2.11)  -12.5700                       
+
+(X_U2.14)-14.93E-09                   (X_U2.15)-14.92E-09                       
+
+(X_U2.31)    0.0000                   (X_U2.32)    0.0000                       
+
+(X_U2.33)    0.0000                   (X_U2.34)    0.0000                       
+
+(X_U2.35)    0.0000                   (X_U2.36)    0.0000                       
+
+(X_U2.40) 853.5E-18                   (X_U2.41)    -.0400                       
+
+(X_U2.42)     .0400                   (X_U2.45)-39.71E-12                       
+
+(X_U2.60)    -.6577                   (X_U2.61)    0.0000                       
+
+(X_U2.62)    0.0000                   (X_U2.98)    0.0000                       
+
+(X_U3.10)   12.5700                   (X_U3.11)  -12.5700                       
+
+(X_U3.14)-14.71E-09                   (X_U3.15)-14.69E-09                       
+
+(X_U3.31)    0.0000                   (X_U3.32)    0.0000                       
+
+(X_U3.33)    0.0000                   (X_U3.34)    0.0000                       
+
+(X_U3.35)    0.0000                   (X_U3.36)    0.0000                       
+
+(X_U3.40) 520.4E-18                   (X_U3.41)    -.0400                       
+
+(X_U3.42)     .0400                   (X_U3.45)-39.11E-12                       
+
+(X_U3.60)    -.6478                   (X_U3.61)    0.0000                       
+
+(X_U3.62)    0.0000                   (X_U3.98)    0.0000                       
+
+(X_U4.DIS)    0.0000                  (X_U4.DRVA)    0.0000                     
+
+(X_U4.DRVB)    0.0000                 (X_U4.NO_DT)    5.0000                    
+
+(X_U4.PWMIN)    2.2500                (X_U4.UVLO1) 13.50E+06                    
+
+(X_U4.UVLO2) 10.63E+06                (X_U4.INA_OK)    0.0000                   
+
+(X_U4.INB_OK)    0.0000               (X_U4.PWMINB)    1.0000                   
+
+(X_U4.UVLO2B) 10.63E+06               (X_U4.INA_INT)    5.0420                  
+
+(X_U4.INA_OKD)    0.0000              (X_U4.INA_PRE)    0.0000                  
+
+(X_U4.INB_OKD)    0.0000              (X_U4.INB_PRE)    0.0000                  
+
+(X_U4.VCCI_INT)    5.0000             (X_U4.DRVA_PASS)    0.0000                
+
+(X_U4.DRVB_PASS)    0.0000            (X_U4.FAULT_INP)    0.0000                
+
+(X_U4.N16668890)    8.5000            (X_U4.N16668898)   -2.1250                
+
+(X_U4.N16669068)    0.0000            (X_U4.N16669308)    2.7840                
+
+(X_U4.N16669580)    0.0000            (X_U4.N16669674)    0.0000                
+
+(X_U4.N16669834)    2.7000            (X_U4.N16669842)   -2.7001                
+
+(X_U4.N16669858)    0.0000            (X_U4.N16670120) 3.500E-06                
+
+(X_U4.N16670154)    2.0000            (X_U4.N16670162)    0.0000                
+
+(X_U4.N16670228)-5.000E+06            (X_U4.N16670408)    0.0000                
+
+(X_U4.N16670672)    1.0000            (X_U4.N16670780)-99.54E-09                
+
+(X_U4.N16670790)    0.0000            (X_U4.N16670816) 22.73E-06                
+
+(X_U4.N16670888)    8.5000            (X_U4.N16670896)   -2.1250                
+
+(X_U4.N16671044)   12.0000            (X_U4.N16671166)   11.2500                
+
+(X_U4.N16671236) 77.96E-06            (X_U4.N16671468)  -50.0000                
+
+(X_U4.N16671552) 3.500E-06            (X_U4.N16671580)    2.0000                
+
+(X_U4.N16671640)-5.000E+06            (X_U4.N16671702)  -50.0000                
+
+(X_U4.N16671830)    0.0000            (X_U4.N16671850)    0.0000                
+
+(X_U4.N16672106)    1.0000            (X_U4.N16672276)    1.8000                
+
+(X_U4.N16672306)-2.250E-06            (X_U4.N16672528) 3.119E-06                
+
+(X_U4.N16672594)    0.0000            (X_U4.N16672776)  -18.0000                
+
+(X_U4.N16672784)  -27.2150            (X_U4.N16672968)  -27.2150                
+
+(X_U4.N16673112)    0.0000            (X_U4.N16673358)    0.0000                
+
+(X_U4.N16673432)    1.8000            (X_U4.N16673492)-2.250E-06                
+
+(X_U4.N16673790) 1.386E-06            (X_U4.N16698404) 50.00E-06                
+
+(X_U4.N16970878)-592.3E-06            (X_U4.N17051744) 7.576E-06                
+
+(X_U4.N17051757)    5.0000            (X_U4.N17051771)  -30.0000                
+
+(X_U4.N17088411)    2.7840            (X_U4.N17110019) 7.576E-06                
+
+(X_U4.N17110021)    5.0000            (X_U4.N17110038)-584.7E-06                
+
+(X_U4.N17127259)-592.2E-06            (X_U4.N17153666) 50.00E-06                
+
+(X_U4.N17167704)  -30.0000            (X_U4.N17167706) 50.00E-06                
+
+(X_U4.N17196585)  106.2500            (X_U4.N17198437)  106.2500                
+
+(X_U4.N17201974)  135.0000            (X_U4.N17396123)    0.0000                
+
+(X_U4.N17407797)    0.0000            (X_U4.N167201110) 10.63E+06               
+
+(X_U4.N167208610) 13.50E+06           (X_U4.N167216030) 10.63E+06               
+
+(X_U4.X_U42.YINT)    0.0000           (X_U4.X_U43.YINT)    0.0000               
+
+(X_U4.X_U44.YINT)    0.0000           (X_U4.X_U54.YINT)    5.0000               
+
+(X_U4.X_U61.YINT)    5.0000           (X_U4.X_U62.YINT)    5.0000               
+
+(X_U4.DEAD_THRESH)    5.0000          (X_U4.UVLO1_DELAYED)     .0026            
+
+(X_U4.UVLO2_DELAYED)     .0015        (X_U4.UVLO2B_DELAYED)     .0015       
+
+Resuming Simulation with the following settings
+ABSTOL = 1e-006
+
+Convergence problem in transient analysis at Time =  1.250E-15
+         Time step =  1.250E-15, minimum allowable step size =  3.000E-15
+
+  These voltages failed to converge:
+
+    V(PWM)                    =     5.042V  \         0V
+    V(5V)                     =     5.000V  \         0V
+    V(N14559)                 =     6.000V  \         0V
+    V(N116340)                =     7.500V  \         0V
+    V(N48936)                 =    -18.00V  \         0V
+    V(VEE)                    =    -30.00V  \         0V
+    V(VCC)                    =     30.00V  \         0V
+    V(15V)                    =     15.00V  \         0V
+    V(-15V)                   =    -15.00V  \         0V
+    V(N49892)                 =    -27.22V  \         0V
+    V(LO)                     =    -27.22V  \         0V
+    V(N50062)                 =     2.784V  \         0V
+    V(HO)                     =     2.784V  \         0V
+    V(N49537)                 =    -7.052V  \         0V
+    V(N112163)                =    -30.00V  \         0V
+    V(VTRIANG)                =     6.000V  \         0V
+    V(X_U1.9)                 =    -13.20V  \         0V
+    V(X_U1.7)                 =    32.62MV  \         0V
+    V(X_U1.21)                =   450.00mV  \         0V
+    V(X_U1.22)                =     6.450V  \         0V
+    V(X_U1.8)                 =    4.113KV  \         0V
+    V(X_U1.10)                =     1.802V  \         0V
+    V(X_U1.11)                =     1.802V  \         0V
+    V(X_U2.8)                 =  -329.57MV  \         0V
+    V(X_U2.4)                 =     14.64V  \         0V
+    V(X_U2.6)                 =  -329.57MV  \         0V
+    V(X_U2.5)                 =     14.64V  \         0V
+    V(X_U2.3)                 =    1.999mV  \         0V
+    V(X_U2.7)                 =  -329.57MV  \         0V
+    V(X_U2.10)                =     12.57V  \         0V
+    V(X_U2.11)                =    -12.57V  \         0V
+    V(X_U2.60)                =  -657.74mV  \         0V
+    V(X_U2.41)                =   -40.00mV  \         0V
+    V(X_U2.42)                =    40.00mV  \         0V
+    V(X_U3.8)                 =  -329.57MV  \         0V
+    V(X_U3.4)                 =     14.64V  \         0V
+    V(X_U3.6)                 =  -329.57MV  \         0V
+    V(X_U3.5)                 =     14.64V  \         0V
+    V(X_U3.3)                 =    1.999mV  \         0V
+    V(X_U3.7)                 =  -329.57MV  \         0V
+    V(X_U3.10)                =     12.57V  \         0V
+    V(X_U3.11)                =    -12.57V  \         0V
+    V(X_U3.60)                =  -647.85mV  \         0V
+    V(X_U3.41)                =   -40.00mV  \         0V
+    V(X_U3.42)                =    40.00mV  \         0V
+    V(X_U4.N16672784)         =    -27.22V  \         0V
+    V(X_U4.PWMIN)             =     2.250V  \         0V
+    V(X_U4.INA_INT)           =     5.042V  \         0V
+    V(X_U4.N16671640)         =   -5.000MV  \         0V
+    V(X_U4.N16672106)         =     1.000V  \         0V
+    V(X_U4.UVLO1)             =    13.50MV  \         0V
+    V(X_U4.VCCI_INT)          =     5.000V  \         0V
+    V(X_U4.N16669842)         =    -2.700V  \         0V
+    V(X_U4.UVLO2)             =    10.63MV  \         0V
+    V(X_U4.N167201110)        =    10.63MV  \         0V
+    V(X_U4.UVLO2_DELAYED)     =    1.473mV  \         0V
+    V(X_U4.UVLO1_DELAYED)     =    2.599mV  \         0V
+    V(X_U4.N16672776)         =    -18.00V  \         0V
+    V(X_U4.N16668898)         =    -2.125V  \         0V
+    V(X_U4.UVLO2B)            =    10.63MV  \         0V
+    V(X_U4.UVLO2B_DELAYED)    =    1.473mV  \         0V
+    V(X_U4.N16671580)         =     2.000V  \         0V
+    V(X_U4.DEAD_THRESH)       =     5.000V  \         0V
+    V(X_U4.N167208610)        =    13.50MV  \         0V
+    V(X_U4.NO_DT)             =     5.000V  \         0V
+    V(X_U4.N16671702)         =    -50.00V  \         0V
+    V(X_U4.N16670228)         =   -5.000MV  \         0V
+    V(X_U4.N16670672)         =     1.000V  \         0V
+    V(X_U4.N16670896)         =    -2.125V  \         0V
+    V(X_U4.N16670888)         =     8.500V  \         0V
+    V(X_U4.N17198437)         =    106.25V  \         0V
+    V(X_U4.N17110021)         =     5.000V  \         0V
+    V(X_U4.N16671468)         =    -50.00V  \         0V
+    V(X_U4.N17167704)         =    -30.00V  \         0V
+    V(X_U4.N17201974)         =    135.00V  \         0V
+    V(X_U4.N16671044)         =     12.00V  \         0V
+    V(X_U4.N16669834)         =     2.700V  \         0V
+    V(X_U4.N16671166)         =     11.25V  \         0V
+    V(X_U4.PWMINB)            =     1.000V  \         0V
+    V(X_U4.N16669308)         =     2.784V  \         0V
+    V(X_U4.N16673432)         =     1.800V  \         0V
+    V(X_U4.N17051757)         =     5.000V  \         0V
+    V(X_U4.N16672968)         =    -27.22V  \         0V
+    V(X_U4.N16672276)         =     1.800V  \         0V
+    V(X_U4.N17051771)         =    -30.00V  \         0V
+    V(X_U4.N16670154)         =     2.000V  \         0V
+    V(X_U4.N17196585)         =    106.25V  \         0V
+    V(X_U4.N167216030)        =    10.63MV  \         0V
+    V(X_U4.N16668890)         =     8.500V  \         0V
+    V(X_U4.N17088411)         =     2.784V  \         0V
+    V(X_U4.X_U54.YINT)        =     5.000V  \         0V
+    V(X_U4.X_U61.YINT)        =     5.000V  \         0V
+    V(X_U4.X_U62.YINT)        =     5.000V  \         0V
+
+  These supply currents failed to converge:
+
+    I(X_U1.e1)                =   -67.24uA  \         0A
+    I(X_U2.EOS)               =   -4.367uA  \         0A
+    I(X_U3.EOS)               =   -4.367uA  \         0A
+    I(X_U4.E_ABM2)            =  -450.00mA  \         0A
+    I(X_U4.E_ABM23)           =    5.000MA  \         0A
+    I(X_U4.E_ABM1)            =   -13.50MA  \         0A
+    I(X_U4.E_ABM4)            =   -10.63MA  \         0A
+    I(X_U4.E_ABM24)           =    5.000MA  \         0A
+    I(X_U4.E_ABM22)           =  -200.00mA  \         0A
+    I(X_U4.E_E9)              =    -1.515A  \         0A
+    I(X_U4.E_ABM7)            =   -10.63MA  \         0A
+    I(X_U4.E_E4)              =    -1.515A  \         0A
+    I(X_U4.E_ABM8)            =    -11.25A  \         0A
+    I(X_U4.X_U54.E_ABMGATE)   =    -5.000A  \         0A
+    I(X_U4.X_U61.E_ABMGATE)   =    -5.000A  \         0A
+    I(X_U4.X_U62.E_ABMGATE)   =    -5.000A  \         0A
+    I(V_V1)                   =   -60.00mA  \         0A
+    I(V_V8)                   =   -10.00GA  \         0A
+    I(V_V6)                   =   -10.00GA  \         0A
+    I(V_V5)                   =    -5.002A  \         0A
+    I(V_V3)                   =   -18.56mA  \         0A
+    I(V_V4)                   =   -18.58mA  \         0A
+    I(V_V7)                   =   -10.00GA  \         0A
+    I(V_V10)                  =   -60.00mA  \         0A
+    I(X_U1.v1)                =    67.24uA  \         0A
+    I(X_U4.V_V8)              =  -350.00mA  \         0A
+    I(X_U4.V_V5)              =  -350.00mA  \         0A
+    I(X_U4.X_H1.VH_H1)        =     5.000A  \         0A
+
+  These devices failed to converge:
+    D_D10     D_D11     D_D12     X_U2.D8   X_U3.D8   X_U4.X_U57.d1 
+    X_U4.X_U55.d1 X_U4.X_U33.d1 X_U4.X_U56.d1 X_U4.E_ABM2 X_U4.E_ABM23 
+    X_U4.E_ABM1 X_U4.E_ABM4 X_U4.E_ABM24 X_U4.E_ABM25 X_U4.E_ABM22 X_U4.E_ABM7 
+    X_U4.E_ABM8 X_U5.M1   X_U6.M1   X_U4.X_M12.m1 X_U1.q1   X_U1.q2   X_U1.q3   
+    X_U1.q4   X_U1.q5   X_U2.Q1   X_U2.Q2   X_U3.Q1   X_U3.Q2   
+
+
+
+  Last node voltages tried were:
+
+ NODE   VOLTAGE     NODE   VOLTAGE     NODE   VOLTAGE     NODE   VOLTAGE
+
+
+(   5V)    5.0000  (   HO)    2.7840  (   LO)  -27.2150  (   VS)-592.2E-06      
+
+(  15V)   15.0000  (  OUT)-5.438E-21  (  PWM)    5.0420  (  VCC)   30.0000      
+
+(  VEE)  -30.0000  ( -15V)  -15.0000  (ERROR)-29.37E-09  (N14559)    6.0000     
+
+(N16927)-39.70E-12 (N16939)-1.165E-09 (N16945)-29.82E-09 (N48033)-29.37E-09     
+
+(N48472) 22.73E-06 (N48936)  -18.0000 (N49537)   -7.0521 (N49709)-592.3E-06     
+
+(N49892)  -27.2150 (N50062)    2.7840 (N53048)    0.0000 (N53052)    0.0000     
+
+(N53118)    0.0000 (N53142)    0.0000 (X_U1.7) 32.62E+06 (X_U1.8) 4113.3000     
+
+(X_U1.9)  -13.1980 (X_U2.3)     .0020 (X_U2.4)   14.6410 (X_U2.5)   14.6410     
+
+(X_U2.6)-329.6E+06 (X_U2.7)-329.6E+06 (X_U2.8)-329.6E+06 (X_U2.9)    0.0000     
+
+(X_U3.3)     .0020 (X_U3.4)   14.6410 (X_U3.5)   14.6410 (X_U3.6)-329.6E+06     
+
+(X_U3.7)-329.6E+06 (X_U3.8)-329.6E+06 (X_U3.9)    0.0000 (X_U7.3) 50.00E-12     
+
+(N112121)-554.7E-06                   (N112163)  -30.0000                       
+
+(N112660)-39.40E-12                   (N112667) 62.83E-12                       
+
+(N116340)    7.5000                   (VTRIANG)    6.0000                       
+
+(X_U1.10)    1.8018                   (X_U1.11)    1.8018                       
+
+(X_U1.21)     .4500                   (X_U1.22)    6.4500                       
+
+(X_U2.10)   12.5700                   (X_U2.11)  -12.5700                       
+
+(X_U2.14)-14.93E-09                   (X_U2.15)-14.92E-09                       
+
+(X_U2.31)    0.0000                   (X_U2.32)    0.0000                       
+
+(X_U2.33)    0.0000                   (X_U2.34)    0.0000                       
+
+(X_U2.35)    0.0000                   (X_U2.36)    0.0000                       
+
+(X_U2.40) 853.5E-18                   (X_U2.41)    -.0400                       
+
+(X_U2.42)     .0400                   (X_U2.45)-39.71E-12                       
+
+(X_U2.60)    -.6577                   (X_U2.61)    0.0000                       
+
+(X_U2.62)    0.0000                   (X_U2.98)    0.0000                       
+
+(X_U3.10)   12.5700                   (X_U3.11)  -12.5700                       
+
+(X_U3.14)-14.71E-09                   (X_U3.15)-14.69E-09                       
+
+(X_U3.31)    0.0000                   (X_U3.32)    0.0000                       
+
+(X_U3.33)    0.0000                   (X_U3.34)    0.0000                       
+
+(X_U3.35)    0.0000                   (X_U3.36)    0.0000                       
+
+(X_U3.40) 520.4E-18                   (X_U3.41)    -.0400                       
+
+(X_U3.42)     .0400                   (X_U3.45)-39.11E-12                       
+
+(X_U3.60)    -.6478                   (X_U3.61)    0.0000                       
+
+(X_U3.62)    0.0000                   (X_U3.98)    0.0000                       
+
+(X_U4.DIS)    0.0000                  (X_U4.DRVA)    0.0000                     
+
+(X_U4.DRVB)    0.0000                 (X_U4.NO_DT)    5.0000                    
+
+(X_U4.PWMIN)    2.2500                (X_U4.UVLO1) 13.50E+06                    
+
+(X_U4.UVLO2) 10.63E+06                (X_U4.INA_OK)    0.0000                   
+
+(X_U4.INB_OK)    0.0000               (X_U4.PWMINB)    1.0000                   
+
+(X_U4.UVLO2B) 10.63E+06               (X_U4.INA_INT)    5.0420                  
+
+(X_U4.INA_OKD)    0.0000              (X_U4.INA_PRE)    0.0000                  
+
+(X_U4.INB_OKD)    0.0000              (X_U4.INB_PRE)    0.0000                  
+
+(X_U4.VCCI_INT)    5.0000             (X_U4.DRVA_PASS)    0.0000                
+
+(X_U4.DRVB_PASS)    0.0000            (X_U4.FAULT_INP)    0.0000                
+
+(X_U4.N16668890)    8.5000            (X_U4.N16668898)   -2.1250                
+
+(X_U4.N16669068)    0.0000            (X_U4.N16669308)    2.7840                
+
+(X_U4.N16669580)    0.0000            (X_U4.N16669674)    0.0000                
+
+(X_U4.N16669834)    2.7000            (X_U4.N16669842)   -2.7001                
+
+(X_U4.N16669858)    0.0000            (X_U4.N16670120) 3.500E-06                
+
+(X_U4.N16670154)    2.0000            (X_U4.N16670162)    0.0000                
+
+(X_U4.N16670228)-5.000E+06            (X_U4.N16670408)    0.0000                
+
+(X_U4.N16670672)    1.0000            (X_U4.N16670780)-99.54E-09                
+
+(X_U4.N16670790)    0.0000            (X_U4.N16670816) 22.73E-06                
+
+(X_U4.N16670888)    8.5000            (X_U4.N16670896)   -2.1250                
+
+(X_U4.N16671044)   12.0000            (X_U4.N16671166)   11.2500                
+
+(X_U4.N16671236) 77.96E-06            (X_U4.N16671468)  -50.0000                
+
+(X_U4.N16671552) 3.500E-06            (X_U4.N16671580)    2.0000                
+
+(X_U4.N16671640)-5.000E+06            (X_U4.N16671702)  -50.0000                
+
+(X_U4.N16671830)    0.0000            (X_U4.N16671850)    0.0000                
+
+(X_U4.N16672106)    1.0000            (X_U4.N16672276)    1.8000                
+
+(X_U4.N16672306)-2.250E-06            (X_U4.N16672528) 3.119E-06                
+
+(X_U4.N16672594)    0.0000            (X_U4.N16672776)  -18.0000                
+
+(X_U4.N16672784)  -27.2150            (X_U4.N16672968)  -27.2150                
+
+(X_U4.N16673112)    0.0000            (X_U4.N16673358)    0.0000                
+
+(X_U4.N16673432)    1.8000            (X_U4.N16673492)-2.250E-06                
+
+(X_U4.N16673790) 1.386E-06            (X_U4.N16698404) 50.00E-06                
+
+(X_U4.N16970878)-514.9E-06            (X_U4.N17051744) 7.576E-06                
+
+(X_U4.N17051757)    5.0000            (X_U4.N17051771)  -30.0000                
+
+(X_U4.N17088411)    2.7840            (X_U4.N17110019) 7.576E-06                
+
+(X_U4.N17110021)    5.0000            (X_U4.N17110038)-584.7E-06                
+
+(X_U4.N17127259)-592.2E-06            (X_U4.N17153666) 50.00E-06                
+
+(X_U4.N17167704)  -30.0000            (X_U4.N17167706) 50.00E-06                
+
+(X_U4.N17196585)  106.2500            (X_U4.N17198437)  106.2500                
+
+(X_U4.N17201974)  135.0000            (X_U4.N17396123)    0.0000                
+
+(X_U4.N17407797)    0.0000            (X_U4.N167201110) 10.63E+06               
+
+(X_U4.N167208610) 13.50E+06           (X_U4.N167216030) 10.63E+06               
+
+(X_U4.X_U42.YINT)    0.0000           (X_U4.X_U43.YINT)    0.0000               
+
+(X_U4.X_U44.YINT)    0.0000           (X_U4.X_U54.YINT)    5.0000               
+
+(X_U4.X_U61.YINT)    5.0000           (X_U4.X_U62.YINT)    5.0000               
+
+(X_U4.DEAD_THRESH)    5.0000          (X_U4.UVLO1_DELAYED)     .0026            
+
+(X_U4.UVLO2_DELAYED)     .0015        (X_U4.UVLO2B_DELAYED)     .0015       
+
+Resuming Simulation with the following settings
+RELTOL = 0.0086
+
+Convergence problem in transient analysis at Time =  1.250E-15
+         Time step =  1.250E-15, minimum allowable step size =  3.000E-15
+
+  These voltages failed to converge:
+
+    V(PWM)                    =     5.042V  \         0V
+    V(5V)                     =     5.000V  \         0V
+    V(N14559)                 =     6.000V  \         0V
+    V(N116340)                =     7.500V  \         0V
+    V(N48936)                 =    -18.00V  \         0V
+    V(VEE)                    =    -30.00V  \         0V
+    V(VCC)                    =     30.00V  \         0V
+    V(15V)                    =     15.00V  \         0V
+    V(-15V)                   =    -15.00V  \         0V
+    V(N49892)                 =    -27.22V  \         0V
+    V(LO)                     =    -27.22V  \         0V
+    V(N50062)                 =     2.784V  \         0V
+    V(HO)                     =     2.784V  \         0V
+    V(N49537)                 =    -7.052V  \         0V
+    V(N112163)                =    -30.00V  \         0V
+    V(VTRIANG)                =     6.000V  \         0V
+    V(X_U1.9)                 =    -13.20V  \         0V
+    V(X_U1.7)                 =    32.62MV  \         0V
+    V(X_U1.21)                =   450.00mV  \         0V
+    V(X_U1.22)                =     6.450V  \         0V
+    V(X_U1.8)                 =    4.113KV  \         0V
+    V(X_U1.10)                =     1.802V  \         0V
+    V(X_U1.11)                =     1.802V  \         0V
+    V(X_U2.8)                 =  -329.57MV  \         0V
+    V(X_U2.4)                 =     14.64V  \         0V
+    V(X_U2.6)                 =  -329.57MV  \         0V
+    V(X_U2.5)                 =     14.64V  \         0V
+    V(X_U2.3)                 =    1.999mV  \         0V
+    V(X_U2.7)                 =  -329.57MV  \         0V
+    V(X_U2.10)                =     12.57V  \         0V
+    V(X_U2.11)                =    -12.57V  \         0V
+    V(X_U2.60)                =  -657.74mV  \         0V
+    V(X_U2.41)                =   -40.00mV  \         0V
+    V(X_U2.42)                =    40.00mV  \         0V
+    V(X_U3.8)                 =  -329.57MV  \         0V
+    V(X_U3.4)                 =     14.64V  \         0V
+    V(X_U3.6)                 =  -329.57MV  \         0V
+    V(X_U3.5)                 =     14.64V  \         0V
+    V(X_U3.3)                 =    1.999mV  \         0V
+    V(X_U3.7)                 =  -329.57MV  \         0V
+    V(X_U3.10)                =     12.57V  \         0V
+    V(X_U3.11)                =    -12.57V  \         0V
+    V(X_U3.60)                =  -647.85mV  \         0V
+    V(X_U3.41)                =   -40.00mV  \         0V
+    V(X_U3.42)                =    40.00mV  \         0V
+    V(X_U4.N16672784)         =    -27.22V  \         0V
+    V(X_U4.PWMIN)             =     2.250V  \         0V
+    V(X_U4.INA_INT)           =     5.042V  \         0V
+    V(X_U4.N16671640)         =   -5.000MV  \         0V
+    V(X_U4.N16672106)         =     1.000V  \         0V
+    V(X_U4.UVLO1)             =    13.50MV  \         0V
+    V(X_U4.VCCI_INT)          =     5.000V  \         0V
+    V(X_U4.N16669842)         =    -2.700V  \         0V
+    V(X_U4.UVLO2)             =    10.63MV  \         0V
+    V(X_U4.N167201110)        =    10.63MV  \         0V
+    V(X_U4.UVLO2_DELAYED)     =    1.473mV  \         0V
+    V(X_U4.UVLO1_DELAYED)     =    2.599mV  \         0V
+    V(X_U4.N16672776)         =    -18.00V  \         0V
+    V(X_U4.N16668898)         =    -2.125V  \         0V
+    V(X_U4.UVLO2B)            =    10.63MV  \         0V
+    V(X_U4.UVLO2B_DELAYED)    =    1.473mV  \         0V
+    V(X_U4.N16671580)         =     2.000V  \         0V
+    V(X_U4.DEAD_THRESH)       =     5.000V  \         0V
+    V(X_U4.N167208610)        =    13.50MV  \         0V
+    V(X_U4.NO_DT)             =     5.000V  \         0V
+    V(X_U4.N16671702)         =    -50.00V  \         0V
+    V(X_U4.N16670228)         =   -5.000MV  \         0V
+    V(X_U4.N16670672)         =     1.000V  \         0V
+    V(X_U4.N16670896)         =    -2.125V  \         0V
+    V(X_U4.N16670888)         =     8.500V  \         0V
+    V(X_U4.N17198437)         =    106.25V  \         0V
+    V(X_U4.N17110021)         =     5.000V  \         0V
+    V(X_U4.N16671468)         =    -50.00V  \         0V
+    V(X_U4.N17167704)         =    -30.00V  \         0V
+    V(X_U4.N17201974)         =    135.00V  \         0V
+    V(X_U4.N16671044)         =     12.00V  \         0V
+    V(X_U4.N16669834)         =     2.700V  \         0V
+    V(X_U4.N16671166)         =     11.25V  \         0V
+    V(X_U4.PWMINB)            =     1.000V  \         0V
+    V(X_U4.N16669308)         =     2.784V  \         0V
+    V(X_U4.N16673432)         =     1.800V  \         0V
+    V(X_U4.N17051757)         =     5.000V  \         0V
+    V(X_U4.N16672968)         =    -27.22V  \         0V
+    V(X_U4.N16672276)         =     1.800V  \         0V
+    V(X_U4.N17051771)         =    -30.00V  \         0V
+    V(X_U4.N16670154)         =     2.000V  \         0V
+    V(X_U4.N17196585)         =    106.25V  \         0V
+    V(X_U4.N167216030)        =    10.63MV  \         0V
+    V(X_U4.N16668890)         =     8.500V  \         0V
+    V(X_U4.N17088411)         =     2.784V  \         0V
+    V(X_U4.X_U54.YINT)        =     5.000V  \         0V
+    V(X_U4.X_U61.YINT)        =     5.000V  \         0V
+    V(X_U4.X_U62.YINT)        =     5.000V  \         0V
+
+  These supply currents failed to converge:
+
+    I(X_U1.e1)                =   -67.24uA  \         0A
+    I(X_U2.EOS)               =   -4.367uA  \         0A
+    I(X_U3.EOS)               =   -4.367uA  \         0A
+    I(X_U4.E_ABM2)            =  -450.00mA  \         0A
+    I(X_U4.E_ABM23)           =    5.000MA  \         0A
+    I(X_U4.E_ABM1)            =   -13.50MA  \         0A
+    I(X_U4.E_ABM4)            =   -10.63MA  \         0A
+    I(X_U4.E_ABM24)           =    5.000MA  \         0A
+    I(X_U4.E_ABM22)           =  -200.00mA  \         0A
+    I(X_U4.E_E9)              =    -1.515A  \         0A
+    I(X_U4.E_ABM7)            =   -10.63MA  \         0A
+    I(X_U4.E_E4)              =    -1.515A  \         0A
+    I(X_U4.E_ABM8)            =    -11.25A  \         0A
+    I(X_U4.X_U54.E_ABMGATE)   =    -5.000A  \         0A
+    I(X_U4.X_U61.E_ABMGATE)   =    -5.000A  \         0A
+    I(X_U4.X_U62.E_ABMGATE)   =    -5.000A  \         0A
+    I(V_V1)                   =   -60.00mA  \         0A
+    I(V_V8)                   =   -10.00GA  \         0A
+    I(V_V6)                   =   -10.00GA  \         0A
+    I(V_V5)                   =    -5.002A  \         0A
+    I(V_V3)                   =   -18.56mA  \         0A
+    I(V_V4)                   =   -18.58mA  \         0A
+    I(V_V7)                   =   -10.00GA  \         0A
+    I(V_V10)                  =   -60.00mA  \         0A
+    I(X_U1.v1)                =    67.24uA  \         0A
+    I(X_U4.V_V8)              =  -350.00mA  \         0A
+    I(X_U4.V_V5)              =  -350.00mA  \         0A
+    I(X_U4.X_H1.VH_H1)        =     5.000A  \         0A
+
+  These devices failed to converge:
+    D_D10     D_D11     D_D12     X_U2.D8   X_U3.D8   X_U4.X_U57.d1 
+    X_U4.X_U55.d1 X_U4.X_U33.d1 X_U4.X_U56.d1 X_U4.E_ABM2 X_U4.E_ABM23 
+    X_U4.E_ABM1 X_U4.E_ABM4 X_U4.E_ABM24 X_U4.E_ABM25 X_U4.E_ABM22 X_U4.E_ABM7 
+    X_U4.E_ABM8 X_U5.M1   X_U6.M1   X_U4.X_M12.m1 X_U1.q1   X_U1.q2   X_U1.q3   
+    X_U1.q4   X_U1.q5   X_U2.Q1   X_U2.Q2   X_U3.Q1   X_U3.Q2   
+
+
+
+  Last node voltages tried were:
+
+ NODE   VOLTAGE     NODE   VOLTAGE     NODE   VOLTAGE     NODE   VOLTAGE
+
+
+(   5V)    5.0000  (   HO)    2.7840  (   LO)  -27.2150  (   VS)-592.2E-06      
+
+(  15V)   15.0000  (  OUT)-5.438E-21  (  PWM)    5.0420  (  VCC)   30.0000      
+
+(  VEE)  -30.0000  ( -15V)  -15.0000  (ERROR)-29.37E-09  (N14559)    6.0000     
+
+(N16927)-39.70E-12 (N16939)-1.165E-09 (N16945)-29.82E-09 (N48033)-29.37E-09     
+
+(N48472) 22.73E-06 (N48936)  -18.0000 (N49537)   -7.0521 (N49709)-592.3E-06     
+
+(N49892)  -27.2150 (N50062)    2.7840 (N53048)    0.0000 (N53052)    0.0000     
+
+(N53118)    0.0000 (N53142)    0.0000 (X_U1.7) 32.62E+06 (X_U1.8) 4113.3000     
+
+(X_U1.9)  -13.1980 (X_U2.3)     .0020 (X_U2.4)   14.6410 (X_U2.5)   14.6410     
+
+(X_U2.6)-329.6E+06 (X_U2.7)-329.6E+06 (X_U2.8)-329.6E+06 (X_U2.9)    0.0000     
+
+(X_U3.3)     .0020 (X_U3.4)   14.6410 (X_U3.5)   14.6410 (X_U3.6)-329.6E+06     
+
+(X_U3.7)-329.6E+06 (X_U3.8)-329.6E+06 (X_U3.9)    0.0000 (X_U7.3) 50.00E-12     
+
+(N112121)-554.7E-06                   (N112163)  -30.0000                       
+
+(N112660)-39.40E-12                   (N112667) 62.83E-12                       
+
+(N116340)    7.5000                   (VTRIANG)    6.0000                       
+
+(X_U1.10)    1.8018                   (X_U1.11)    1.8018                       
+
+(X_U1.21)     .4500                   (X_U1.22)    6.4500                       
+
+(X_U2.10)   12.5700                   (X_U2.11)  -12.5700                       
+
+(X_U2.14)-14.93E-09                   (X_U2.15)-14.92E-09                       
+
+(X_U2.31)    0.0000                   (X_U2.32)    0.0000                       
+
+(X_U2.33)    0.0000                   (X_U2.34)    0.0000                       
+
+(X_U2.35)    0.0000                   (X_U2.36)    0.0000                       
+
+(X_U2.40) 853.5E-18                   (X_U2.41)    -.0400                       
+
+(X_U2.42)     .0400                   (X_U2.45)-39.71E-12                       
+
+(X_U2.60)    -.6577                   (X_U2.61)    0.0000                       
+
+(X_U2.62)    0.0000                   (X_U2.98)    0.0000                       
+
+(X_U3.10)   12.5700                   (X_U3.11)  -12.5700                       
+
+(X_U3.14)-14.71E-09                   (X_U3.15)-14.69E-09                       
+
+(X_U3.31)    0.0000                   (X_U3.32)    0.0000                       
+
+(X_U3.33)    0.0000                   (X_U3.34)    0.0000                       
+
+(X_U3.35)    0.0000                   (X_U3.36)    0.0000                       
+
+(X_U3.40) 520.4E-18                   (X_U3.41)    -.0400                       
+
+(X_U3.42)     .0400                   (X_U3.45)-39.11E-12                       
+
+(X_U3.60)    -.6478                   (X_U3.61)    0.0000                       
+
+(X_U3.62)    0.0000                   (X_U3.98)    0.0000                       
+
+(X_U4.DIS)    0.0000                  (X_U4.DRVA)    0.0000                     
+
+(X_U4.DRVB)    0.0000                 (X_U4.NO_DT)    5.0000                    
+
+(X_U4.PWMIN)    2.2500                (X_U4.UVLO1) 13.50E+06                    
+
+(X_U4.UVLO2) 10.63E+06                (X_U4.INA_OK)    0.0000                   
+
+(X_U4.INB_OK)    0.0000               (X_U4.PWMINB)    1.0000                   
+
+(X_U4.UVLO2B) 10.63E+06               (X_U4.INA_INT)    5.0420                  
+
+(X_U4.INA_OKD)    0.0000              (X_U4.INA_PRE)    0.0000                  
+
+(X_U4.INB_OKD)    0.0000              (X_U4.INB_PRE)    0.0000                  
+
+(X_U4.VCCI_INT)    5.0000             (X_U4.DRVA_PASS)    0.0000                
+
+(X_U4.DRVB_PASS)    0.0000            (X_U4.FAULT_INP)    0.0000                
+
+(X_U4.N16668890)    8.5000            (X_U4.N16668898)   -2.1250                
+
+(X_U4.N16669068)    0.0000            (X_U4.N16669308)    2.7840                
+
+(X_U4.N16669580)    0.0000            (X_U4.N16669674)    0.0000                
+
+(X_U4.N16669834)    2.7000            (X_U4.N16669842)   -2.7001                
+
+(X_U4.N16669858)    0.0000            (X_U4.N16670120) 3.500E-06                
+
+(X_U4.N16670154)    2.0000            (X_U4.N16670162)    0.0000                
+
+(X_U4.N16670228)-5.000E+06            (X_U4.N16670408)    0.0000                
+
+(X_U4.N16670672)    1.0000            (X_U4.N16670780)-99.54E-09                
+
+(X_U4.N16670790)    0.0000            (X_U4.N16670816) 22.73E-06                
+
+(X_U4.N16670888)    8.5000            (X_U4.N16670896)   -2.1250                
+
+(X_U4.N16671044)   12.0000            (X_U4.N16671166)   11.2500                
+
+(X_U4.N16671236) 77.96E-06            (X_U4.N16671468)  -50.0000                
+
+(X_U4.N16671552) 3.500E-06            (X_U4.N16671580)    2.0000                
+
+(X_U4.N16671640)-5.000E+06            (X_U4.N16671702)  -50.0000                
+
+(X_U4.N16671830)    0.0000            (X_U4.N16671850)    0.0000                
+
+(X_U4.N16672106)    1.0000            (X_U4.N16672276)    1.8000                
+
+(X_U4.N16672306)-2.250E-06            (X_U4.N16672528) 3.119E-06                
+
+(X_U4.N16672594)    0.0000            (X_U4.N16672776)  -18.0000                
+
+(X_U4.N16672784)  -27.2150            (X_U4.N16672968)  -27.2150                
+
+(X_U4.N16673112)    0.0000            (X_U4.N16673358)    0.0000                
+
+(X_U4.N16673432)    1.8000            (X_U4.N16673492)-2.250E-06                
+
+(X_U4.N16673790) 1.386E-06            (X_U4.N16698404) 50.00E-06                
+
+(X_U4.N16970878)-514.9E-06            (X_U4.N17051744) 7.576E-06                
+
+(X_U4.N17051757)    5.0000            (X_U4.N17051771)  -30.0000                
+
+(X_U4.N17088411)    2.7840            (X_U4.N17110019) 7.576E-06                
+
+(X_U4.N17110021)    5.0000            (X_U4.N17110038)-584.7E-06                
+
+(X_U4.N17127259)-592.2E-06            (X_U4.N17153666) 50.00E-06                
+
+(X_U4.N17167704)  -30.0000            (X_U4.N17167706) 50.00E-06                
+
+(X_U4.N17196585)  106.2500            (X_U4.N17198437)  106.2500                
+
+(X_U4.N17201974)  135.0000            (X_U4.N17396123)    0.0000                
+
+(X_U4.N17407797)    0.0000            (X_U4.N167201110) 10.63E+06               
+
+(X_U4.N167208610) 13.50E+06           (X_U4.N167216030) 10.63E+06               
+
+(X_U4.X_U42.YINT)    0.0000           (X_U4.X_U43.YINT)    0.0000               
+
+(X_U4.X_U44.YINT)    0.0000           (X_U4.X_U54.YINT)    5.0000               
+
+(X_U4.X_U61.YINT)    5.0000           (X_U4.X_U62.YINT)    5.0000               
+
+(X_U4.DEAD_THRESH)    5.0000          (X_U4.UVLO1_DELAYED)     .0026            
+
+(X_U4.UVLO2_DELAYED)     .0015        (X_U4.UVLO2B_DELAYED)     .0015       
+
+Resuming Simulation with the following settings
+RELTOL = 0.05
+
+Convergence problem in transient analysis at Time =  1.250E-15
+         Time step =  1.250E-15, minimum allowable step size =  3.000E-15
+
+  These voltages failed to converge:
+
+    V(PWM)                    =     5.042V  \         0V
+    V(5V)                     =     5.000V  \         0V
+    V(N14559)                 =     6.000V  \         0V
+    V(N116340)                =     7.500V  \         0V
+    V(N48936)                 =    -18.00V  \         0V
+    V(VEE)                    =    -30.00V  \         0V
+    V(VCC)                    =     30.00V  \         0V
+    V(15V)                    =     15.00V  \         0V
+    V(-15V)                   =    -15.00V  \         0V
+    V(N49892)                 =    -27.22V  \         0V
+    V(LO)                     =    -27.22V  \         0V
+    V(N50062)                 =     2.784V  \         0V
+    V(HO)                     =     2.784V  \         0V
+    V(N49537)                 =    -7.052V  \         0V
+    V(N112163)                =    -30.00V  \         0V
+    V(VTRIANG)                =     6.000V  \         0V
+    V(X_U1.9)                 =    -13.20V  \         0V
+    V(X_U1.7)                 =    32.62MV  \         0V
+    V(X_U1.21)                =   450.00mV  \         0V
+    V(X_U1.22)                =     6.450V  \         0V
+    V(X_U1.8)                 =    4.113KV  \         0V
+    V(X_U1.10)                =     1.802V  \         0V
+    V(X_U1.11)                =     1.802V  \         0V
+    V(X_U2.8)                 =  -329.57MV  \         0V
+    V(X_U2.4)                 =     14.64V  \         0V
+    V(X_U2.6)                 =  -329.57MV  \         0V
+    V(X_U2.5)                 =     14.64V  \         0V
+    V(X_U2.3)                 =    1.999mV  \         0V
+    V(X_U2.7)                 =  -329.57MV  \         0V
+    V(X_U2.10)                =     12.57V  \         0V
+    V(X_U2.11)                =    -12.57V  \         0V
+    V(X_U2.60)                =  -657.74mV  \         0V
+    V(X_U2.41)                =   -40.00mV  \         0V
+    V(X_U2.42)                =    40.00mV  \         0V
+    V(X_U3.8)                 =  -329.57MV  \         0V
+    V(X_U3.4)                 =     14.64V  \         0V
+    V(X_U3.6)                 =  -329.57MV  \         0V
+    V(X_U3.5)                 =     14.64V  \         0V
+    V(X_U3.3)                 =    1.999mV  \         0V
+    V(X_U3.7)                 =  -329.57MV  \         0V
+    V(X_U3.10)                =     12.57V  \         0V
+    V(X_U3.11)                =    -12.57V  \         0V
+    V(X_U3.60)                =  -647.85mV  \         0V
+    V(X_U3.41)                =   -40.00mV  \         0V
+    V(X_U3.42)                =    40.00mV  \         0V
+    V(X_U4.N16672784)         =    -27.22V  \         0V
+    V(X_U4.PWMIN)             =     2.250V  \         0V
+    V(X_U4.INA_INT)           =     5.042V  \         0V
+    V(X_U4.N16671640)         =   -5.000MV  \         0V
+    V(X_U4.N16672106)         =     1.000V  \         0V
+    V(X_U4.UVLO1)             =    13.50MV  \         0V
+    V(X_U4.VCCI_INT)          =     5.000V  \         0V
+    V(X_U4.N16669842)         =    -2.700V  \         0V
+    V(X_U4.UVLO2)             =    10.63MV  \         0V
+    V(X_U4.N167201110)        =    10.63MV  \         0V
+    V(X_U4.UVLO2_DELAYED)     =    1.473mV  \         0V
+    V(X_U4.UVLO1_DELAYED)     =    2.599mV  \         0V
+    V(X_U4.N16672776)         =    -18.00V  \         0V
+    V(X_U4.N16668898)         =    -2.125V  \         0V
+    V(X_U4.UVLO2B)            =    10.63MV  \         0V
+    V(X_U4.UVLO2B_DELAYED)    =    1.473mV  \         0V
+    V(X_U4.N16671580)         =     2.000V  \         0V
+    V(X_U4.DEAD_THRESH)       =     5.000V  \         0V
+    V(X_U4.N167208610)        =    13.50MV  \         0V
+    V(X_U4.NO_DT)             =     5.000V  \         0V
+    V(X_U4.N16671702)         =    -50.00V  \         0V
+    V(X_U4.N16670228)         =   -5.000MV  \         0V
+    V(X_U4.N16670672)         =     1.000V  \         0V
+    V(X_U4.N16670896)         =    -2.125V  \         0V
+    V(X_U4.N16670888)         =     8.500V  \         0V
+    V(X_U4.N17198437)         =    106.25V  \         0V
+    V(X_U4.N17110021)         =     5.000V  \         0V
+    V(X_U4.N16671468)         =    -50.00V  \         0V
+    V(X_U4.N17167704)         =    -30.00V  \         0V
+    V(X_U4.N17201974)         =    135.00V  \         0V
+    V(X_U4.N16671044)         =     12.00V  \         0V
+    V(X_U4.N16669834)         =     2.700V  \         0V
+    V(X_U4.N16671166)         =     11.25V  \         0V
+    V(X_U4.PWMINB)            =     1.000V  \         0V
+    V(X_U4.N16669308)         =     2.784V  \         0V
+    V(X_U4.N16673432)         =     1.800V  \         0V
+    V(X_U4.N17051757)         =     5.000V  \         0V
+    V(X_U4.N16672968)         =    -27.22V  \         0V
+    V(X_U4.N16672276)         =     1.800V  \         0V
+    V(X_U4.N17051771)         =    -30.00V  \         0V
+    V(X_U4.N16670154)         =     2.000V  \         0V
+    V(X_U4.N17196585)         =    106.25V  \         0V
+    V(X_U4.N167216030)        =    10.63MV  \         0V
+    V(X_U4.N16668890)         =     8.500V  \         0V
+    V(X_U4.N17088411)         =     2.784V  \         0V
+    V(X_U4.X_U54.YINT)        =     5.000V  \         0V
+    V(X_U4.X_U61.YINT)        =     5.000V  \         0V
+    V(X_U4.X_U62.YINT)        =     5.000V  \         0V
+
+  These supply currents failed to converge:
+
+    I(X_U1.e1)                =   -67.24uA  \         0A
+    I(X_U2.EOS)               =   -4.367uA  \         0A
+    I(X_U3.EOS)               =   -4.367uA  \         0A
+    I(X_U4.E_ABM2)            =  -450.00mA  \         0A
+    I(X_U4.E_ABM23)           =    5.000MA  \         0A
+    I(X_U4.E_ABM1)            =   -13.50MA  \         0A
+    I(X_U4.E_ABM4)            =   -10.63MA  \         0A
+    I(X_U4.E_ABM24)           =    5.000MA  \         0A
+    I(X_U4.E_ABM22)           =  -200.00mA  \         0A
+    I(X_U4.E_E9)              =    -1.515A  \         0A
+    I(X_U4.E_ABM7)            =   -10.63MA  \         0A
+    I(X_U4.E_E4)              =    -1.515A  \         0A
+    I(X_U4.E_ABM8)            =    -11.25A  \         0A
+    I(X_U4.X_U54.E_ABMGATE)   =    -5.000A  \         0A
+    I(X_U4.X_U61.E_ABMGATE)   =    -5.000A  \         0A
+    I(X_U4.X_U62.E_ABMGATE)   =    -5.000A  \         0A
+    I(V_V1)                   =   -60.00mA  \         0A
+    I(V_V8)                   =   -10.00GA  \         0A
+    I(V_V6)                   =   -10.00GA  \         0A
+    I(V_V5)                   =    -5.002A  \         0A
+    I(V_V3)                   =   -18.56mA  \         0A
+    I(V_V4)                   =   -18.58mA  \         0A
+    I(V_V7)                   =   -10.00GA  \         0A
+    I(V_V10)                  =   -60.00mA  \         0A
+    I(X_U1.v1)                =    67.24uA  \         0A
+    I(X_U4.V_V8)              =  -350.00mA  \         0A
+    I(X_U4.V_V5)              =  -350.00mA  \         0A
+    I(X_U4.X_H1.VH_H1)        =     5.000A  \         0A
+
+  These devices failed to converge:
+    D_D10     D_D11     D_D12     X_U2.D8   X_U3.D8   X_U4.X_U57.d1 
+    X_U4.X_U55.d1 X_U4.X_U33.d1 X_U4.X_U56.d1 X_U4.E_ABM2 X_U4.E_ABM23 
+    X_U4.E_ABM1 X_U4.E_ABM4 X_U4.E_ABM24 X_U4.E_ABM25 X_U4.E_ABM22 X_U4.E_ABM7 
+    X_U4.E_ABM8 X_U5.M1   X_U6.M1   X_U4.X_M12.m1 X_U1.q1   X_U1.q2   X_U1.q3   
+    X_U1.q4   X_U1.q5   X_U2.Q1   X_U2.Q2   X_U3.Q1   X_U3.Q2   
+
+
+
+  Last node voltages tried were:
+
+ NODE   VOLTAGE     NODE   VOLTAGE     NODE   VOLTAGE     NODE   VOLTAGE
+
+
+(   5V)    5.0000  (   HO)    2.7840  (   LO)  -27.2150  (   VS)-592.2E-06      
+
+(  15V)   15.0000  (  OUT)-5.438E-21  (  PWM)    5.0420  (  VCC)   30.0000      
+
+(  VEE)  -30.0000  ( -15V)  -15.0000  (ERROR)-29.37E-09  (N14559)    6.0000     
+
+(N16927)-39.70E-12 (N16939)-1.165E-09 (N16945)-29.82E-09 (N48033)-29.37E-09     
+
+(N48472) 22.73E-06 (N48936)  -18.0000 (N49537)   -7.0521 (N49709)-592.3E-06     
+
+(N49892)  -27.2150 (N50062)    2.7840 (N53048)    0.0000 (N53052)    0.0000     
+
+(N53118)    0.0000 (N53142)    0.0000 (X_U1.7) 32.62E+06 (X_U1.8) 4113.3000     
+
+(X_U1.9)  -13.1980 (X_U2.3)     .0020 (X_U2.4)   14.6410 (X_U2.5)   14.6410     
+
+(X_U2.6)-329.6E+06 (X_U2.7)-329.6E+06 (X_U2.8)-329.6E+06 (X_U2.9)    0.0000     
+
+(X_U3.3)     .0020 (X_U3.4)   14.6410 (X_U3.5)   14.6410 (X_U3.6)-329.6E+06     
+
+(X_U3.7)-329.6E+06 (X_U3.8)-329.6E+06 (X_U3.9)    0.0000 (X_U7.3) 50.00E-12     
+
+(N112121)-554.7E-06                   (N112163)  -30.0000                       
+
+(N112660)-39.40E-12                   (N112667) 62.83E-12                       
+
+(N116340)    7.5000                   (VTRIANG)    6.0000                       
+
+(X_U1.10)    1.8018                   (X_U1.11)    1.8018                       
+
+(X_U1.21)     .4500                   (X_U1.22)    6.4500                       
+
+(X_U2.10)   12.5700                   (X_U2.11)  -12.5700                       
+
+(X_U2.14)-14.93E-09                   (X_U2.15)-14.92E-09                       
+
+(X_U2.31)    0.0000                   (X_U2.32)    0.0000                       
+
+(X_U2.33)    0.0000                   (X_U2.34)    0.0000                       
+
+(X_U2.35)    0.0000                   (X_U2.36)    0.0000                       
+
+(X_U2.40) 853.5E-18                   (X_U2.41)    -.0400                       
+
+(X_U2.42)     .0400                   (X_U2.45)-39.71E-12                       
+
+(X_U2.60)    -.6577                   (X_U2.61)    0.0000                       
+
+(X_U2.62)    0.0000                   (X_U2.98)    0.0000                       
+
+(X_U3.10)   12.5700                   (X_U3.11)  -12.5700                       
+
+(X_U3.14)-14.71E-09                   (X_U3.15)-14.69E-09                       
+
+(X_U3.31)    0.0000                   (X_U3.32)    0.0000                       
+
+(X_U3.33)    0.0000                   (X_U3.34)    0.0000                       
+
+(X_U3.35)    0.0000                   (X_U3.36)    0.0000                       
+
+(X_U3.40) 520.4E-18                   (X_U3.41)    -.0400                       
+
+(X_U3.42)     .0400                   (X_U3.45)-39.11E-12                       
+
+(X_U3.60)    -.6478                   (X_U3.61)    0.0000                       
+
+(X_U3.62)    0.0000                   (X_U3.98)    0.0000                       
+
+(X_U4.DIS)    0.0000                  (X_U4.DRVA)    0.0000                     
+
+(X_U4.DRVB)    0.0000                 (X_U4.NO_DT)    5.0000                    
+
+(X_U4.PWMIN)    2.2500                (X_U4.UVLO1) 13.50E+06                    
+
+(X_U4.UVLO2) 10.63E+06                (X_U4.INA_OK)    0.0000                   
+
+(X_U4.INB_OK)    0.0000               (X_U4.PWMINB)    1.0000                   
+
+(X_U4.UVLO2B) 10.63E+06               (X_U4.INA_INT)    5.0420                  
+
+(X_U4.INA_OKD)    0.0000              (X_U4.INA_PRE)    0.0000                  
+
+(X_U4.INB_OKD)    0.0000              (X_U4.INB_PRE)    0.0000                  
+
+(X_U4.VCCI_INT)    5.0000             (X_U4.DRVA_PASS)    0.0000                
+
+(X_U4.DRVB_PASS)    0.0000            (X_U4.FAULT_INP)    0.0000                
+
+(X_U4.N16668890)    8.5000            (X_U4.N16668898)   -2.1250                
+
+(X_U4.N16669068)    0.0000            (X_U4.N16669308)    2.7840                
+
+(X_U4.N16669580)    0.0000            (X_U4.N16669674)    0.0000                
+
+(X_U4.N16669834)    2.7000            (X_U4.N16669842)   -2.7001                
+
+(X_U4.N16669858)    0.0000            (X_U4.N16670120) 3.500E-06                
+
+(X_U4.N16670154)    2.0000            (X_U4.N16670162)    0.0000                
+
+(X_U4.N16670228)-5.000E+06            (X_U4.N16670408)    0.0000                
+
+(X_U4.N16670672)    1.0000            (X_U4.N16670780)-99.54E-09                
+
+(X_U4.N16670790)    0.0000            (X_U4.N16670816) 22.73E-06                
+
+(X_U4.N16670888)    8.5000            (X_U4.N16670896)   -2.1250                
+
+(X_U4.N16671044)   12.0000            (X_U4.N16671166)   11.2500                
+
+(X_U4.N16671236) 77.96E-06            (X_U4.N16671468)  -50.0000                
+
+(X_U4.N16671552) 3.500E-06            (X_U4.N16671580)    2.0000                
+
+(X_U4.N16671640)-5.000E+06            (X_U4.N16671702)  -50.0000                
+
+(X_U4.N16671830)    0.0000            (X_U4.N16671850)    0.0000                
+
+(X_U4.N16672106)    1.0000            (X_U4.N16672276)    1.8000                
+
+(X_U4.N16672306)-2.250E-06            (X_U4.N16672528) 3.119E-06                
+
+(X_U4.N16672594)    0.0000            (X_U4.N16672776)  -18.0000                
+
+(X_U4.N16672784)  -27.2150            (X_U4.N16672968)  -27.2150                
+
+(X_U4.N16673112)    0.0000            (X_U4.N16673358)    0.0000                
+
+(X_U4.N16673432)    1.8000            (X_U4.N16673492)-2.250E-06                
+
+(X_U4.N16673790) 1.386E-06            (X_U4.N16698404) 50.00E-06                
+
+(X_U4.N16970878)-514.9E-06            (X_U4.N17051744) 7.576E-06                
+
+(X_U4.N17051757)    5.0000            (X_U4.N17051771)  -30.0000                
+
+(X_U4.N17088411)    2.7840            (X_U4.N17110019) 7.576E-06                
+
+(X_U4.N17110021)    5.0000            (X_U4.N17110038)-584.7E-06                
+
+(X_U4.N17127259)-592.2E-06            (X_U4.N17153666) 50.00E-06                
+
+(X_U4.N17167704)  -30.0000            (X_U4.N17167706) 50.00E-06                
+
+(X_U4.N17196585)  106.2500            (X_U4.N17198437)  106.2500                
+
+(X_U4.N17201974)  135.0000            (X_U4.N17396123)    0.0000                
+
+(X_U4.N17407797)    0.0000            (X_U4.N167201110) 10.63E+06               
+
+(X_U4.N167208610) 13.50E+06           (X_U4.N167216030) 10.63E+06               
+
+(X_U4.X_U42.YINT)    0.0000           (X_U4.X_U43.YINT)    0.0000               
+
+(X_U4.X_U44.YINT)    0.0000           (X_U4.X_U54.YINT)    5.0000               
+
+(X_U4.X_U61.YINT)    5.0000           (X_U4.X_U62.YINT)    5.0000               
+
+(X_U4.DEAD_THRESH)    5.0000          (X_U4.UVLO1_DELAYED)     .0026            
+
+(X_U4.UVLO2_DELAYED)     .0015        (X_U4.UVLO2B_DELAYED)     .0015       
+
+Resuming could not converge the circuit, restarting it now
+
+  These voltages failed to converge:
+
+    V(PWM)                    =     15.07V  \     5.042V
+    V(N48033)                 =     1.482V  \   -29.37nV
+    V(N16945)                 =     9.84uV  \   -29.82nV
+    V(ERROR)                  =     1.483V  \   -29.37nV
+    V(VS)                     =  -112.68uV  \  -592.23uV
+    V(N49709)                 =  -112.60uV  \  -592.33uV
+    V(HO)                     =     2.560V  \     2.784V
+    V(N49537)                 =    -14.79V  \    -7.052V
+    V(N112121)                =   -75.18uV  \  -554.73uV
+    V(N112660)                =    1.010mV  \   -39.40pV
+    V(X_U1.9)                 =    -4.611V  \    -13.20V
+    V(X_U1.7)                 =     5.250V  \    32.62MV
+    V(X_U1.21)                =     1.933V  \   450.00mV
+    V(X_U1.8)                 =    -15.34V  \    4.113KV
+    V(X_U1.10)                =     10.39V  \     1.802V
+    V(X_U1.11)                =     10.39V  \     1.802V
+    V(X_U2.8)                 =    -1.693V  \  -329.57MV
+    V(X_U2.4)                 =     14.47V  \     14.64V
+    V(X_U2.6)                 =    -1.178V  \  -329.57MV
+    V(X_U2.5)                 =     14.47V  \     14.64V
+    V(X_U2.3)                 =    2.247mV  \    1.999mV
+    V(X_U2.7)                 =    -1.176V  \  -329.57MV
+    V(X_U2.15)                =    4.921uV  \   -14.92nV
+    V(X_U2.14)                =    4.925uV  \   -14.93nV
+    V(X_U2.60)                =  -631.88mV  \  -657.74mV
+    V(X_U3.8)                 =     17.62V  \  -329.57MV
+    V(X_U3.4)                 =     14.47V  \     14.64V
+    V(X_U3.6)                 =   304.48mV  \  -329.57MV
+    V(X_U3.5)                 =     14.46V  \     14.64V
+    V(X_U3.3)                 =     37.14V  \    1.999mV
+    V(X_U3.7)                 =     35.96V  \  -329.57MV
+    V(X_U3.15)                =   740.89mV  \   -14.69nV
+    V(X_U3.14)                =   741.62mV  \   -14.71nV
+    V(X_U3.34)                =    1.778mV  \         0V
+    V(X_U3.35)                =   243.89uV  \         0V
+    V(X_U3.45)                =    1.975mV  \   -39.11pV
+    V(X_U3.60)                =  -617.75mV  \  -647.85mV
+    V(X_U4.PWMIN)             =     1.000V  \     2.250V
+    V(X_U4.INA_INT)           =     15.07V  \     5.042V
+    V(X_U4.N16672306)         =     1.000V  \   -2.250uV
+    V(X_U4.N17110038)         =  -105.10uV  \  -584.65uV
+    V(X_U4.N16671640)         =         0V  \   -5.000MV
+    V(X_U4.UVLO1)             =     5.000V  \    13.50MV
+    V(X_U4.N16669842)         =     2.700V  \    -2.700V
+    V(X_U4.UVLO2)             =     5.000V  \    10.63MV
+    V(X_U4.N167201110)        =     5.000V  \    10.63MV
+    V(X_U4.N17127259)         =  -112.68uV  \  -592.23uV
+    V(X_U4.UVLO2_DELAYED)     =   693.00pV  \    1.473mV
+    V(X_U4.UVLO1_DELAYED)     =   962.50pV  \    2.599mV
+    V(X_U4.N16668898)         =     8.500V  \    -2.125V
+    V(X_U4.N16672528)         =    1.386uV  \    3.119uV
+    V(X_U4.UVLO2B)            =     5.000V  \    10.63MV
+    V(X_U4.UVLO2B_DELAYED)    =   693.00pV  \    1.473mV
+    V(X_U4.N167208610)        =     5.000V  \    13.50MV
+    V(X_U4.N16671236)         =    34.65uV  \    77.96uV
+    V(X_U4.NO_DT)             =         0V  \     5.000V
+    V(X_U4.N16671702)         =         0V  \    -50.00V
+    V(X_U4.N16670228)         =         0V  \   -5.000MV
+    V(X_U4.N16670896)         =     8.500V  \    -2.125V
+    V(X_U4.N17198437)         =    50.00uV  \    106.25V
+    V(X_U4.N16671468)         =         0V  \    -50.00V
+    V(X_U4.N16673790)         =         0V  \    1.386uV
+    V(X_U4.N17201974)         =    50.00uV  \    135.00V
+    V(X_U4.N16671166)         =     5.000V  \     11.25V
+    V(X_U4.PWMINB)            =         0V  \     1.000V
+    V(X_U4.N16669308)         =     2.560V  \     2.784V
+    V(X_U4.N16970878)         =    85.78mV  \  -514.87uV
+    V(X_U4.N16673492)         =     1.000V  \   -2.250uV
+    V(X_U4.N17196585)         =    50.00uV  \    106.25V
+    V(X_U4.N167216030)        =     5.000V  \    10.63MV
+    V(X_U4.N17088411)         =     2.560V  \     2.784V
+
+  These supply currents failed to converge:
+
+    I(X_U1.e1)                =   -10.14mA  \   -67.24uA
+    I(X_U2.EOS)               =   -6.528uA  \   -4.367uA
+    I(X_U2.ECM)               =   -4.921uA  \    14.92nA
+    I(X_U2.EZ2)               =   -15.30nA  \         0A
+    I(X_U3.EOS)               =  -231.34uA  \   -4.367uA
+    I(X_U3.ECM)               =  -740.89mA  \    14.69nA
+    I(X_U3.EZ1)               =   -1.778nA  \         0A
+    I(X_U3.EZ2)               =  -243.89uA  \         0A
+    I(X_U4.E_ABM2)            =  -200.00mA  \  -450.00mA
+    I(X_U4.E_E15)             =    58.21pA  \ 3.970e-21A
+    I(X_U4.E_ABM23)           =         0A  \    5.000MA
+    I(X_U4.E_ABM1)            =    -5.000A  \   -13.50MA
+    I(X_U4.E_ABM4)            =    -5.000A  \   -10.63MA
+    I(X_U4.e.T_T3.eA1)        =    34.65nA  \    77.96nA
+    I(X_U4.E_ABM24)           =         0A  \    5.000MA
+    I(X_U4.E_ABM22)           =         0A  \  -200.00mA
+    I(X_U4.E_ABM7)            =    -5.000A  \   -10.63MA
+    I(X_U4.E_ABM8)            =    -5.000A  \    -11.25A
+    I(X_U2.LO)                =   -1.639nA  \    4.964pA
+    I(X_U3.LO)                =  -246.88uA  \    4.889pA
+    IA(X_U4.T_T3)             =    34.65nA  \    77.96nA
+    I(V_V1)                   =   -222.26A  \   -60.00mA
+    I(V_V8)                   =   -10.00GA  \   -10.00GA
+    I(V_V6)                   =   -10.00GA  \   -10.00GA
+    I(V_V5)                   =    -4.992A  \    -5.002A
+    I(V_V3)                   =   -8.919mA  \   -18.56mA
+    I(V_V4)                   =   -26.68mA  \   -18.58mA
+    I(V_V7)                   =   -10.00GA  \   -10.00GA
+    I(V_V10)                  =   -222.26A  \   -60.00mA
+    I(V_V11)                  =    1.010uA  \  -102.23fA
+    I(X_U1.vi1)               =    222.19A  \    67.24nA
+    I(X_U1.vi2)               =   -222.20A  \         0A
+    I(X_U1.v1)                =    10.14mA  \    67.24uA
+    I(X_U2.V1)                =    12.58pA  \    17.43pA
+    I(X_U2.V2)                =    12.58pA  \    17.43pA
+    I(X_U2.V8)                =  -820.53pA  \   912.05fA
+    I(X_U3.V1)                =    12.58pA  \    17.43pA
+    I(X_U3.V2)                =    12.58pA  \    17.43pA
+    I(X_U3.V8)                =  -123.44uA  \   898.32fA
+
+  These devices failed to converge:
+    D_D10     D_D11     D_D12     D_D14     X_U2.D8   X_U3.D8   X_U4.X_U33.d1 
+    X_U4.E_ABM4 X_U4.E_ABM8 X_U3.FSY  X_U4.X_M12.m1 X_U1.q1   X_U1.q2   
+    X_U1.q3   X_U1.q4   X_U1.q5   X_U2.Q1   X_U2.Q2   X_U3.Q1   X_U3.Q2   
+Restarting Simulation with the following settings
+ITL4 = 125
+ABSTOL = 1.26e-010
+VNTOL = 4.47e-005
+
+
+**** 08/12/21 19:35:04 ****** PSpice 17.2.0 (March 2016) ****** ID# 0 ********
+
+ ** Profile: "Esquematico-Transient"  [ c:\users\emanuel\desktop\dce-amplificador-clase-d\amplificador\amplificador clase d-pspicefil
+
+
+ ****     INITIAL TRANSIENT SOLUTION       TEMPERATURE =   27.000 DEG C
+
+
+******************************************************************************
+
+
+
+ NODE   VOLTAGE     NODE   VOLTAGE     NODE   VOLTAGE     NODE   VOLTAGE
+
+
+(   5V)    5.0000  (   HO)-662.2E-06  (   LO)  -30.0000  (   VS)-202.6E-09      
+
+(  15V)   15.0000  (  OUT)-202.6E-09  (  PWM)    4.9751  (  VCC)   30.0000      
+
+(  VEE)  -30.0000  ( -15V)  -15.0000  (ERROR)     .6466  (N14559)    6.0000     
+
+(N16927)    -.0064 (N16939)    -.0064 (N16945)    -.0044 (N48033)    -.0045     
+
+(N48472)    4.9991 (N48936)  -18.0000 (N49537)  -18.0000 (N49709)    -.0013     
+
+(N49892)  -30.0000 (N50062)-662.2E-06 (N53048)    0.0000 (N53052)    0.0000     
+
+(N53118)    0.0000 (N53142)    0.0000 (X_U1.7)    1.1108 (X_U1.8)  -14.3500     
+
+(X_U1.9)  -14.9820 (X_U2.3)    -.0044 (X_U2.4)   14.4650 (X_U2.5)   14.4650     
+
+(X_U2.6)    -.7604 (X_U2.7)    -.7604 (X_U2.8)   -1.2769 (X_U2.9)    -.0044     
+
+(X_U3.3)    -.0044 (X_U3.4)   14.4650 (X_U3.5)   14.4640 (X_U3.6)    -.7605     
+
+(X_U3.7)    -.7603 (X_U3.8)   -1.2769 (X_U3.9)     .6466 (X_U7.3)    0.0000     
+
+(N112121)   30.0000                   (N112163)-202.6E-09                       
+
+(N112660)    -.0064                   (N112667)    0.0000                       
+
+(N116340)    7.5000                   (VTRIANG) 19.96E-06                       
+
+(X_U1.10)     .0179                   (X_U1.11)     .0179                       
+
+(X_U1.21)    1.0966                   (X_U1.22)     .4500                       
+
+(X_U2.10)   12.5700                   (X_U2.11)  -12.5700                       
+
+(X_U2.14)    -.0054                   (X_U2.15)-5.414E-09                       
+
+(X_U2.31)    -.0044                   (X_U2.32)-4359.4000                       
+
+(X_U2.33)    -.0044                   (X_U2.34)-4359.4000                       
+
+(X_U2.35)    -.0044                   (X_U2.36)    -.0044                       
+
+(X_U2.40)    -.0044                   (X_U2.41)    -.0444                       
+
+(X_U2.42)     .0356                   (X_U2.45)    -.0044                       
+
+(X_U2.60)    -.5078                   (X_U2.61)    0.0000                       
+
+(X_U2.62)    0.0000                   (X_U2.98)    0.0000                       
+
+(X_U3.10)   12.5700                   (X_U3.11)  -12.5700                       
+
+(X_U3.14)    -.0054                   (X_U3.15)-5.433E-09                       
+
+(X_U3.31)     .6466                   (X_U3.32) 646.6E+03                       
+
+(X_U3.33)     .6466                   (X_U3.34) 646.6E+03                       
+
+(X_U3.35)     .6466                   (X_U3.36)     .6466                       
+
+(X_U3.40)     .6466                   (X_U3.41)     .6066                       
+
+(X_U3.42)     .6866                   (X_U3.45)     .6466                       
+
+(X_U3.60)    -.5070                   (X_U3.61)    0.0000                       
+
+(X_U3.62)    0.0000                   (X_U3.98)    0.0000                       
+
+(X_U4.DIS)    0.0000                  (X_U4.DRVA)    0.0000                     
 
 (X_U4.DRVB)    0.0000                 (X_U4.NO_DT)    0.0000                    
 
@@ -668,96 +2769,142 @@ Convergence problem in transient analysis at Time =  22.50E-15
 
 (X_U4.INB_OKD)    0.0000              (X_U4.INB_PRE)    0.0000                  
 
-(X_U4.VCCI_INT)    5.0000             (FEED_ON_SIGNAL)    0.0000                
+(X_U4.VCCI_INT)    5.0000             (X_U4.DRVA_PASS)    0.0000                
 
-(X_U4.DRVA_PASS)    0.0000            (X_U4.DRVB_PASS)    0.0000                
+(X_U4.DRVB_PASS)    0.0000            (X_U4.FAULT_INP)    5.0000                
 
-(X_U4.FAULT_INP)    5.0000            (X_U4.N16668890)    8.5000                
+(X_U4.N16668890)    8.5000            (X_U4.N16668898)    8.5000                
 
-(X_U4.N16668898)    8.5000            (X_U4.N16669068)    0.0000                
+(X_U4.N16669068)    0.0000            (X_U4.N16669308)-662.2E-06                
 
-(X_U4.N16669308)-665.3E-06            (X_U4.N16669580)    5.0000                
+(X_U4.N16669580)    5.0000            (X_U4.N16669674)    0.0000                
 
-(X_U4.N16669674)    0.0000            (X_U4.N16669834)    2.7000                
+(X_U4.N16669834)    2.7000            (X_U4.N16669842)    2.5000                
 
-(X_U4.N16669842)    2.5000            (X_U4.N16669858)    5.0000                
+(X_U4.N16669858)    5.0000            (X_U4.N16670120) 35.71E-06                
 
-(X_U4.N16670120) 92.69E-06            (X_U4.N16670154)    2.0000                
+(X_U4.N16670154)    2.0000            (X_U4.N16670162)-22.27E-18                
 
-(X_U4.N16670162)-22.27E-18            (X_U4.N16670228)    0.0000                
+(X_U4.N16670228)    0.0000            (X_U4.N16670408)    0.0000                
 
-(X_U4.N16670408)    0.0000            (X_U4.N16670672)    1.0000                
+(X_U4.N16670672)    1.0000            (X_U4.N16670780)    -.0013                
 
-(X_U4.N16670780)    -.0013            (X_U4.N16670790)    0.0000                
+(X_U4.N16670790)    0.0000            (X_U4.N16670816)    4.9991                
 
-(X_U4.N16670816)    4.9977            (X_U4.N16670888)    8.5000                
+(X_U4.N16670888)    8.5000            (X_U4.N16670896)    8.0000                
 
-(X_U4.N16670896)    8.0000            (X_U4.N16671044)   12.0000                
+(X_U4.N16671044)   12.0000            (X_U4.N16671166)    0.0000                
 
-(X_U4.N16671166)    0.0000            (X_U4.N16671236)    0.0000                
+(X_U4.N16671236)    0.0000            (X_U4.N16671468)    0.0000                
 
-(X_U4.N16671468)    0.0000            (X_U4.N16671552) 8.180E-15                
+(X_U4.N16671552) 8.020E-15            (X_U4.N16671580)    2.0000                
 
-(X_U4.N16671580)    2.0000            (X_U4.N16671640)    0.0000                
+(X_U4.N16671640)    0.0000            (X_U4.N16671702)    0.0000                
 
-(X_U4.N16671702)    0.0000            (X_U4.N16671830)    5.0000                
+(X_U4.N16671830)    5.0000            (X_U4.N16671850)    0.0000                
 
-(X_U4.N16671850)    0.0000            (X_U4.N16672106)    1.0000                
+(X_U4.N16672106)    1.0000            (X_U4.N16672276)    1.8000                
 
-(X_U4.N16672276)    1.8000            (X_U4.N16672306)    1.0000                
+(X_U4.N16672306)    1.0000            (X_U4.N16672528)    1.0000                
 
-(X_U4.N16672528)    1.0000            (X_U4.N16672594)    0.0000                
+(X_U4.N16672594)    0.0000            (X_U4.N16672776)  -18.0000                
 
-(X_U4.N16672776)  -18.0000            (X_U4.N16672784)  -30.0000                
+(X_U4.N16672784)  -30.0000            (X_U4.N16672968)  -30.0000                
 
-(X_U4.N16672968)  -30.0000            (X_U4.N16673112)    0.0000                
+(X_U4.N16673112)    0.0000            (X_U4.N16673358)    0.0000                
 
-(X_U4.N16673358) 888.2E-18            (X_U4.N16673432)    1.8000                
+(X_U4.N16673432)    1.8000            (X_U4.N16673492)    1.8000                
 
-(X_U4.N16673492)    1.8000            (X_U4.N16673790)    0.0000                
+(X_U4.N16673790)    0.0000            (X_U4.N16698404)    5.0000                
 
-(X_U4.N16698404)    5.0000            (X_U4.N16970878)    -.0013                
+(X_U4.N16970878)    -.0013            (X_U4.N17051744)    5.0000                
 
-(X_U4.N17051744)    5.0000            (X_U4.N17051757)    5.0000                
+(X_U4.N17051757)    5.0000            (X_U4.N17051771)  -25.0000                
 
-(X_U4.N17051771)  -25.0000            (X_U4.N17088411)-503.3E-06                
+(X_U4.N17088411)-500.2E-06            (X_U4.N17110019)    5.0000                
 
-(X_U4.N17110019)    5.0000            (X_U4.N17110021)    5.0000                
+(X_U4.N17110021)    5.0000            (X_U4.N17110038)    5.0000                
 
-(X_U4.N17110038)    5.0000            (X_U4.N17127259)-3.313E-06                
+(X_U4.N17127259)-202.6E-09            (X_U4.N17153666)    5.0000                
 
-(X_U4.N17153666)    5.0000            (X_U4.N17167704)  -30.0000                
+(X_U4.N17167704)  -30.0000            (X_U4.N17167706)    5.0000                
 
-(X_U4.N17167706)    5.0000            (X_U4.N17196585)    0.0000                
+(X_U4.N17196585)    0.0000            (X_U4.N17198437)    5.0000                
 
-(X_U4.N17198437)    5.0000            (X_U4.N17201974)    5.0000                
+(X_U4.N17201974)    5.0000            (X_U4.N17396123)-15.66E-21                
 
-(X_U4.N17396123)-15.66E-21            (X_U4.N17407797)    5.0000                
+(X_U4.N17407797)    5.0000            (X_U4.N167201110)-73.22E-21               
 
-(X_U4.N167201110) 1.419E-24           (X_U4.N167208610)    5.0000               
+(X_U4.N167208610)    5.0000           (X_U4.N167216030)    5.0000               
 
-(X_U4.N167216030)    5.0000           (X_U4.X_U42.YINT)    0.0000               
+(X_U4.X_U42.YINT)    0.0000           (X_U4.X_U43.YINT)    5.0000               
 
-(X_U4.X_U43.YINT)    5.0000           (X_U4.X_U44.YINT)    5.0000               
+(X_U4.X_U44.YINT)    5.0000           (X_U4.X_U54.YINT)    5.0000               
 
-(X_U4.X_U54.YINT)    5.0000           (X_U4.X_U61.YINT)    5.0000               
+(X_U4.X_U61.YINT)    5.0000           (X_U4.X_U62.YINT)    5.0000               
 
-(X_U4.X_U62.YINT)    5.0000           (X_U4.DEAD_THRESH)     .0023              
+(X_U4.DEAD_THRESH) 892.7E-06          (X_U4.UVLO1_DELAYED)    5.0000            
 
-(X_U4.UVLO1_DELAYED)    5.0000        (X_U4.UVLO2_DELAYED) 10.77E-18            
+(X_U4.UVLO2_DELAYED) 10.77E-18        (X_U4.UVLO2B_DELAYED)    5.0000       
 
-(X_U4.UVLO2B_DELAYED)    5.0000       
 
-Resuming Simulation with the following settings
-ITL4 = 125
-ABSTOL = 1.26e-010
 
-Convergence problem in transient analysis at Time =  5.486E-03
-         Time step =  2.453E-15, minimum allowable step size =  10.00E-15
+
+    VOLTAGE SOURCE CURRENTS
+    NAME         CURRENT
+
+    V_V1         0.000E+00
+    V_V8        -1.212E-03
+    V_V6        -1.124E-07
+    V_V5        -3.418E-03
+    V_V3        -1.932E-02
+    V_V4        -1.933E-02
+    V_V7        -1.378E-07
+    V_V10        0.000E+00
+    V_V11       -6.351E-06
+    X_U1.vi1    -1.608E-11
+    X_U1.vi2     1.996E-07
+    X_U1.v1     -4.958E-12
+    X_U2.V1      1.258E-11
+    X_U2.V2      1.258E-11
+    X_U2.V7     -5.178E-13
+    X_U2.V8      3.358E-06
+    X_U2.V5     -4.781E-14
+    X_U2.V6     -4.793E-14
+    X_U3.V1      1.193E-11
+    X_U3.V2      1.323E-11
+    X_U3.V7     -5.170E-13
+    X_U3.V8      3.255E-06
+    X_U3.V5     -4.781E-14
+    X_U3.V6     -4.793E-14
+    X_U4.V_V8   -4.010E-12
+    X_U4.V_V1    0.000E+00
+    X_U4.V_V10   0.000E+00
+    X_U4.V_V11   0.000E+00
+    X_U4.V_V6    0.000E+00
+    X_U4.V_V12   0.000E+00
+    X_U4.V_V13   0.000E+00
+    X_U4.V_V2    0.000E+00
+    X_U4.V_V14   0.000E+00
+    X_U4.V_V9    0.000E+00
+    X_U4.V_V7    0.000E+00
+    X_U4.V_V3    0.000E+00
+    X_U4.V_V5   -1.785E-02
+    X_U7.V1      0.000E+00
+    X_U4.X_H1.VH_H1   8.927E-04
+
+    TOTAL POWER DISSIPATION   6.47E-01  WATTS
+
+Convergence problem in transient analysis at Time =  594.0E-06
+         Time step =  2.485E-15, minimum allowable step size =  3.000E-15
 
   These supply currents failed to converge:
 
-    I(X_U4.E_E15)             =  -151.84nA  \   -56.93nA
+    I(X_U3.EREF)              =   140.37pA  \   -10.93pA
+    I(X_U4.E_E15)             =    1.677uA  \  -400.77nA
+    I(V_V6)                   =    7.813mA  \   -1.953mA
+    I(V_V7)                   =  -179.69mA  \  -196.29mA
+    I(X_U4.V_V8)              =    2.811nA  \   490.90pA
 
 
 
@@ -766,170 +2913,387 @@ Convergence problem in transient analysis at Time =  5.486E-03
  NODE   VOLTAGE     NODE   VOLTAGE     NODE   VOLTAGE     NODE   VOLTAGE
 
 
-(   5V)    5.0000  (   HO)  -29.9980  (   LO)  -18.0000  (   VS)  -29.9980      
+(   5V)    5.0000  (   HO)  -29.9500  (   LO)  -18.0000  (   VS)  -29.9500      
 
-(  15V)   15.0000  (  OUT)    3.1548  (  PWM)     .1017  (  VCC)   30.0000      
+(  15V)   15.0000  (  OUT)  -12.9000  (  PWM)     .1035  (  VCC)   30.0000      
 
-(  VEE)  -30.0000  ( -15V)  -15.0000  (ERROR)     .9054  (N16927)   -1.5060     
+(  VEE)  -30.0000  ( -15V)  -15.0000  (ERROR)    1.7671  (N14559)    8.9999     
 
-(N16945)   -1.5037 (N47439)     .0943 (N48033)     .0903 (N48472)    4.9977     
+(N16927)     .3708 (N16939)  -29.9500 (N16945)     .3756 (N48033)    -.5433     
 
-(N48657)-784.3E-15 (N48936)  -18.0000 (N49537)  -18.2170 (N49709)  -18.7900     
+(N48472)    4.9991 (N48936)  -18.0000 (N49537)  -23.3800 (N49709)  -24.0730     
 
-(N49892)  -18.0000 (N49937)  -18.0000 (N50062)  -29.9980 (N50090)  -29.9980     
+(N49892)  -18.0000 (N50062)  -29.9500 (N53048)    0.0000 (N53052)    0.0000     
 
-(N53048)    0.0000 (N53052)    0.0000 (N53118)    0.0000 (N53142)    0.0000     
+(N53118)    0.0000 (N53142)    0.0000 (X_U1.7)    2.8779 (X_U1.8) -165.5100     
 
-(X_U1.7)    2.0162 (X_U1.8) -141.3400 (X_U1.9)  -14.2370 (X_U2.3)   -1.5041     
+(X_U1.9)  -14.2370 (X_U2.3)     .3724 (X_U2.4)   14.4630 (X_U2.5)   14.4660     
 
-(X_U2.4)   14.4640 (X_U2.5)   14.4650 (X_U2.6)   -2.2596 (X_U2.7)   -2.2600     
+(X_U2.6)    -.3804 (X_U2.7)    -.3835 (X_U2.8)    -.8984 (X_U2.9)     .3836     
 
-(X_U2.8)   -2.7763 (X_U2.9)   -1.5164 (X_U3.3)     .0963 (X_U3.4)   14.4680     
+(X_U3.3)    -.5444 (X_U3.4)   14.4640 (X_U3.5)   14.4650 (X_U3.6)   -1.2992     
 
-(X_U3.5)   14.4620 (X_U3.6)    -.6655 (X_U3.7)    -.6597 (X_U3.8)   -1.1791     
+(X_U3.7)   -1.3003 (X_U3.8)   -1.8163 (X_U3.9)    1.7601 (X_U7.3)    1.0000     
 
-(X_U3.9)     .9173 (VTRIANG)    1.5000                   (X_U1.10)     .7626    
+(N112121)   30.0000                   (N112163)  -29.9500                       
 
-(X_U1.11)     .7626                   (X_U1.21)    1.3554                       
+(N112660)    -.5464                   (N112667)    -.5569                       
 
-(X_U1.22)    1.9500                   (X_U2.10)   12.5700                       
+(N116340)    7.5000                   (VTRIANG)    2.3281                       
 
-(X_U2.11)  -12.5700                   (X_U2.14)   -1.5048                       
+(X_U1.10)     .7625                   (X_U1.11)     .7625                       
 
-(X_U2.15)-1.500E-06                   (X_U2.31)   -1.5164                       
+(X_U1.21)    2.2171                   (X_U1.22)    2.7781                       
 
-(X_U2.32)-1.516E+06                   (X_U2.33)   -1.5164                       
+(X_U2.10)   12.5700                   (X_U2.11)  -12.5700                       
 
-(X_U2.34)-1.516E+06                   (X_U2.35)   -1.5164                       
+(X_U2.14)     .3732                   (X_U2.15)-8.639E-06                       
 
-(X_U2.36)   -1.5164                   (X_U2.40)   -1.5164                       
+(X_U2.31)     .3848                   (X_U2.32) 384.8E+03                       
 
-(X_U2.41)   -1.5564                   (X_U2.42)   -1.4764                       
+(X_U2.33)     .3824                   (X_U2.34) 382.4E+03                       
 
-(X_U2.45)   -1.5037                   (X_U2.60)     .6491                       
+(X_U2.35)     .3809                   (X_U2.36)     .3821                       
 
-(X_U2.61)    0.0000                   (X_U2.62)    0.0000                       
+(X_U2.40)     .3830                   (X_U2.41)     .3430                       
 
-(X_U2.98)    0.0000                   (X_U3.10)   12.5700                       
+(X_U2.42)     .4230                   (X_U2.45)     .3756                       
 
-(X_U3.11)  -12.5700                   (X_U3.14)     .0923                       
+(X_U2.60)    -.6352                   (X_U2.61)    0.0000                       
 
-(X_U3.15) 22.19E-09                   (X_U3.31)     .9152                       
+(X_U2.62)    0.0000                   (X_U2.98)    0.0000                       
 
-(X_U3.32) 915.2E+03                   (X_U3.33)     .9194                       
+(X_U3.10)   12.5700                   (X_U3.11)  -12.5700                       
 
-(X_U3.34) 919.4E+03                   (X_U3.35)     .9219                       
+(X_U3.14)    -.5448                   (X_U3.15)-604.0E-09                       
 
-(X_U3.36)     .9198                   (X_U3.40)     .9182                       
+(X_U3.31)    1.7606                   (X_U3.32) 1.761E+06                       
 
-(X_U3.41)     .8782                   (X_U3.42)     .9582                       
+(X_U3.33)    1.7595                   (X_U3.34) 1.760E+06                       
 
-(X_U3.45)     .9054                   (X_U3.60)    -.6493                       
+(X_U3.35)    1.7588                   (X_U3.36)    1.7594                       
 
-(X_U3.61)    0.0000                   (X_U3.62)    0.0000                       
+(X_U3.40)    1.7598                   (X_U3.41)    1.7198                       
 
-(X_U3.98)    0.0000                   (X_U4.DIS)    0.0000                      
+(X_U3.42)    1.7998                   (X_U3.45)    1.7671                       
 
-(SIGNAL_IN)     .0949                 (X_U4.DRVA)    0.0000                     
+(X_U3.60)     .6348                   (X_U3.61)    0.0000                       
+
+(X_U3.62)    0.0000                   (X_U3.98)    0.0000                       
+
+(X_U4.DIS)    0.0000                  (X_U4.DRVA)    0.0000                     
 
 (X_U4.DRVB)    5.0000                 (X_U4.NO_DT)    0.0000                    
 
 (X_U4.PWMIN)    0.0000                (X_U4.UVLO1)    5.0000                    
 
-(X_U4.UVLO2)    5.0000                (X_U4.INA_OK)    0.0000                   
+(X_U4.UVLO2)    0.0000                (X_U4.INA_OK)    0.0000                   
 
 (X_U4.INB_OK)    5.0000               (X_U4.PWMINB)    1.0000                   
 
-(X_U4.UVLO2B)    5.0000               (X_U4.INA_INT)     .1017                  
+(X_U4.UVLO2B)    5.0000               (X_U4.INA_INT)     .1035                  
 
 (X_U4.INA_OKD)    0.0000              (X_U4.INA_PRE)    0.0000                  
 
 (X_U4.INB_OKD)    5.0000              (X_U4.INB_PRE)    5.0000                  
 
-(X_U4.VCCI_INT)    5.0000             (FEED_ON_SIGNAL)    0.0000                
+(X_U4.VCCI_INT)    5.0000             (X_U4.DRVA_PASS)    0.0000                
 
-(X_U4.DRVA_PASS)    0.0000            (X_U4.DRVB_PASS)    5.0000                
+(X_U4.DRVB_PASS)    5.0000            (X_U4.FAULT_INP)    5.0000                
 
-(X_U4.FAULT_INP)    5.0000            (X_U4.N16668890)    8.5000                
+(X_U4.N16668890)    8.5000            (X_U4.N16668898)    8.5000                
 
-(X_U4.N16668898)    8.0000            (X_U4.N16669068)    0.0000                
+(X_U4.N16669068)    0.0000            (X_U4.N16669308)  -29.9500                
 
-(X_U4.N16669308)  -29.9980            (X_U4.N16669580)    0.0000                
+(X_U4.N16669580)    0.0000            (X_U4.N16669674)    0.0000                
 
-(X_U4.N16669674)    0.0000            (X_U4.N16669834)    2.7000                
+(X_U4.N16669834)    2.7000            (X_U4.N16669842)    2.5000                
 
-(X_U4.N16669842)    2.5000            (X_U4.N16669858)    5.0000                
+(X_U4.N16669858)    5.0000            (X_U4.N16670120)    2.0004                
 
-(X_U4.N16670120)    2.0004            (X_U4.N16670154)    2.0000                
+(X_U4.N16670154)    2.0000            (X_U4.N16670162)    5.0000                
 
-(X_U4.N16670162)    5.0000            (X_U4.N16670228)    5.0000                
+(X_U4.N16670228)    5.0000            (X_U4.N16670408)    0.0000                
 
-(X_U4.N16670408)    0.0000            (X_U4.N16670672)    1.0000                
+(X_U4.N16670672)    1.0000            (X_U4.N16670780)    5.8777                
 
-(X_U4.N16670780)   11.2080            (X_U4.N16670790)    5.0000                
+(X_U4.N16670790)    0.0000            (X_U4.N16670816)    4.9991                
 
-(X_U4.N16670816)    4.9977            (X_U4.N16670888)    8.5000                
+(X_U4.N16670888)    8.5000            (X_U4.N16670896)    8.0000                
 
-(X_U4.N16670896)    8.0000            (X_U4.N16671044)   12.0000                
+(X_U4.N16671044)   12.0000            (X_U4.N16671166)    0.0000                
 
-(X_U4.N16671166)    0.0000            (X_U4.N16671236)    0.0000                
+(X_U4.N16671236)    0.0000            (X_U4.N16671468)    5.0000                
 
-(X_U4.N16671468)    5.0000            (X_U4.N16671552)    2.0008                
+(X_U4.N16671552)    2.0007            (X_U4.N16671580)    2.0000                
 
-(X_U4.N16671580)    2.0000            (X_U4.N16671640)    5.0000                
+(X_U4.N16671640)    5.0000            (X_U4.N16671702)    5.0000                
 
-(X_U4.N16671702)    5.0000            (X_U4.N16671830)-10.91E-24                
+(X_U4.N16671830)-39.78E-18            (X_U4.N16671850)    0.0000                
 
-(X_U4.N16671850)    0.0000            (X_U4.N16672106)    1.0000                
+(X_U4.N16672106)    1.0000            (X_U4.N16672276)    1.8000                
 
-(X_U4.N16672276)    1.8000            (X_U4.N16672306)    1.8000                
+(X_U4.N16672306)    1.8000            (X_U4.N16672528) 2.617E-15                
 
-(X_U4.N16672528)    0.0000            (X_U4.N16672594)    5.0000                
+(X_U4.N16672594)    5.0000            (X_U4.N16672776)  -18.0000                
 
-(X_U4.N16672776)  -18.0000            (X_U4.N16672784)   -6.0000                
+(X_U4.N16672784)   -6.0000            (X_U4.N16672968)  -18.0000                
 
-(X_U4.N16672968)  -18.0000            (X_U4.N16673112)    5.0000                
+(X_U4.N16673112)    5.0000            (X_U4.N16673358)    0.0000                
 
-(X_U4.N16673358)-784.3E-15            (X_U4.N16673432)    1.8000                
+(X_U4.N16673432)    1.8000            (X_U4.N16673492)    1.8000                
 
-(X_U4.N16673492)    1.8000            (X_U4.N16673790)    1.0000                
+(X_U4.N16673790)    1.0000            (X_U4.N16698404)    5.0000                
 
-(X_U4.N16698404)    5.0000            (X_U4.N16970878)  -18.7900                
+(X_U4.N16970878)  -24.0730            (X_U4.N17051744) 7.206E-09                
 
-(X_U4.N17051744) 1.382E-24            (X_U4.N17051757)    0.0000                
+(X_U4.N17051757)    0.0000            (X_U4.N17051771)  -30.0000                
 
-(X_U4.N17051771)  -30.0000            (X_U4.N17088411)  -29.9980                
+(X_U4.N17088411)  -29.9500            (X_U4.N17110019)    5.0000                
 
-(X_U4.N17110019)    5.0000            (X_U4.N17110021)    5.0000                
+(X_U4.N17110021)    5.0000            (X_U4.N17110038)  -24.9500                
 
-(X_U4.N17110038)  -24.9980            (X_U4.N17127259)  -29.9980                
+(X_U4.N17127259)  -29.9500            (X_U4.N17153666)    5.0000                
 
-(X_U4.N17153666)    5.0000            (X_U4.N17167704)  -18.0000                
+(X_U4.N17167704)  -18.0000            (X_U4.N17167706)-6.748E-27                
 
-(X_U4.N17167706)    0.0000            (X_U4.N17196585)    5.0000                
+(X_U4.N17196585)    0.0000            (X_U4.N17198437)    5.0000                
 
-(X_U4.N17198437)    5.0000            (X_U4.N17201974)    5.0000                
+(X_U4.N17201974)    5.0000            (X_U4.N17396123)    5.0000                
 
-(X_U4.N17396123)    5.0000            (X_U4.N17407797)-3.943E-18                
+(X_U4.N17407797)-3.172E-27            (X_U4.N167201110) 74.14E-06               
 
-(X_U4.N167201110)    5.0000           (X_U4.N167208610)    5.0000               
+(X_U4.N167208610)    5.0000           (X_U4.N167216030)    5.0000               
 
-(X_U4.N167216030)    5.0000           (X_U4.X_U42.YINT)    5.0000               
+(X_U4.X_U42.YINT)    0.0000           (X_U4.X_U43.YINT)    5.0000               
 
-(X_U4.X_U43.YINT)    5.0000           (X_U4.X_U44.YINT)    5.0000               
+(X_U4.X_U44.YINT)    5.0000           (X_U4.X_U54.YINT)    5.0000               
 
-(X_U4.X_U54.YINT)    5.0000           (X_U4.X_U61.YINT)    5.0000               
+(X_U4.X_U61.YINT)    5.0000           (X_U4.X_U62.YINT)    0.0000               
 
-(X_U4.X_U62.YINT)    0.0000           (X_U4.DEAD_THRESH)     .0023              
+(X_U4.DEAD_THRESH) 892.7E-06          (X_U4.UVLO1_DELAYED)    5.0000            
 
-(X_U4.UVLO1_DELAYED)    5.0000        (X_U4.UVLO2_DELAYED)    5.0000            
-
-(X_U4.UVLO2B_DELAYED)    5.0000       
+(X_U4.UVLO2_DELAYED) 511.2E-06        (X_U4.UVLO2B_DELAYED)    5.0000       
 
 Resuming Simulation with the following settings
 ITL4 = 1000
 ABSTOL = 1.58e-008
 
+Convergence problem in transient analysis at Time =  1.419E-03
+         Time step =  2.963E-15, minimum allowable step size =  3.000E-15
+
+  These supply currents failed to converge:
+
+    I(X_U4.E_E15)             =   -53.74nA  \   161.21nA
+    I(V_V6)                   =         0A  \   488.28uA
+    I(V_V7)                   =   507.32mA  \   508.79mA
+    I(X_U1.vi2)               =   476.84nA  \   953.67nA
+
+  These devices failed to converge:
+    X_U5.M1   
+
+
+
+  Last node voltages tried were:
+
+ NODE   VOLTAGE     NODE   VOLTAGE     NODE   VOLTAGE     NODE   VOLTAGE
+
+
+(   5V)    5.0000  (   HO)  -30.0000  (   LO)  -18.0000  (   VS)  -30.0000      
+
+(  15V)   15.0000  (  OUT)   10.6630  (  PWM)    4.9751  (  VCC)   30.0000      
+
+(  VEE)  -30.0000  ( -15V)  -15.0000  (ERROR)     .8968  (N14559)    7.9215     
+
+(N16927)    -.1126 (N16939)  -30.0000 (N16945)    -.1084 (N48033)     .4901     
+
+(N48472)    4.9991 (N48936)  -18.0000 (N49537)  -18.5070 (N49709)  -19.1280     
+
+(N49892)  -18.0000 (N50062)  -30.0000 (N53048)    0.0000 (N53052)    0.0000     
+
+(N53118)    0.0000 (N53142)    0.0000 (X_U1.7)    1.8943 (X_U1.8)  -14.3570     
+
+(X_U1.9)  -14.8860 (X_U2.3)    -.1109 (X_U2.4)   14.4630 (X_U2.5)   14.4660     
+
+(X_U2.6)    -.8644 (X_U2.7)    -.8668 (X_U2.8)   -1.3821 (X_U2.9)    -.1128     
+
+(X_U3.3)     .4914 (X_U3.4)   14.4650 (X_U3.5)   14.4640 (X_U3.6)    -.2658     
+
+(X_U3.7)    -.2646 (X_U3.8)    -.7817 (X_U3.9)     .9015 (X_U7.3)    1.0000     
+
+(N112121)   30.0000                   (N112163)  -30.0000                       
+
+(N112660)     .4893                   (N112667)     .4888                       
+
+(N116340)    7.5000                   (VTRIANG)     .7838                       
+
+(X_U1.10)     .1141                   (X_U1.11)     .1141                       
+
+(X_U1.21)    1.3468                   (X_U1.22)    1.2338                       
+
+(X_U2.10)   12.5700                   (X_U2.11)  -12.5700                       
+
+(X_U2.14)    -.1105                   (X_U2.15)-6.810E-06                       
+
+(X_U2.31)    -.1119                   (X_U2.32)-111.9E+03                       
+
+(X_U2.33)    -.1137                   (X_U2.34)-113.7E+03                       
+
+(X_U2.35)    -.1147                   (X_U2.36)    -.1138                       
+
+(X_U2.40)    -.1132                   (X_U2.41)    -.1532                       
+
+(X_U2.42)    -.0732                   (X_U2.45)    -.1084                       
+
+(X_U2.60)     .6236                   (X_U2.61)    0.0000                       
+
+(X_U2.62)    0.0000                   (X_U2.98)    0.0000                       
+
+(X_U3.10)   12.5700                   (X_U3.11)  -12.5700                       
+
+(X_U3.14)     .4897                   (X_U3.15) 429.9E-09                       
+
+(X_U3.31)     .9011                   (X_U3.32) 901.1E+03                       
+
+(X_U3.33)     .9018                   (X_U3.34) 901.8E+03                       
+
+(X_U3.35)     .9023                   (X_U3.36)     .9019                       
+
+(X_U3.40)     .9016                   (X_U3.41)     .8616                       
+
+(X_U3.42)     .9416                   (X_U3.45)     .8968                       
+
+(X_U3.60)    -.6242                   (X_U3.61)    0.0000                       
+
+(X_U3.62)    0.0000                   (X_U3.98)    0.0000                       
+
+(X_U4.DIS)    0.0000                  (X_U4.DRVA)    0.0000                     
+
+(X_U4.DRVB)    5.0000                 (X_U4.NO_DT)    0.0000                    
+
+(X_U4.PWMIN)    1.0000                (X_U4.UVLO1)    5.0000                    
+
+(X_U4.UVLO2)    5.0000                (X_U4.INA_OK)    0.0000                   
+
+(X_U4.INB_OK)    5.0000               (X_U4.PWMINB)    0.0000                   
+
+(X_U4.UVLO2B)    5.0000               (X_U4.INA_INT)    4.9751                  
+
+(X_U4.INA_OKD)    0.0000              (X_U4.INA_PRE)    0.0000                  
+
+(X_U4.INB_OKD)    5.0000              (X_U4.INB_PRE)    5.0000                  
+
+(X_U4.VCCI_INT)    5.0000             (X_U4.DRVA_PASS)    0.0000                
+
+(X_U4.DRVB_PASS)    5.0000            (X_U4.FAULT_INP)    5.0000                
+
+(X_U4.N16668890)    8.5000            (X_U4.N16668898)    8.0000                
+
+(X_U4.N16669068)    0.0000            (X_U4.N16669308)  -30.0000                
+
+(X_U4.N16669580)    0.0000            (X_U4.N16669674)    0.0000                
+
+(X_U4.N16669834)    2.7000            (X_U4.N16669842)    2.5000                
+
+(X_U4.N16669858)    5.0000            (X_U4.N16670120)    2.0004                
+
+(X_U4.N16670154)    2.0000            (X_U4.N16670162)    5.0000                
+
+(X_U4.N16670228)    5.0000            (X_U4.N16670408)    0.0000                
+
+(X_U4.N16670672)    1.0000            (X_U4.N16670780)   10.8720                
+
+(X_U4.N16670790)    5.0000            (X_U4.N16670816)    4.9991                
+
+(X_U4.N16670888)    8.5000            (X_U4.N16670896)    8.0000                
+
+(X_U4.N16671044)   12.0000            (X_U4.N16671166)    0.0000                
+
+(X_U4.N16671236)    0.0000            (X_U4.N16671468)    5.0000                
+
+(X_U4.N16671552)    2.0007            (X_U4.N16671580)    2.0000                
+
+(X_U4.N16671640)    5.0000            (X_U4.N16671702)    5.0000                
+
+(X_U4.N16671830)    0.0000            (X_U4.N16671850)    0.0000                
+
+(X_U4.N16672106)    1.0000            (X_U4.N16672276)    1.8000                
+
+(X_U4.N16672306)    1.0000            (X_U4.N16672528)     .2216                
+
+(X_U4.N16672594)    5.0000            (X_U4.N16672776)  -18.0000                
+
+(X_U4.N16672784)   -6.0000            (X_U4.N16672968)  -18.0000                
+
+(X_U4.N16673112)    5.0000            (X_U4.N16673358)    0.0000                
+
+(X_U4.N16673432)    1.8000            (X_U4.N16673492)    1.8000                
+
+(X_U4.N16673790)     .7784            (X_U4.N16698404)    5.0000                
+
+(X_U4.N16970878)  -19.1280            (X_U4.N17051744) 4.502E-18                
+
+(X_U4.N17051757)    0.0000            (X_U4.N17051771)  -30.0000                
+
+(X_U4.N17088411)  -30.0000            (X_U4.N17110019)    5.0000                
+
+(X_U4.N17110021)    5.0000            (X_U4.N17110038)  -25.0000                
+
+(X_U4.N17127259)  -30.0000            (X_U4.N17153666)    5.0000                
+
+(X_U4.N17167704)  -18.0000            (X_U4.N17167706)    0.0000                
+
+(X_U4.N17196585)    5.0000            (X_U4.N17198437)    5.0000                
+
+(X_U4.N17201974)    5.0000            (X_U4.N17396123)    5.0000                
+
+(X_U4.N17407797)-97.79E-18            (X_U4.N167201110)    5.0000               
+
+(X_U4.N167208610)    5.0000           (X_U4.N167216030)    5.0000               
+
+(X_U4.X_U42.YINT)    5.0000           (X_U4.X_U43.YINT)    5.0000               
+
+(X_U4.X_U44.YINT)    5.0000           (X_U4.X_U54.YINT)    5.0000               
+
+(X_U4.X_U61.YINT)    5.0000           (X_U4.X_U62.YINT)    0.0000               
+
+(X_U4.DEAD_THRESH) 892.7E-06          (X_U4.UVLO1_DELAYED)    5.0000            
+
+(X_U4.UVLO2_DELAYED)    4.9999        (X_U4.UVLO2B_DELAYED)    5.0000       
+
+Resuming Simulation with the following settings
+ITL4 = 1000
+ABSTOL = 1e-006
+
+
+**** 08/12/21 19:35:04 ****** PSpice 17.2.0 (March 2016) ****** ID# 0 ********
+
+ ** Profile: "Esquematico-Transient"  [ c:\users\emanuel\desktop\dce-amplificador-clase-d\amplificador\amplificador clase d-pspicefil
+
+
+ ****     FOURIER ANALYSIS                 TEMPERATURE =   27.000 DEG C
+
+
+******************************************************************************
+
+
+
+FOURIER COMPONENTS OF TRANSIENT RESPONSE V(OUT)
+
+
+
+ DC COMPONENT =  -6.4870E+00
+
+ HARMONIC   FREQUENCY     FOURIER     NORMALIZED     PHASE     NORMALIZED
+    NO         (HZ)      COMPONENT     COMPONENT     (DEG)     PHASE (DEG)
+
+     1    1.0000E+04   3.7056E+00   1.0000E+00   1.7951E+02   0.0000E+00
+     2    2.0000E+04   1.8249E+00   4.9246E-01  -1.7772E+02  -5.3674E+02
+     3    3.0000E+04   1.2243E+00   3.3039E-01  -1.7548E+02  -7.1401E+02
+     4    4.0000E+04   9.1050E-01   2.4571E-01  -1.7479E+02  -8.9282E+02
+
+
+     TOTAL HARMONIC DISTORTION =   6.4191E+01 PERCENT
 
 
           JOB CONCLUDED
@@ -938,13 +3302,13 @@ ABSTOL = 1.58e-008
  ITL2 = 20
  ITL4 = 1000
  RELTOL = 0.001
- ABSTOL = 1.58489e-008
- VNTOL = 1e-006
+ ABSTOL = 1e-006
+ VNTOL = 4.46684e-005
  PIVTOL = 1e-013
 
-**** 07/29/21 01:27:39 ****** PSpice 17.2.0 (March 2016) ****** ID# 0 ********
+**** 08/12/21 19:35:04 ****** PSpice 17.2.0 (March 2016) ****** ID# 0 ********
 
- ** Profile: "Esquematico-Transient"  [ C:\Users\Emanuel\Desktop\DCE-Amplificador-Clase-D\Amplificador\amplificador clase d-pspicefil
+ ** Profile: "Esquematico-Transient"  [ c:\users\emanuel\desktop\dce-amplificador-clase-d\amplificador\amplificador clase d-pspicefil
 
 
  ****     JOB STATISTICS SUMMARY
@@ -954,5 +3318,5 @@ ABSTOL = 1.58e-008
 
 
 
-  Total job time (using Solver 1)   =      781.99
+  Total job time (using Solver 1)   =      339.92
 

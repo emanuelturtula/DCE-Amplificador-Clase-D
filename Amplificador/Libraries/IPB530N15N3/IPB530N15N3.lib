@@ -1,0 +1,36 @@
+* PSpice Model Editor - Version 17.2.0
+
+*$
+.SUBCKT IPB530N15N3_L0  drain  gate  source
+Lg     gate  g1    4n
+Ld     drain d1    1n
+Ls     source s1   2.5n
+Rs      s1    s2   1.86m
+Rg     g1    g2     2.1
+M1      d2    g2    s2    s2    DMOS    L=1u   W=1u
+.MODEL DMOS NMOS ( KP= 33.2  VTO=4.45  THETA=0  VMAX=1.5e5  ETA=0.005  LEVEL=3)
+Rd     d1a    d2    23.45m TC=12m
+.MODEL MVDR NMOS (KP=73.04 VTO=-1   LAMBDA=0.19)
+Mr d1 d2a d1a d1a MVDR W=1u L=1u
+Rx d2a d1a 1m
+Dbd     s2    d2    Dbt
+.MODEL     Dbt    D(BV=175   M=0.4  CJO=0.33n  VJ=0.9V)
+Rsp     s2    s3     0.7
+Dbd1     s3    d2    Dbt1
+.MODEL     Dbt1    D(BV=1000   M=0.4  CJO=0.66n  VJ=0.9V)
+Dbody   s2   21    DBODY
+.MODEL DBODY  D(IS=25.2p  N=1.185  RS=0.15u  EG=1.12  TT=100n)
+Rdiode  d1  21    3.31m TC=10m
+.MODEL   sw    NMOS(VTO=0  KP=10   LEVEL=1)
+Maux      g2   c    a    a   sw
+Maux2     b    d    g2    g2   sw
+Eaux      c    a    d2    g2   1
+Eaux2     d    g2   d2    g2   -1
+Cox       b    d2   0.1n
+.MODEL     DGD    D(M=0.8   CJO=0.1n   VJ=0.5)
+Rpar      b    d2   1Meg
+Dgd       a    d2   DGD
+Rpar2     d2   a    10Meg
+Cgs     g2    s2    0.66n
+.ENDS  IPB530N15N3_L0
+*$

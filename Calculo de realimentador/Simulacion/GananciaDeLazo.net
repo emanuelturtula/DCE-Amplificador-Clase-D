@@ -1,5 +1,5 @@
 * C:\Users\Emanuel\Desktop\DCE-Amplificador-Clase-D\Calculo de realimentador\Simulacion\GananciaDeLazo.asc
-B1 OUT 0 V=delay(V(Error)*20, 600E-9)
+B1 OUT 0 V=delay(V(Error)*20, 250E-9)
 L1 OUT N004 33µ
 C1 N004 0 330n
 R1 N004 0 8
@@ -16,8 +16,13 @@ R6 N005 0 {R1}
 C3 N005 0 {C}
 R7 N005 0 {R2}
 V1 IN 0 AC 1
+C4 N001 0 2.2n
 .include "./ad817.lib"
 .ac dec 1000 1 10Meg
-.param C=1n R1=100k R2=1k
+.param C=2.2n R1=100k R2=1k
+* f(s)
+* H(s)
+* Restador + K(s)
+* a(s)
 .backanno
 .end

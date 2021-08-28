@@ -1,0 +1,107 @@
+
+**** 08/12/21 00:55:00 ****** PSpice 17.2.0 (March 2016) ****** ID# 0 ********
+
+ ** Profile: "Esquematico-Transient"  [ c:\users\emanuel\desktop\dce-amplificador-clase-d\amplificador\amplificador clase d-pspicefil
+
+
+ ****     CIRCUIT DESCRIPTION
+
+
+******************************************************************************
+
+
+
+
+** Creating circuit file "Transient.cir" 
+** WARNING: THIS AUTOMATICALLY GENERATED FILE MAY BE OVERWRITTEN BY SUBSEQUENT SIMULATIONS
+
+*Libraries: 
+* Profile Libraries :
+* Local Libraries :
+.LIB "../../../libraries/ipb530n15n3/ipb530n15n3.lib" 
+.LIB "../../../libraries/phb27nq10t/phb27nq10t.lib" 
+.LIB "../../../libraries/ucc20520_pspice_trans/ucc20520_trans.lib" 
+* From [PSPICE NETLIST] section of C:\Users\Emanuel\AppData\Roaming\SPB_Data\cdssetup\OrCAD_PSpice\17.2.0\PSpice.ini file:
+.lib "nom.lib" 
+
+*Analysis directives: 
+.TRAN  0 3m  0 
+.FOUR 10k 4 V([OUT]) 
+.OPTIONS ADVCONV
+.OPTIONS SPEED_LEVEL= 0
+.AUTOCONVERGE ITL1=1000 ITL2=1000 ITL4=1000 RELTOL=0.05 ABSTOL=1.0E-6 VNTOL=.001 PIVTOL=1.0E-10 
+.PROBE64 V(alias(*)) I(alias(*)) W(alias(*)) D(alias(*)) NOISE(alias(*)) 
+.INC "..\Esquematico.net" 
+
+
+
+**** INCLUDING Esquematico.net ****
+* source AMPLIFICADOR CLASE D
+X_U1         ERROR VTRIANG 15V -15V PWM 0 LM311
+R_R1         PWM 5V  1k TC=0,0 
+V_V1         VTRIANG 0  
++PULSE -1.5 1.5 1p 2u 2u 1p 4u
+R_R3         0 N16927  1k TC=0,0 
+R_R2         N16927 VS  19k TC=0,0 
+X_U2         N16927 N16945 15V -15V N16945 AD817A/AD
+X_U3         N112660 N48033 15V -15V ERROR AD817A/AD
+R_R20         N48033 N16945  {R_1} TC=0,0 
+R_R21         N48033 ERROR  {R_2} TC=0,0 
+C_C18         ERROR N48033  {C_1}  TC=0,0 
+X_U4         0 N48472 0 N53048 N53052 N53118 N53142 HO LO PWM 5V 5V N49709
++  N48936 VS VEE UCC20520_TRANS
+R_R22         0 N48472  5.6k TC=0,0 
+C_C19         0 N48472  2.2n  TC=0,0 
+V_V8         N48936 VEE 12
+V_V6         VCC 0 30
+V_V5         5V 0 5
+V_V3         15V 0 15
+V_V4         0 -15V 15
+V_V7         0 VEE 30
+C_C21         VS N49709  100n  TC=0,0 
+R_R25         N49892 LO  1.2 TC=0,0 
+R_R28         N50062 HO  1.2 TC=0,0 
+C_C24         0 OUT  330n  TC=0,0 
+R_R29         0 OUT  8 TC=0,0 
+L_L1         VS OUT  33u  
+R_R30         N53048 0  2.2k TC=0,0 
+R_R31         N53052 0  2.2k TC=0,0 
+R_R33         N53142 0  2.2k TC=0,0 
+R_R32         N53118 0  2.2k TC=0,0 
+C_C25         VS N49709  1u  TC=0,0 
+C_C26         VEE N48936  100n  TC=0,0 
+C_C27         VEE N48936  10u  TC=0,0 
+C_C28         0 VCC  3300u  TC=0,0 
+C_C29         VEE 0  3300u  TC=0,0 
+D_D10         VEE VS MURS320T3G 
+D_D11         VS VCC MURS320T3G 
+D_D12         N49537 N49709 MURS120T3G 
+D_D13         N50062 HO MURS120T3G 
+D_D14         N49892 LO MURS120T3G 
+C_C30         N16927 0  {C_2}  TC=0,0 
+X_U5         VS N49892 VEE PHB27NQ10T 
+X_U6         VCC N50062 VS PHB27NQ10T 
+R_R34         N49537 N48936  1 TC=0,0 
+C_C34         VEE N112163  1n  TC=0,0 
+C_C35         VS N112121  1n  TC=0,0 
+R_R35         N112163 VS  8 TC=0,0 
+R_R36         N112121 VCC  8 TC=0,0 
+R_R38         0 N112660  {R_2} TC=0,0 
+C_C36         N112660 0  {C_1}  TC=0,0 
+R_R37         N112660 N112667  {R_1} TC=0,0 
+V_V9         N112667 0  AC 0
++SIN 0 500m 20k 0 0 0
+X_U7         ERROR 0 BAV102
+X_U8         0 ERROR BAV102
+.NODESET         V([OUT ])=0
+.PARAM  c_1=2.2n r_paralela_diodo=500meg c_2=2.2n r_paralela_mosfet=500meg
++  r_1=1k r_2=47k
+
+**** RESUMING Transient.cir ****
+.END
+
+
+ERROR(ORPSIM-15108): Subcircuit BAV102 used by X_U7 is undefined
+
+ERROR(ORPSIM-15108): Subcircuit BAV102 used by X_U8 is undefined
+
